@@ -1,0 +1,14 @@
+# For a known-good install use deploy/requirements.lock: a fresh resolve of the
+# ranges below picks an sqlmodel release that rejects naive datetimes.
+# Pinned loosely on purpose: this has to install on the Python that is already
+# on your machine, which for many Macs is still 3.9.
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+sqlmodel>=0.0.16,<0.1
+jinja2>=3.1,<4.0
+python-multipart>=0.0.9
+numpy>=1.24,<3.0        # 1.26.x on Python 3.9, 2.x on 3.10+
+
+qrcode[pil]>=7.4,<9
+cryptography>=43,<47
+psycopg[binary]>=3.1,<4

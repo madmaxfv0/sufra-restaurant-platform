@@ -1,0 +1,30 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Finance</h1>
+    <p>What came in, what it cost, and what is left.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="fin-strip"></section>
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Where the money went</h3>
+    <p>Revenue down to net, in the order the costs land.</p>
+    <div id="fin-waterfall"></div>
+  </div>
+  <div class="card">
+    <h3>How guests paid</h3>
+    <p>Split by method. Useful when a terminal goes down.</p>
+    <div id="fin-methods"></div>
+  </div>
+</section>
+<div class="card">
+  <h3>Today's payments</h3>
+  <p>Every transaction, including partial and split settlements.</p>
+  <div id="fin-payments"></div>
+</div>
+{% endblock %}
+{% block script %}<script>bootFinance();</script>{% endblock %}

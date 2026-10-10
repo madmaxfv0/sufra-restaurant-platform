@@ -1,0 +1,16 @@
+# Needs an ingress controller (e.g. ingress-nginx). Change the host, and add a
+# tls: block (cert-manager) so staff PINs never travel over plain HTTP.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sufra-os
+  namespace: sufra
+spec:
+  rules:
+    - host: os.sufra.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: {name: sufra-os, port: {name: http}}

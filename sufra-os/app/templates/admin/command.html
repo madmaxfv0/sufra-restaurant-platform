@@ -1,0 +1,124 @@
+{% extends "admin/_base.html" %}
+
+{% block content %}
+<header class="top">
+  <div>
+    <h1 id="command-greeting">Good evening</h1>
+    <p><span id="day">—</span> · <span id="service-progress">service in progress</span></p>
+  </div>
+  <div class="command-tools">
+    <div class="command-lang" id="command-lang" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="az">AZ</button>
+      <button type="button" data-lang="ru">RU</button>
+    </div>
+    <div class="chip"><b id="clock">—</b></div>
+  </div>
+</header>
+
+<!-- The one loud element on the product: what happens next, not what happened. -->
+<section class="foresight">
+  <h2>The next two hours</h2>
+  <p id="foresight-sub">Reading the room…</p>
+  <div class="track" id="track"></div>
+</section>
+
+<section class="strip">
+  <div class="metric">
+    <label>Revenue today</label>
+    <b class="num" id="m-revenue">—</b>
+    <small id="m-revenue-sub">—</small>
+  </div>
+  <div class="metric">
+    <label>Covers</label>
+    <b class="num" id="m-covers">0</b>
+    <small>mains served</small>
+  </div>
+  <div class="metric">
+    <label>Per cover</label>
+    <b class="num" id="m-spend">—</b>
+    <small>average bill</small>
+  </div>
+  <div class="metric">
+    <label>Occupancy</label>
+    <b class="num" id="m-occ">0%</b>
+    <small id="m-occ-sub">—</small>
+  </div>
+  <div class="metric">
+    <label>Table duration</label>
+    <b class="num" id="m-dur">0m</b>
+    <small id="m-dur-sub">—</small>
+  </div>
+  <div class="metric">
+    <label>Satisfaction</label>
+    <b class="num" id="m-sat">0%</b>
+    <small>last seven days</small>
+  </div>
+</section>
+
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>What needs a decision</h3>
+    <p>Ranked by what it costs if nobody acts.</p>
+    <div id="insights"></div>
+  </div>
+
+  <div class="card">
+    <h3>Tonight's forecast</h3>
+    <p>Ridge regression over 180 trading days.</p>
+    <div style="font-family:var(--serif);font-size:42px;font-weight:600;letter-spacing:-.03em"
+         class="num" id="fc-revenue">—</div>
+    <div style="color:var(--sage);font-size:13px;margin-bottom:4px" id="fc-band">—</div>
+    <div style="color:var(--mint);font-size:13px;margin-bottom:18px" id="fc-covers">—</div>
+    <div id="fc-drivers"></div>
+    <p style="font-size:11.5px;color:var(--dim);margin:14px 0 0" id="fc-conf">—</p>
+  </div>
+</section>
+
+<section style="margin-bottom:18px">
+  <div class="card">
+    <h3>Live operations</h3>
+    <p>Everything that has actually happened, from every application, as it happens.</p>
+    <div id="ops-feed"></div>
+  </div>
+</section>
+
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Revenue through the day</h3>
+    <p>Every hour of trading so far.</p>
+    <div id="revchart"></div>
+    <h3 style="margin-top:20px">Covers by hour</h3>
+    <div id="coverschart"></div>
+  </div>
+
+  <div class="card">
+    <h3>Kitchen pressure</h3>
+    <p>Open tickets now, and the projection twenty minutes out.</p>
+    <div id="stations"></div>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Ask SUFRA</h3>
+  <p>Answers are computed from the restaurant's own data. Every reply says where the number came from.</p>
+  <div class="copilot">
+    <div class="thread" id="thread">
+      <div class="msg nova">Ask me about tonight, the kitchen, stock, the menu or the team.</div>
+    </div>
+    <div class="seeds">
+      <button>Why was revenue lower yesterday?</button>
+      <button>Which ingredients run out tomorrow?</button>
+      <button>How many waiters do I need Friday?</button>
+      <button>Which dishes should we remove?</button>
+      <button>Where is the kitchen congested?</button>
+    </div>
+    <form class="ask" id="ask">
+      <input placeholder="Ask about anything in the restaurant" autocomplete="off">
+      <button class="btn solid" type="submit">Ask</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% block script %}<script>bootCommand();</script>{% endblock %}

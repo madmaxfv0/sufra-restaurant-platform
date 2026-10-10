@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reserve a table — SUFRA</title>
+  <link rel="stylesheet" href="/static/css/nova.css?v=20260911-menu-sections1">
+  <link rel="stylesheet" href="/static/css/sufra-upgrade.css?v=20260902-repair2">
+  <link rel="stylesheet" href="/static/css/sufra-repair-v2.css?v=20260902-repair2">
+<link rel="stylesheet" href="/static/css/sufra-polish-v3.css?v=20260902-v3">
+<link rel="stylesheet" href="/static/css/sufra-polish-v4.css?v=20260902-v4">
+<link rel="stylesheet" href="/static/css/sufra-v5.css?v=20260902-v5">
+<link rel="stylesheet" href="/static/css/sufra-final-responsive.css?v=20260911-final1">
+</head>
+<body class="booking-public">
+  <main class="booking-shell">
+    <header class="booking-brand">
+      <img src="/static/img/sufra-logo.png" alt="SUFRA" onerror="this.style.display='none'">
+      <div><span>RESERVATIONS</span><h1>Your table, intelligently chosen.</h1>
+      <p>Tell us what matters — terrace, quiet, window, bar or private dining. SUFRA protects nearby bookings and chooses the best safe table automatically.</p></div>
+    </header>
+    <section class="booking-grid">
+      <form class="booking-card" id="booking-form">
+        <div class="booking-step"><span>01</span><b>When are you coming?</b></div>
+        <div class="booking-fields">
+          <label>Date<input id="bk-date" type="date" required></label>
+          <label>Time<input id="bk-time" type="time" value="19:30" required></label>
+          <label>Guests<select id="bk-party"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></label>
+          <label>Dining time<select id="bk-duration"><option value="90">1 h 30</option><option value="105" selected>1 h 45</option><option value="120">2 hours</option><option value="135">2 h 15</option></select></label>
+        </div>
+        <div class="booking-step"><span>02</span><b>Where would you like to sit?</b></div>
+        <div class="pref-grid" id="bk-prefs">
+          <button type="button" class="on" data-pref="Best available"><b>Best available</b><small>Let SUFRA optimise it</small></button>
+          <button type="button" data-pref="Terrace"><b>Terrace</b><small>Outdoor atmosphere</small></button>
+          <button type="button" data-pref="Quiet place"><b>Quiet place</b><small>A calmer part of the room</small></button>
+          <button type="button" data-pref="Near a window"><b>Near a window</b><small>Edge/window preference</small></button>
+          <button type="button" data-pref="Bar area"><b>Bar area</b><small>Closer to the bar</small></button>
+          <button type="button" data-pref="Private dining"><b>Private dining</b><small>Most secluded option</small></button>
+        </div>
+        <div class="seat-preview" id="seat-preview">Choose a date and time to see SUFRA's seating recommendation.</div>
+        <div class="booking-step"><span>03</span><b>Your details</b></div>
+        <div class="booking-fields">
+          <label class="wide">Name<input id="bk-name" required placeholder="Full name"></label>
+          <label>Email<input id="bk-email" type="email" placeholder="name@example.com"></label>
+          <label>Phone<input id="bk-phone" placeholder="+44 …"></label>
+          <label>Occasion<select id="bk-occasion"><option value="">No occasion</option><option>Birthday</option><option>Anniversary</option><option>Business</option><option value="Date">Date night</option></select></label>
+          <label class="wide">Anything we should know?<textarea id="bk-note" rows="3" placeholder="Accessibility, allergies, special requests…"></textarea></label>
+        </div>
+        <button class="booking-submit" type="submit">Reserve this table preference →</button>
+        <div class="booking-result" id="booking-result" hidden></div>
+      </form>
+    </section>
+  </main>
+<script>
+(() => {
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  let pref='Best available';
+  const today=new Date(); $('#bk-date').value=today.toISOString().slice(0,10); $('#bk-party').value='2';
+  $$('#bk-prefs button').forEach(b=>b.onclick=()=>{$$('#bk-prefs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');pref=b.dataset.pref;preview()});
+  const at=()=>`${$('#bk-date').value}T${$('#bk-time').value}`;
+  async function preview(){
+    if(!$('#bk-date').value||!$('#bk-time').value)return;
+    const box=$('#seat-preview'); box.textContent='SUFRA is checking the floor plan…';
+    try{const r=await fetch(`/api/public/booking/availability?at=${encodeURIComponent(at())}&party=${$('#bk-party').value}&preference=${encodeURIComponent(pref)}&duration=${$('#bk-duration').value}`).then(async x=>{const d=await x.json();if(!x.ok)throw new Error(d.detail||'Availability failed');return d});
+      box.innerHTML=r.available?`<b>Recommended: Table ${r.suggested_table} · ${r.suggested_zone}</b><span>${r.reason}</span>`:`<b>No safe table found</b><span>${r.reason}</span>`;
+    }catch(e){box.innerHTML=`<b>Could not check yet</b><span>${e.message}</span>`}
+  }
+  ['#bk-date','#bk-time','#bk-party','#bk-duration'].forEach(s=>$(s).addEventListener('change',preview));
+  $('#booking-form').onsubmit=async e=>{e.preventDefault();const btn=e.submitter;btn.disabled=true;const out=$('#booking-result');out.hidden=false;out.textContent='Confirming the best table…';try{const payload={name:$('#bk-name').value,at:at(),party:+$('#bk-party').value,duration:+$('#bk-duration').value,preference:pref,email:$('#bk-email').value,phone:$('#bk-phone').value,occasion:$('#bk-occasion').value,note:$('#bk-note').value};const r=await fetch('/api/public/booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(async x=>{const d=await x.json();if(!x.ok)throw new Error(d.detail||d.error||'Booking failed');return d});out.className='booking-result good';out.innerHTML=`<b>✓ Confirmed</b><span>${r.message}</span><small>${r.time} · ${r.preference}</small>`}catch(err){out.className='booking-result bad';out.innerHTML=`<b>Could not confirm</b><span>${err.message}</span>`}finally{btn.disabled=false}};
+  preview();
+})();
+</script>
+<script src="/static/js/nova-core.js?v=20260915-audit1"></script>
+<script src="/static/js/sufra-polish-v3.js?v=20260902-v3"></script>
+<script src="/static/js/sufra-polish-v4.js?v=20260902-v4"></script>
+<script src="/static/js/sufra-v5.js?v=20260902-v5"></script>
+<script src="/static/js/sufra-translations.js?v=20260915-audit1"></script>
+<script src="/static/js/sufra-final-i18n.js?v=20260915-audit1"></script>
+</body></html>

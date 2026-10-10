@@ -1,0 +1,31 @@
+{% extends "admin/_base.html" %}
+
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Kitchen</h1>
+    <p>Tickets, order changes, timing and availability — organized for service.</p>
+  </div>
+  <div class="chip"><b id="k-open">0</b> tickets open · oldest <b id="k-oldest">0m</b></div>
+</header>
+
+<div class="k-status-legend" aria-label="Kitchen ticket status">
+  <span class="queued">Waiting</span>
+  <span class="cooking">Cooking</span>
+  <span class="ready">Ready to serve</span>
+</div>
+
+<section id="kitchen-ops" style="margin-bottom:18px"></section>
+
+<div class="rails" id="rails"></div>
+
+<div class="card" style="margin-top:20px">
+  <h3>How the timers work</h3>
+  <p>Each ticket fills from the bottom as it burns through the time the model promised
+     the guest. Past three quarters it turns amber; past the promise it turns red and
+     climbs to the top of its rail. The promise is not the menu time — it accounts for
+     how many tickets that station already had when the order fired.</p>
+</div>
+{% endblock %}
+
+{% block script %}<script>bootKitchen();bootKitchenOps();</script>{% endblock %}

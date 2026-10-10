@@ -1,0 +1,843 @@
+/* SUFRA V6 — SETTINGS + GUEST NAV + ORDER BAR */
+html,html[data-theme="dark"],:root{color-scheme:dark!important}
+[data-theme-toggle],.theme-toggle{display:none!important}
+
+/* Settings must remain visibly rendered even if a dynamic panel is loading. */
+.app-admin main{display:block!important;visibility:visible!important;opacity:1!important;min-height:100vh!important}
+.v5-security-settings{display:block!important;visibility:visible!important;min-height:160px!important}
+
+/* Guest segmented navigation — all three controls stay visible. */
+.app-guest .g-shell,.app-guest .guest-shell{padding-bottom:48px!important}
+.app-guest .g-tabs,.app-guest .g-tabs.v4-top-tabs{
+  position:sticky!important;top:10px!important;bottom:auto!important;left:auto!important;right:auto!important;
+  transform:none!important;width:100%!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:5px!important;margin:10px 0 18px!important;padding:5px!important;border-radius:18px!important;
+  border:1px solid rgba(111,170,225,.22)!important;background:rgba(13,29,49,.96)!important;
+  box-shadow:0 18px 40px -32px rgba(0,0,0,.9)!important;z-index:55!important;
+}
+.app-guest .g-tabs button,.app-guest .g-tabs button[hidden]{
+  display:flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;
+  min-width:0!important;min-height:42px!important;border:0!important;border-radius:13px!important;background:transparent!important;
+  color:var(--sage)!important;font-weight:700!important;cursor:pointer!important;
+}
+.app-guest .g-tabs button.on{background:linear-gradient(135deg,rgba(94,177,255,.18),rgba(162,145,255,.15))!important;color:#dcecff!important}
+.app-guest .g-tabs em{margin-left:5px;font-style:normal;color:var(--mint)!important}
+
+/* Table-order summary belongs to the page, never as an empty floating line. */
+#sufra-order-bar:not(.up),#sufra-order-bar[hidden]{display:none!important}
+#sufra-order-bar.up{
+  position:sticky!important;top:64px!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:14px!important;width:100%!important;
+  margin:0 0 18px!important;padding:12px 14px!important;border:1px solid rgba(111,170,225,.22)!important;
+  border-radius:16px!important;background:rgba(15,34,57,.97)!important;box-shadow:0 16px 36px -30px rgba(0,0,0,.9)!important;z-index:50!important;
+}
+#sufra-order-bar>div{min-width:0!important}#sufra-order-bar b,#sufra-order-bar span{display:block!important}
+#sufra-order-bar span{font-size:11px!important;color:var(--sage)!important;margin-top:2px!important}
+#sufra-order-bar .btn{flex:0 0 auto!important}
+
+/* Remove leftovers from old fixed guest dock experiments. */
+.app-guest .basket:not(.up),.app-guest .qr-order-basket:not(.up){display:none!important}
+
+@media(max-width:640px){#sufra-order-bar.up{align-items:stretch!important;flex-direction:column!important}#sufra-order-bar .btn{width:100%!important}}
+
+
+/* SUFRA: biometric login button intentionally disabled */
+#bio-login,
+button#bio-login,
+.pin-screen #bio-login {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   Waitlist row repair.
+
+   `.who` is used for two unrelated things in this app: the staff-login
+   picker card (nova.css:1000 - border, background, border-radius,
+   padding:18px 12px, and later grid-template-columns + a forced light
+   background with !important in sufra-polish-v3/v4), and the party-size
+   number on a `.task` row. `.task .who` only ever set typography, so every
+   box-model and colour property from the staff card cascaded straight into
+   the waitlist number and rendered it as a large pale card, squeezing the
+   guest text into a five-line ribbon and pushing Seat/Left off the edge.
+
+   Reset the bled properties explicitly. `.task .who` is (0,2,0), so with
+   !important it beats the bare `.who` !important rules from the polish
+   layers regardless of file order.
+   --------------------------------------------------------------------- */
+.task .who {
+  /* display:block, not grid: the staff card's grid-template-areas gave this
+     element four rows (computed: 22.5px 0 0 0) which kept it 132px tall even
+     after the padding and border were reset. Block display ignores every
+     grid-* property that bleeds in, so no future one can resurface here. */
+  display: block !important;
+  text-align: center !important;
+  line-height: 1.1 !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  grid-template-areas: none !important;
+  gap: 0 !important;
+  column-gap: 0 !important;
+  /* sufra-polish-v3 pins the staff card at min-height:132px !important, plus
+     align-content and a left text-align for its four-row grid. Those are the
+     last of the staff-card properties that reached this number. */
+  min-height: 0 !important;
+  max-height: none !important;
+  align-content: normal !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: default !important;
+  color: var(--bone) !important;
+  width: 46px !important;
+  min-width: 46px !important;
+  height: auto !important;
+  flex: 0 0 46px !important;
+  transform: none !important;
+}
+
+/* The row must be able to drop its buttons onto a second line rather than
+   push them outside the card: .btn-row is deliberately non-shrinking, so
+   without wrapping a narrow column has nowhere to put them. */
+.task.res-wait-row { flex-wrap: wrap; row-gap: 10px; }
+.task.res-wait-row .what { flex: 1 1 160px; }
+.task.res-wait-row .btn-row { margin-left: auto; }
+
+/* `.grid.two` was `1.35fr 1fr`. An `fr` track still carries an implicit
+   min-width:auto, so the wide booking column on the left refused to shrink
+   below its own min-content and ate the right-hand track: the waitlist
+   column measured 636px at 1920, 241px at 1440 and collapsed to 115px at
+   1280, which is what pushed the Seat/Left buttons outside the card no
+   matter how the row itself was laid out. minmax(0,…) lets the tracks
+   honour their fr proportions, and the columns now stack while there is
+   still room for both rather than after one has already been crushed. */
+.grid.two { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+@media (max-width: 1400px) {
+  .grid.two { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* .ops-card-head is declared twice in nova.css: first as a two-part flex
+   header (title block + action button, space-between), then overridden at
+   line 1597 with a three-column grid (auto / 1fr / auto) intended for the
+   Kitchen headers that carry a leading icon. The Unavailable and Order
+   changes headers have only two children, so the button auto-placed into
+   the flexible middle column instead of the trailing auto one - it sat over
+   the description text, wrapped "Mark unavailable" onto two lines, and
+   spilled past the card edge.
+
+   Pin the last child to the final column so the header is correct whether
+   it has two children or three, and stop the label wrapping. */
+.ops-card-head > *:last-child {
+  grid-column: -2 / -1 !important;
+  justify-self: end !important;
+}
+.ops-card-head > .btn { white-space: nowrap !important; }
+
+/* Top-right control cluster.
+
+   Three controls live up there but in two different coordinate systems:
+   .nova-lang-global (fixed, top:14 right:78) and .bell (fixed, top:22
+   right:26) float, while sufra-polish-v4.js appends #v4-staff-identity into
+   .top in normal flow. Measured at 1600px the chip occupied y 56-107 and the
+   fixed pair y 14-64, so the chip's top 8px cut into both - an overlap the
+   audit found on all 21 admin pages.
+
+   Put the chip into the same fixed row, to the left of the language pills
+   (their right:78 + 157px width + a 12px gap = 247), and reserve the space
+   in .top so page headings cannot slide underneath. Below 1400px the chip
+   drops its name/role text and keeps only the avatar, so the row still fits. */
+#v4-staff-identity {
+  position: fixed !important;
+  top: 14px !important;
+  right: 247px !important;
+  z-index: 1200 !important;
+  margin: 0 !important;
+}
+.top { padding-right: 400px; }
+
+@media (max-width: 1400px) {
+  #v4-staff-identity > span:last-child { display: none !important; }
+  #v4-staff-identity { right: 244px !important; padding: 6px !important; }
+  .top { padding-right: 300px; }
+}
+@media (max-width: 900px) {
+  #v4-staff-identity { right: 200px !important; }
+  .top { padding-right: 250px; }
+}
+
+/* A closed <details> hides its non-summary content through an internal slot,
+   but an explicit `display` on a child overrides that. `.kv{display:flex}`
+   did exactly this on the Menu page: both "Manage active dishes" and
+   "Removed dishes" reported open=false and were only 22.5px tall, while
+   their .kv rows still laid out at 57px each and painted over the page -
+   which is why Remove and Restore buttons from two different collapsed
+   sections overlapped each other by 16-28px. Restore the native behaviour. */
+details:not([open]) > *:not(summary) { display: none !important; }
+
+/* ============================================================
+   SUFRA FIX — staff identity must never cover table inspector
+   ============================================================ */
+
+/* The table / notification inspector must always be above
+   the top-right staff identity chip when opened. */
+.inspector.open {
+  z-index: 2000 !important;
+}
+
+/* Staff identity stays above normal page content,
+   but below any open inspector/drawer. */
+#v4-staff-identity {
+  z-index: 1100 !important;
+}
+
+/* Also keep language controls / top controls below an open drawer. */
+.nova-lang-global,
+.bell {
+  z-index: 1100 !important;
+}
+
+/* When any inspector is open, hide the identity chip entirely.
+   This gives the drawer a clean uninterrupted header area. */
+body:has(.inspector.open) #v4-staff-identity {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+
+/* ==========================================================
+   SUFRA 2026-09-11
+   Guest service button responsive repair
+   Prevent Manager / Complaint / translated labels breaking
+   ========================================================== */
+
+.app-guest .quick {
+    display: grid !important;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+.app-guest .quick button {
+    min-width: 0 !important;
+    width: 100% !important;
+    min-height: 72px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+
+    gap: 4px !important;
+    padding: 14px 16px !important;
+
+    text-align: left !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+}
+
+.app-guest .quick button b,
+.app-guest .quick button strong {
+    display: block !important;
+    width: 100% !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+
+    line-height: 1.2 !important;
+}
+
+.app-guest .quick button span,
+.app-guest .quick button small {
+    display: block !important;
+    width: 100% !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+
+    line-height: 1.25 !important;
+}
+
+/* laptop / large tablet */
+@media (min-width: 900px) {
+    .app-guest .quick {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* tablet */
+@media (min-width: 600px) and (max-width: 899px) {
+    .app-guest .quick {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* phone */
+@media (max-width: 599px) {
+    .app-guest .quick {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .app-guest .quick button {
+        min-height: 78px !important;
+        padding: 12px !important;
+    }
+}
+
+/* very narrow phone */
+@media (max-width: 360px) {
+    .app-guest .quick {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* ============================================================
+   SUFRA MOBILE GUEST FINAL FIX
+   2026-09-11
+   - no top tab collision on phones
+   - proper iPhone safe area
+   - clean Save/Add action row
+   - language switcher cannot cover logo/content
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+  /* ----------------------------------------------------------
+     PAGE / SAFE AREA
+     ---------------------------------------------------------- */
+
+  body.app-guest {
+    padding-top: env(safe-area-inset-top) !important;
+    padding-bottom:
+      calc(88px + env(safe-area-inset-bottom)) !important;
+    overflow-x: hidden !important;
+  }
+
+  .app-guest .g-shell {
+    width: 100% !important;
+    max-width: none !important;
+    padding:
+      16px
+      12px
+      calc(100px + env(safe-area-inset-bottom))
+      12px !important;
+    margin: 0 auto !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     DO NOT KEEP THE MENU TABS AT THE TOP ON PHONE
+     ---------------------------------------------------------- */
+
+  .app-guest .g-tabs,
+  .app-guest .g-tabs.v4-top-tabs {
+    position: fixed !important;
+
+    top: auto !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom:
+      max(10px, env(safe-area-inset-bottom)) !important;
+
+    width: auto !important;
+
+    transform: none !important;
+
+    margin: 0 !important;
+    padding: 6px !important;
+
+    display: grid !important;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    border-radius: 22px !important;
+
+    background:
+      rgba(10, 24, 42, .96) !important;
+
+    border:
+      1px solid rgba(117, 166, 220, .24) !important;
+
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+
+    box-shadow:
+      0 18px 46px rgba(0,0,0,.44) !important;
+
+    z-index: 5000 !important;
+  }
+
+  .app-guest .g-tabs button,
+  .app-guest .g-tabs button[hidden] {
+    display: flex !important;
+    min-width: 0 !important;
+    min-height: 48px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 10px 6px !important;
+
+    border-radius: 16px !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  .app-guest .g-tabs button.on {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(94,177,255,.22),
+        rgba(162,145,255,.24)
+      ) !important;
+
+    color: #f2f6ff !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     LANGUAGE SELECTOR
+     Give it its own row rather than covering the logo.
+     ---------------------------------------------------------- */
+
+  body.app-guest .nova-lang-global {
+    position: relative !important;
+
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+
+    width: fit-content !important;
+    max-width: calc(100vw - 24px) !important;
+
+    margin:
+      4px 12px 12px
+      auto !important;
+
+    transform: none !important;
+
+    z-index: 200 !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     HERO
+     ---------------------------------------------------------- */
+
+  .app-guest .g-hero {
+    margin-top: 0 !important;
+    padding: 24px 18px !important;
+
+    border-radius: 24px !important;
+  }
+
+  .app-guest .g-hero h1 {
+    font-size: clamp(32px, 10vw, 46px) !important;
+    line-height: 1.03 !important;
+
+    margin-top: 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .app-guest .g-hero p {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     SERVICE BUTTONS
+     ---------------------------------------------------------- */
+
+  .app-guest .quick {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+  }
+
+  .app-guest .quick button {
+    min-width: 0 !important;
+    min-height: 88px !important;
+
+    padding: 14px 12px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+
+    gap: 5px !important;
+  }
+
+  .app-guest .quick button b {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  .app-guest .quick button span {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     SEARCH
+     ---------------------------------------------------------- */
+
+  .app-guest .g-search {
+    display: grid !important;
+    grid-template-columns:
+      minmax(0, 1fr) auto !important;
+
+    gap: 8px !important;
+
+    width: 100% !important;
+  }
+
+  .app-guest .g-search input {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     COURSE PILLS
+     Horizontal scrolling instead of squeezing.
+     ---------------------------------------------------------- */
+
+  .app-guest .course-nav {
+    display: flex !important;
+
+    flex-wrap: nowrap !important;
+
+    gap: 8px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    -webkit-overflow-scrolling: touch !important;
+
+    padding-bottom: 8px !important;
+
+    scrollbar-width: none !important;
+  }
+
+  .app-guest .course-nav::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .app-guest .course-nav button {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     DISH CARD
+     Proper mobile composition.
+     ---------------------------------------------------------- */
+
+  .app-guest .dish {
+    display: grid !important;
+
+    grid-template-columns:
+      88px minmax(0, 1fr) !important;
+
+    gap: 12px !important;
+
+    align-items: start !important;
+
+    width: 100% !important;
+
+    padding: 14px !important;
+
+    margin-bottom: 12px !important;
+
+    border-radius: 22px !important;
+  }
+
+  .app-guest .dish-photo {
+    width: 88px !important;
+    height: 88px !important;
+
+    min-width: 88px !important;
+
+    border-radius: 18px !important;
+
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .app-guest .dish .body {
+    min-width: 0 !important;
+
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .app-guest .dish h4 {
+    font-size: 17px !important;
+    line-height: 1.15 !important;
+
+    margin-bottom: 6px !important;
+  }
+
+  .app-guest .dish p {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+
+    margin-bottom: 8px !important;
+  }
+
+  .app-guest .dish .meta {
+    display: flex !important;
+
+    flex-wrap: wrap !important;
+
+    gap: 5px !important;
+
+    margin-bottom: 8px !important;
+  }
+
+  .app-guest .dish .price {
+    font-size: 18px !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     SAVE / ADD BUTTONS
+     This is the important repair from your screenshot.
+     ---------------------------------------------------------- */
+
+  .app-guest .dish-actions {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr) !important;
+
+    gap: 8px !important;
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    margin-top: 2px !important;
+  }
+
+  .app-guest .dish-actions > button {
+    width: 100% !important;
+
+    min-width: 0 !important;
+    min-height: 46px !important;
+
+    height: auto !important;
+
+    margin: 0 !important;
+
+    padding: 10px 12px !important;
+
+    border-radius: 14px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+
+    white-space: nowrap !important;
+
+    flex: none !important;
+  }
+
+  .app-guest .dish-save {
+    border-radius: 14px !important;
+
+    background:
+      rgba(15, 38, 32, .72) !important;
+  }
+
+  .app-guest .dish-save.on {
+    background:
+      rgba(240,119,108,.10) !important;
+  }
+
+  .app-guest .dish-add-order {
+    border-radius: 14px !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     MODALS / SHEETS
+     ---------------------------------------------------------- */
+
+  .app-guest .sheet {
+    position: fixed !important;
+
+    left: 0 !important;
+    right: 0 !important;
+
+    top: auto !important;
+    bottom: 0 !important;
+
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    max-height: 88dvh !important;
+
+    overflow-y: auto !important;
+
+    border-radius:
+      26px 26px 0 0 !important;
+
+    padding-bottom:
+      max(
+        18px,
+        env(safe-area-inset-bottom)
+      ) !important;
+
+    z-index: 6000 !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     ORDER BAR
+     Must sit above bottom tabs.
+     ---------------------------------------------------------- */
+
+  #sufra-order-bar.up {
+    position: fixed !important;
+
+    left: 12px !important;
+    right: 12px !important;
+
+    bottom:
+      calc(
+        82px +
+        env(safe-area-inset-bottom)
+      ) !important;
+
+    top: auto !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+
+    z-index: 4900 !important;
+  }
+
+}
+
+
+/* Extra narrow phones */
+@media (max-width: 370px) {
+
+  .app-guest .quick {
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-guest .dish {
+    grid-template-columns:
+      74px minmax(0, 1fr) !important;
+  }
+
+  .app-guest .dish-photo {
+    width: 74px !important;
+    height: 74px !important;
+    min-width: 74px !important;
+  }
+
+  .app-guest .dish-actions {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ============================================================
+   SUFRA MOBILE — LANGUAGE SWITCHER ON TOP
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+  body.app-guest .nova-lang-global {
+    position: sticky !important;
+
+    top: max(8px, env(safe-area-inset-top)) !important;
+    right: auto !important;
+    left: auto !important;
+
+    width: fit-content !important;
+    max-width: calc(100vw - 24px) !important;
+
+    margin:
+      8px
+      12px
+      12px
+      auto !important;
+
+    transform: none !important;
+
+    z-index: 5500 !important;
+
+    background:
+      rgba(8, 22, 38, .94) !important;
+
+    backdrop-filter: blur(22px) !important;
+    -webkit-backdrop-filter: blur(22px) !important;
+
+    border:
+      1px solid rgba(121, 165, 220, .24) !important;
+
+    border-radius: 999px !important;
+
+    box-shadow:
+      0 12px 30px rgba(0,0,0,.30) !important;
+  }
+
+  body.app-guest .nova-lang-global button {
+    min-width: 52px !important;
+    min-height: 48px !important;
+
+    padding: 10px 14px !important;
+
+    font-size: 14px !important;
+    font-weight: 700 !important;
+
+    border-radius: 999px !important;
+  }
+
+  /* Leave clean space below the top language control */
+  .app-guest .g-hero {
+    margin-top: 4px !important;
+  }
+
+}

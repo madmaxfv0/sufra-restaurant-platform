@@ -1,0 +1,46 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Analytics</h1>
+    <p>Thirty days of trading, and what it says to do next.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="an-strip"></section>
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Revenue over thirty days</h3>
+    <p>Daily takings, with the weekday pattern underneath it.</p>
+    <div id="an-trend"></div>
+    <h3 style="margin-top:20px">Average by weekday</h3>
+    <div id="an-weekday"></div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:18px">
+      <h3>Guest satisfaction</h3>
+      <p>Four legs, scored separately. The weakest one is the one to work on.</p>
+      <div id="an-sat"></div>
+    </div>
+    <div class="card">
+      <h3>Retention</h3>
+      <p>How much of the room has been here before.</p>
+      <div id="an-retention"></div>
+    </div>
+  </div>
+</section>
+<section class="grid two">
+  <div class="card">
+    <h3>Menu performance</h3>
+    <p>Top dishes by thirty-day revenue.</p>
+    <div id="an-menu"></div>
+  </div>
+  <div class="card">
+    <h3>Where the waste is</h3>
+    <p>By reason, then by ingredient. Reason tells you the process to fix.</p>
+    <div id="an-waste"></div>
+  </div>
+</section>
+{% endblock %}
+{% block script %}<script>bootAnalytics();</script>{% endblock %}

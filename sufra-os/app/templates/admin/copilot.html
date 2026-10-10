@@ -1,0 +1,41 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>AI Copilot</h1>
+    <p>Ask about the restaurant. Every answer says where the number came from.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="card">
+  <div class="copilot">
+    <div class="thread tall" id="thread">
+      <div class="msg nova">Ask me about tonight, yesterday, the kitchen, stock, the menu, the team or the money.</div>
+    </div>
+    <div class="seeds">
+      <button>Why was revenue lower yesterday?</button>
+      <button>Which ingredients run out tomorrow?</button>
+      <button>How many waiters should I schedule Friday?</button>
+      <button>Which dishes should we remove?</button>
+      <button>Where is the kitchen congested?</button>
+      <button>Which tables have service problems?</button>
+      <button>Why did food waste increase?</button>
+      <button>Are guests happy?</button>
+    </div>
+    <form class="ask" id="ask">
+      <input placeholder="Ask about anything in the restaurant" autocomplete="off">
+      <button class="btn solid" type="submit">Ask</button>
+    </form>
+  </div>
+</section>
+<section class="card" style="margin-top:18px">
+  <h3>How this answers</h3>
+  <p>Questions are routed to a model, not to a language model. Forecasts come from
+     a ridge regression over 180 trading days, shortfalls from exploding recipes over
+     forecast covers, and revenue changes from a variance decomposition splitting the
+     move into a covers effect and an average spend effect. The copilot phrases the
+     result; it never invents the number.</p>
+</section>
+{% endblock %}
+{% block script %}<script>bootCopilot();</script>{% endblock %}

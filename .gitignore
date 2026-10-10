@@ -1,0 +1,33 @@
+# Python
+.venv*/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# SUFRA OS runtime state: never commit a database, a log or a signing key
+nova.db
+nova.db-*
+*.db
+*.db-*
+*.log
+.staff-qr.key
+.staff-qr-key-*
+.runtime/
+.local-backups/
+sufra-os/artifacts/
+sufra-os/deploy/seed.db
+sufra-os/deploy/venue/
+sufra-os/app/static/uploads/*/*
+sufra-os/app/static/generated/*
+!sufra-os/app/static/uploads/*/.gitkeep
+!sufra-os/app/static/generated/.gitkeep
+
+# SUFRA 360 source material and licensed models
+sufra-360/assets_src/
+sufra-360/captures/
+sufra-360/blender/*.blend
+sufra-360/blender/*.blend1
+sufra-360/static/3d/models/provis/
+
+.env
+.DS_Store

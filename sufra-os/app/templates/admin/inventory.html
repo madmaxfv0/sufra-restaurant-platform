@@ -1,0 +1,38 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Inventory</h1>
+    <p>What is in the building, and what tomorrow needs.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="inv-strip"></section>
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Tomorrow's order <span class="tag" id="basket-value"></span></h3>
+    <p>Forecast covers exploded through every recipe. Ingredient demand, not a reorder point tripping over.</p>
+    <div id="basket-table"></div>
+    <button class="btn solid block" style="margin-top:16px" id="approve">Raise purchase orders</button>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:18px">
+      <h3>If the day changes</h3>
+      <p>The same regression re-run against different conditions.</p>
+      <div id="scenarios"></div>
+    </div>
+    <div class="card">
+      <h3>Log waste</h3>
+      <p>Recording it is what makes the pattern findable later.</p>
+      <div id="waste-form"></div>
+    </div>
+  </div>
+</section>
+<div class="card">
+  <h3>Full stock list</h3>
+  <p>Par level is the line you never want to drop below. Days cover is how many services the current stock survives.</p>
+  <div id="inv-table"></div>
+</div>
+{% endblock %}
+{% block script %}<script>bootInventory();</script>{% endblock %}

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0A1020">
+  <title>{{ title }} — SUFRA</title>
+  <link rel="stylesheet" href="/static/css/nova.css?v=20260911-menu-sections1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◗</text></svg>">
+  <link rel="stylesheet" href="/static/css/sufra-upgrade.css?v=20260901-sufra-pro1">
+  <link rel="stylesheet" href="/static/css/enterprise.css?v=20260902-ent1">
+<link rel="stylesheet" href="/static/css/sufra-repair-v2.css?v=20260902-repair2">
+<link rel="stylesheet" href="/static/css/sufra-polish-v3.css?v=20260902-v3">
+<link rel="stylesheet" href="/static/css/sufra-polish-v4.css?v=20260902-v4">
+<link rel="stylesheet" href="/static/css/sufra-v5.css?v=20260902-v5">
+<link rel="stylesheet" href="/static/css/sufra-v6.css?v=20260911-inspector-layer-fix">
+<link rel="stylesheet" href="/static/css/sufra-final-responsive.css?v=20260911-final1">
+<link rel="stylesheet" href="/static/css/anbar.css?v=20260914-warehouse2">
+<link rel="stylesheet" href="/static/css/staff-access.css?v=20260914-four1">
+</head>
+<body class="app-admin" data-nova-build="20260831-working-1">
+<div class="shell" hidden>
+
+  <aside class="rail">
+    <div class="wordmark">
+      SU<span>FRA</span>
+    </div>
+
+    <nav>
+      <span class="nav-group">Overview</span>
+      <a href="/admin"              class="{{ 'on' if nav == '' }}"><i class="dot"></i>Command centre</a>
+      <a href="/admin/operations"   class="{{ 'on' if nav == 'operations' }}"><i class="dot"></i>Live operations</a>
+
+      <span class="nav-group">Service</span>
+      <a href="/admin/floor"        class="{{ 'on' if nav == 'floor' }}"><i class="dot"></i>Floor</a>
+      <a href="/admin/reservations" class="{{ 'on' if nav == 'reservations' }}"><i class="dot"></i>Reservations</a>
+      <a href="/admin/booking-control" class="{{ 'on' if nav == 'booking-control' }}"><i class="dot"></i>Booking intelligence</a>
+      <a href="/admin/orders"       class="{{ 'on' if nav == 'orders' }}"><i class="dot"></i>Orders</a>
+      <a href="/admin/kitchen"      class="{{ 'on' if nav == 'kitchen' }}"><i class="dot"></i>Kitchen</a>
+
+      <span class="nav-group">Product</span>
+      <a href="/admin/menu"         class="{{ 'on' if nav == 'menu' }}"><i class="dot"></i>Menu</a>
+      <a href="/admin/anbar"        class="{{ 'on' if nav == 'anbar' }}"><i class="dot"></i>Warehouse</a>
+      <a href="/admin/inventory"    class="{{ 'on' if nav == 'inventory' }}"><i class="dot"></i>Inventory</a>
+      <a href="/admin/suppliers"    class="{{ 'on' if nav == 'suppliers' }}"><i class="dot"></i>Suppliers</a>
+
+      <span class="nav-group">People</span>
+      <a href="/admin/guests"       class="{{ 'on' if nav == 'guests' }}"><i class="dot"></i>Guests</a>
+      <a href="/admin/staff"        class="{{ 'on' if nav == 'staff' }}"><i class="dot"></i>Staff</a>
+
+      <span class="nav-group">Business</span>
+      <a href="/admin/analytics"    class="{{ 'on' if nav == 'analytics' }}"><i class="dot"></i>Analytics</a>
+      <a href="/admin/finance"      class="{{ 'on' if nav == 'finance' }}"><i class="dot"></i>Finance</a>
+      <a href="/admin/copilot"      class="{{ 'on' if nav == 'copilot' }}"><i class="dot"></i>AI Copilot</a>
+      <a href="/admin/settings"     class="{{ 'on' if nav == 'settings' }}"><i class="dot"></i>Settings</a>
+    
+      <!-- SUFRA ENTERPRISE NAV -->
+      <span class="nav-group">Enterprise</span>
+      <a href="/admin/executive" class="{{ 'on' if nav == 'executive' }}"><i class="dot"></i>Owner intelligence</a>
+      <a href="/admin/hr" class="{{ 'on' if nav == 'hr' }}"><i class="dot"></i>HR & People</a>
+      <a href="/admin/accounting" class="{{ 'on' if nav == 'accounting' }}"><i class="dot"></i>Accounting</a>
+      <a href="/admin/qr" class="{{ 'on' if nav == 'qr' }}"><i class="dot"></i>Table QR ordering</a>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="pulse-live" data-live><i></i>Live</div>
+      <div class="btn-row" style="margin-bottom:10px">
+        <button class="btn ghost tiny" id="switch-user">Switch user</button>
+      </div>
+      <div class="btn-row" style="margin-bottom:10px">
+        <a class="btn ghost tiny" href="/waiter?fresh=1">Waiter app</a>
+        <a class="btn ghost tiny" href="/guest/13">Guest app</a>
+      </div>
+      <p id="signed-in-as">Service is simulated so every screen has something to react to.</p>
+    </div>
+  </aside>
+
+  <main>
+    <button class="bell" id="bell" aria-label="Notifications">
+      <span id="bell-count"></span>
+    </button>
+    <div id="admin-content">{% block content %}{% endblock %}</div>
+  </main>
+</div>
+
+<aside class="inspector" id="notifications"></aside>
+<div class="modal-backdrop" id="modal"></div>
+
+<!-- Staff access screen — the admin app sits behind the same door as the
+     waiter app. Content is unchanged until Phase 2/3 differentiates what
+     each role actually sees; for now, signing in is what's enforced. -->
+<section class="signin" id="auth-mount">
+  <div class="signin-box"><div class="auth-head">
+    <div class="wordmark big">SU<span>FRA</span></div>
+    <h1>Opening staff access…</h1><p>Checking your session.</p>
+  </div></div>
+</section>
+<section class="lock-overlay" id="lock-overlay" hidden></section>
+
+<script>window.NOVA_STAFF_ROSTER = {{ staff_roster|tojson }};
+window.SUFRA_CURRENCY = {{ (currency or "\u20bc")|tojson }};</script>
+<script src="/static/js/nova-core.js?v=20260915-audit1"></script>
+<script src="/static/js/vendor/jsQR.js?v=1.4.0"></script>
+<script src="/static/js/staff-qr.js?v=20260915-qr-recovery1"></script>
+<script src="/static/js/admin.js?v=20260911-no-email3"></script>
+<script src="/static/js/enterprise.js?v=20260915-qr-recovery1"></script>
+<script src="/static/js/anbar.js?v=20260914-warehouse2"></script>
+<script>
+bootAdminShell().catch(e => {
+  const m = document.getElementById('auth-mount');
+  const s = document.querySelector('.shell');
+  if (s) s.hidden = true;
+  if (m) {
+    m.hidden = false;
+    m.innerHTML = `<div class="signin-box"><div class="auth-error"><b>Administration could not open.</b><p>${NOVA.esc(e.message || String(e))}</p><button class="btn solid" onclick="location.reload()">Reload</button></div></div>`;
+  }
+  console.error('SUFRA admin boot failed', e);
+});
+</script>
+<script src="/static/js/sufra-upgrade.js?v=20260901-sufra-pro1"></script>
+<script src="/static/js/sufra-polish-v3.js?v=20260914-four1"></script>
+<script src="/static/js/sufra-polish-v4.js?v=20260902-stable8"></script>
+<script src="/static/js/sufra-v5.js?v=20260914-four1"></script>
+<script src="/static/js/sufra-v6.js?v=20260902-stable8"></script>
+<script src="/static/js/sufra-translations.js?v=20260915-audit1"></script>
+<script src="/static/js/sufra-final-i18n.js?v=20260915-audit1"></script>
+</body>
+</html>

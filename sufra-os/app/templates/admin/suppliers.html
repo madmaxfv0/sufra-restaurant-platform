@@ -1,0 +1,30 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Suppliers</h1>
+    <p>Who delivers, how reliably, and what they have been charging.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="sup-strip"></section>
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Price movement over six weeks</h3>
+    <p>Biggest movers first. A sharp rise is a reason to reprice a dish, not absorb it.</p>
+    <div id="sup-moves"></div>
+  </div>
+  <div class="card">
+    <h3>Purchase orders</h3>
+    <p>Raised by SUFRA from forecast shortfalls, or by hand.</p>
+    <div id="sup-pos"></div>
+  </div>
+</section>
+<div class="card">
+  <h3>Supplier scorecard</h3>
+  <p>Score weighs reliability and quality against how long they take to deliver.</p>
+  <div id="sup-table"></div>
+</div>
+{% endblock %}
+{% block script %}<script>bootSuppliers();</script>{% endblock %}

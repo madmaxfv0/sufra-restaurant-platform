@@ -1,0 +1,636 @@
+
+/*
+============================================================
+SUFRA FINAL RESPONSIVE LAYER
+Guest: phone + tablet + laptop
+Waiter: iPad / tablet first
+Admin: overlay/layer collision protection
+============================================================
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* ---------------------------------------------------------
+   SAFE Z-INDEX SYSTEM
+--------------------------------------------------------- */
+
+.rail {
+  z-index: 200 !important;
+}
+
+.top,
+.topbar,
+.w-top {
+  z-index: 300 !important;
+}
+
+.nova-lang-global,
+#command-lang,
+.bell {
+  z-index: 700 !important;
+}
+
+#v4-staff-identity,
+.v4-staff-identity {
+  z-index: 650 !important;
+}
+
+.g-tabs,
+.w-nav {
+  z-index: 900 !important;
+}
+
+.modal-backdrop {
+  z-index: 4000 !important;
+}
+
+.sheet,
+.inspector,
+#notifications {
+  z-index: 4100 !important;
+}
+
+.sheet.open,
+.inspector.open,
+#notifications.open {
+  z-index: 4200 !important;
+}
+
+.signin,
+.lock-overlay {
+  z-index: 6000 !important;
+}
+
+/* Hide top-right staff identity whenever a side panel owns that area */
+body:has(.inspector.open) #v4-staff-identity,
+body:has(.inspector.open) .v4-staff-identity,
+body:has(.sheet.open) #v4-staff-identity,
+body:has(.sheet.open) .v4-staff-identity {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Panels must never exceed screen width */
+.sheet,
+.inspector {
+  max-width: min(460px, 100vw) !important;
+}
+
+/* Long words / Russian text should wrap rather than overlap */
+button,
+.btn,
+.card,
+.sheet,
+.inspector,
+.w-section,
+.dish,
+.table-control,
+.service-table-row,
+.priority-card,
+.ticket-line,
+.booking-control-row {
+  min-width: 0;
+}
+
+button,
+.btn,
+label,
+span,
+p,
+b,
+strong,
+small,
+h1,
+h2,
+h3,
+h4,
+td,
+th {
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------
+   GUEST APP — GLOBAL
+--------------------------------------------------------- */
+
+.app-guest {
+  min-height: 100dvh;
+  padding-bottom:
+    calc(88px + env(safe-area-inset-bottom)) !important;
+}
+
+.app-guest .g-shell {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin-inline: auto !important;
+  padding-left:
+    max(16px, env(safe-area-inset-left)) !important;
+  padding-right:
+    max(16px, env(safe-area-inset-right)) !important;
+  padding-bottom: 30px !important;
+}
+
+.app-guest .g-hero {
+  width: 100%;
+  overflow: hidden;
+}
+
+.app-guest .g-hero h1 {
+  max-width: 100%;
+}
+
+.app-guest .g-search {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.app-guest .g-search input {
+  min-width: 0;
+  flex: 1;
+}
+
+.app-guest #dishes {
+  width: 100%;
+}
+
+.app-guest .dish {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-guest .quick {
+  width: 100%;
+}
+
+.app-guest .g-info-grid {
+  min-width: 0;
+}
+
+.app-guest .g-tabs {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  bottom: max(8px, env(safe-area-inset-bottom)) !important;
+  width: min(
+    calc(100% - 20px),
+    620px
+  ) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+}
+
+.app-guest .g-tabs button {
+  min-width: 0;
+  min-height: 52px;
+}
+
+.app-guest .g-tabs button span {
+  white-space: normal;
+  line-height: 1.1;
+}
+
+/* ---------------------------------------------------------
+   GUEST — PHONE
+--------------------------------------------------------- */
+
+@media (max-width: 599px) {
+  .app-guest .g-shell {
+    max-width: none !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .app-guest .g-hero {
+    margin-top: 10px !important;
+    padding: 22px 18px 20px !important;
+    border-radius: 22px !important;
+  }
+
+  .app-guest .g-hero h1 {
+    font-size: clamp(27px, 8vw, 34px) !important;
+  }
+
+  .app-guest .g-hero p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+
+  .app-guest .quick {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .app-guest .quick button {
+    min-height: 78px;
+    padding: 13px 12px !important;
+  }
+
+  .app-guest .quick button b {
+    font-size: 13px;
+  }
+
+  .app-guest .quick button span {
+    font-size: 10.5px;
+  }
+
+  .app-guest .g-search {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 8px 0;
+    backdrop-filter: blur(18px);
+  }
+
+  .app-guest .g-search input,
+  .app-guest .g-search button {
+    min-height: 46px;
+  }
+
+  .app-guest .course-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+
+  .app-guest .course-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app-guest .g-assistant {
+    padding: 18px !important;
+  }
+
+  .app-guest .ask {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .app-guest .ask input {
+    min-width: 0;
+  }
+
+  .app-guest .seeds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app-guest .seeds button {
+    white-space: normal;
+    min-height: 44px;
+  }
+
+  .app-guest .g-info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-guest .sheet {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 0 !important;
+    max-height: 88dvh !important;
+    border-radius: 24px 24px 0 0 !important;
+    overflow-y: auto;
+    padding-bottom:
+      max(18px, env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .app-guest .quick {
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-guest .seeds {
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-guest .g-search {
+    flex-direction: column;
+  }
+
+  .app-guest .g-tabs button {
+    font-size: 10px !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   GUEST — TABLET / LAPTOP
+--------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .app-guest .g-shell {
+    max-width: 880px !important;
+    padding-inline: 28px !important;
+  }
+
+  .app-guest .quick {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .app-guest .g-info-grid {
+    display: grid;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .app-guest .g-shell {
+    max-width: 1180px !important;
+    padding-inline: 34px !important;
+  }
+
+  .app-guest .g-hero {
+    padding: 38px 36px !important;
+  }
+
+  .app-guest .g-hero h1 {
+    font-size: 42px !important;
+  }
+
+  .app-guest .quick {
+    grid-template-columns:
+      repeat(6, minmax(0, 1fr)) !important;
+  }
+
+  .app-guest #dishes {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .app-guest #dishes > .skeleton,
+  .app-guest #dishes > .empty {
+    grid-column: 1 / -1;
+  }
+
+  .app-guest .g-assistant {
+    margin-top: 22px;
+  }
+}
+
+/* ---------------------------------------------------------
+   WAITER APP — TOUCH / IPAD
+--------------------------------------------------------- */
+
+.app-waiter {
+  min-height: 100dvh;
+  padding-bottom:
+    calc(96px + env(safe-area-inset-bottom));
+}
+
+.app-waiter .w-shell {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin-inline: auto;
+  padding-left:
+    max(16px, env(safe-area-inset-left)) !important;
+  padding-right:
+    max(16px, env(safe-area-inset-right)) !important;
+  padding-bottom:
+    calc(90px + env(safe-area-inset-bottom)) !important;
+}
+
+.app-waiter button,
+.app-waiter .btn,
+.app-waiter input,
+.app-waiter select,
+.app-waiter textarea {
+  touch-action: manipulation;
+}
+
+.app-waiter button,
+.app-waiter .btn {
+  min-height: 42px;
+}
+
+.app-waiter .w-nav {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  bottom: max(8px, env(safe-area-inset-bottom)) !important;
+  width: min(calc(100% - 24px), 920px) !important;
+  border-radius: 22px !important;
+  overflow: visible;
+}
+
+.app-waiter .w-nav button {
+  min-width: 0;
+  min-height: 58px;
+}
+
+.app-waiter .w-body,
+.app-waiter .workspace-body {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-waiter .service-kpis,
+.app-waiter .table-quick-actions,
+.app-waiter .table-state-actions {
+  min-width: 0;
+}
+
+.app-waiter .service-table-row,
+.app-waiter .priority-card,
+.app-waiter .task-action-row {
+  min-width: 0;
+}
+
+.app-waiter .service-table-row > *,
+.app-waiter .priority-card > *,
+.app-waiter .task-action-row > * {
+  min-width: 0;
+}
+
+.app-waiter .order-layout {
+  min-width: 0;
+}
+
+.app-waiter .order-menu-pane,
+.app-waiter .order-ticket-pane {
+  min-width: 0;
+}
+
+/* iPad portrait and landscape */
+@media (min-width: 700px) and (max-width: 1180px) {
+  .app-waiter .w-shell {
+    max-width: none !important;
+    padding-inline: 22px !important;
+  }
+
+  .app-waiter .w-top {
+    padding-top:
+      max(16px, env(safe-area-inset-top)) !important;
+  }
+
+  .app-waiter .service-kpis {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .app-waiter .order-layout {
+    grid-template-columns:
+      minmax(0, 1.25fr)
+      minmax(300px, .75fr) !important;
+    gap: 14px !important;
+  }
+
+  .app-waiter .order-ticket-pane {
+    position: sticky !important;
+    top: 88px !important;
+    max-height: calc(100dvh - 190px);
+    overflow-y: auto;
+  }
+
+  .app-waiter .menu-order-grid {
+    max-height: calc(100dvh - 330px) !important;
+  }
+
+  .app-waiter .table-quick-actions {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .app-waiter .table-state-actions {
+    display: grid;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .app-waiter .sheet,
+  .app-waiter .inspector {
+    width: min(440px, 55vw) !important;
+    max-width: 440px !important;
+  }
+}
+
+/* iPad landscape */
+@media (min-width: 980px) and (max-width: 1366px) and (orientation: landscape) {
+  .app-waiter .w-shell {
+    max-width: 1240px !important;
+  }
+
+  .app-waiter .order-layout {
+    grid-template-columns:
+      minmax(0, 1.55fr)
+      minmax(330px, .75fr) !important;
+  }
+
+  .app-waiter .service-table-list {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+}
+
+/* Waiter phone fallback */
+@media (max-width: 699px) {
+  .app-waiter .w-shell {
+    padding-inline: 10px !important;
+  }
+
+  .app-waiter .service-kpis {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .app-waiter .order-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-waiter .order-ticket-pane {
+    position: static !important;
+  }
+
+  .app-waiter .table-quick-actions,
+  .app-waiter .table-state-actions {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .app-waiter .sheet,
+  .app-waiter .inspector {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    top: auto !important;
+    bottom: 0 !important;
+    max-height: 90dvh !important;
+    border-radius: 24px 24px 0 0 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   ADMIN RESPONSIVE SAFETY
+--------------------------------------------------------- */
+
+@media (max-width: 1180px) {
+  .app-admin main,
+  body:has(.rail) main {
+    min-width: 0;
+  }
+
+  .grid,
+  .grid.two,
+  .grid.three {
+    min-width: 0;
+  }
+
+  .inspector {
+    width: min(420px, 46vw) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .inspector,
+  .sheet {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   LANGUAGE-SPECIFIC TYPOGRAPHY
+--------------------------------------------------------- */
+
+html[lang="ru"] body {
+  font-kerning: normal;
+}
+
+html[lang="ru"] button,
+html[lang="ru"] .btn,
+html[lang="az"] button,
+html[lang="az"] .btn {
+  line-height: 1.2;
+}
+
+html[lang="ru"] .rail a,
+html[lang="az"] .rail a {
+  letter-spacing: -0.01em;
+}

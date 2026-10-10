@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+  <meta name="theme-color" content="#0A1020">
+  <title>Menu · Table {{ table_number }}</title>
+  <link rel="stylesheet" href="/static/css/nova.css?v=20260911-menu-sections1">
+  <link rel="stylesheet" href="/static/css/sufra-upgrade.css?v=20260901-sufra-pro1">
+  <link rel="stylesheet" href="/static/css/enterprise.css?v=20260902-ent1">
+<link rel="stylesheet" href="/static/css/sufra-repair-v2.css?v=20260902-repair2">
+<link rel="stylesheet" href="/static/css/sufra-polish-v3.css?v=20260902-v3">
+<link rel="stylesheet" href="/static/css/sufra-polish-v4.css?v=20260902-v4">
+<link rel="stylesheet" href="/static/css/sufra-v5.css?v=20260902-v5">
+<link rel="stylesheet" href="/static/css/sufra-v6.css?v=20260911-mobile-lang-top">
+<link rel="icon" href="/static/img/sufra-logo.png">
+<script>window.SUFRA_CURRENCY = {{ (currency or "\u20bc")|tojson }};</script>
+<link rel="stylesheet" href="/static/css/sufra-final-responsive.css?v=20260911-final1">
+</head>
+<body class="app-guest">
+<div class="g-shell">
+  <section data-screen="menu">
+    <header class="g-hero">
+      <span class="g-eyebrow">Table {{ table_number }}</span>
+      <h1>Tonight's menu.</h1>
+      <p>Browse, filter and save what catches your eye. Your waiter will take the order.</p>
+    </header>
+
+    <div class="quick" id="quick">
+      <button data-kind="water"><b>Still water</b><span>ask the team</span></button>
+      <button data-kind="cutlery"><b>Cutlery</b><span>extra sets</span></button>
+      <button data-kind="call"><b>A waiter</b><span>someone will come</span></button>
+      <button data-kind="bill"><b>The bill</b><span>ask your waiter</span></button>
+      <button data-kind="manager" class="guest-special"><b>Manager</b><span>ask for a manager</span></button>
+      <button data-kind="complaint" class="guest-special"><b>Complaint</b><span>tell management</span></button>
+    </div>
+
+    <div class="g-search">
+      <input id="dish-search" placeholder="Search dishes or ingredients" autocomplete="off">
+      <button class="btn ghost tiny" id="filter-open">Filters</button>
+    </div>
+    <div class="g-active-filters" id="active-filters"></div>
+    <div class="course-nav" id="courses"></div>
+    <div id="dishes"><div class="skeleton"><i></i><i></i><i></i></div></div>
+
+    <section class="card g-assistant" id="assistant">
+      <h3>Not sure what to choose?</h3>
+      <p>Ask about ingredients, dietary needs or pairings. Nothing is ordered from this screen.</p>
+      <form class="ask" id="menu-ask">
+        <input placeholder="Something light but high protein" autocomplete="off">
+        <button class="btn solid" type="submit">Ask</button>
+      </form>
+      <div class="seeds" style="margin-top:12px">
+        <button>What's vegan?</button><button>Nothing with nuts</button>
+        <button>What wine goes with the sea bass?</button><button>Gluten free dessert</button>
+      </div>
+      <div id="menu-answer" class="g-answer"></div>
+    </section>
+    <p class="g-fineprint">For severe allergies, always speak directly with your waiter. Saved dishes are a shortlist only and are never sent to the kitchen.</p>
+  </section>
+
+  <section data-screen="saved" hidden>
+    <header class="g-hero small"><h1>Saved dishes</h1><p>Your shortlist to show your waiter.</p></header>
+    <div class="saved-note">Saving a dish does not place an order. Your waiter confirms every item, modifier and allergy with you.</div>
+    <div id="saved-dishes"></div>
+  </section>
+
+  <section data-screen="info" hidden>
+    <header class="g-hero small"><h1>Good to know</h1><p>Useful information without replacing human service.</p></header>
+    <div class="g-info-grid">
+      <div class="card"><h3>Allergies</h3><p>Use menu filters for browsing, then tell your waiter about any allergy before ordering.</p></div>
+      <div class="card"><h3>Need something?</h3><p>Water, cutlery, your waiter and the bill can be requested from the Menu screen.</p></div>
+      <div class="card"><h3>Ordering</h3><p>Scan this table QR to browse and send an order. The order is tied to this table and routed to the kitchen; for severe allergies, still speak directly with your waiter.</p></div>
+    </div>
+  </section>
+</div>
+<nav class="g-tabs">
+  <button class="on" data-screen="menu"><span>Menu</span></button>
+  <button data-screen="saved"><span>Saved</span><em id="tab-saved"></em></button>
+  <button data-screen="info"><span>Info</span></button>
+</nav>
+<aside class="sheet" id="sheet"></aside>
+<div class="modal-backdrop" id="modal"></div>
+<script src="/static/js/nova-core.js?v=20260915-audit1"></script>
+<script src="/static/js/guest.js?v=20260911-menu-sections1"></script>
+<script src="/static/js/enterprise.js?v=20260902-ent1"></script>
+<script>bootGuest({{ table_number }});</script>
+<script src="/static/js/sufra-upgrade.js?v=20260901-sufra-pro1"></script>
+<script src="/static/js/sufra-polish-v3.js?v=20260902-v3"></script>
+<script src="/static/js/sufra-polish-v4.js?v=20260902-v4"></script>
+<script src="/static/js/sufra-v5.js?v=20260902-v5"></script>
+<script src="/static/js/sufra-v6.js?v=20260902-v6"></script>
+<script src="/static/js/sufra-translations.js?v=20260915-audit1"></script>
+<script src="/static/js/sufra-final-i18n.js?v=20260915-audit1"></script>
+</body>
+</html>

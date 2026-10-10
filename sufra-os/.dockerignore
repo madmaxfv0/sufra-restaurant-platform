@@ -1,0 +1,19 @@
+.git
+.venv*
+.backup-*
+.local-backups
+.runtime
+app_BACKUP_*
+artifacts
+tests
+**/__pycache__
+*.pyc
+*.log
+*.command
+.DS_Store
+# the live database is never copied as-is: deploy/prepare.sh takes a
+# consistent snapshot into deploy/seed.db instead
+nova.db
+nova.db-*
+.staff-qr.key
+.staff-qr-key-*

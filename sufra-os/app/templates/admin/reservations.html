@@ -1,0 +1,38 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Reservations</h1>
+    <p>Book a table, work the waitlist, and see the shape of the day.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="res-strip"></section>
+<div class="btn-row" style="margin-bottom:18px">
+  <button class="btn solid" id="new-booking">Take a booking</button>
+  <button class="btn" id="new-waitlist">Add to waitlist</button>
+  <button class="btn ghost" id="res-prev">Previous day</button>
+  <button class="btn ghost" id="res-today">Today</button>
+  <button class="btn ghost" id="res-next">Next day</button>
+  <span class="chip" id="res-date"></span>
+</div>
+<section class="card" style="margin-bottom:18px">
+  <h3>Reservation schedule</h3>
+  <p>Clear view of time, guest name, party size and remaining capacity.</p>
+  <div id="res-timeline"></div>
+</section>
+<section class="grid two">
+  <div class="card">
+    <h3>The book</h3>
+    <p>Seat, cancel or mark a no-show. Risk is scored per booking.</p>
+    <div id="res-list"></div>
+  </div>
+  <div class="card">
+    <h3>Waitlist</h3>
+    <p>Quoted times come from how many suitable tables are actually free.</p>
+    <div id="res-waitlist"></div>
+  </div>
+</section>
+{% endblock %}
+{% block script %}<script>bootReservations();</script>{% endblock %}

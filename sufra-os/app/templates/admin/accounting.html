@@ -1,0 +1,6 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="ent-hero"><div><h1>Accounting</h1><p>Chart of accounts, journals, trial balance and Profit & Loss connected to restaurant operations.</p></div><div class="btn-row"><a class="btn" href="/api/bi/export/trial-balance.csv">Download TB CSV</a></div></header>
+<div id="enterprise-accounting"></div>
+{% endblock %}
+{% block script %}<script>bootEnterpriseAccounting();</script>{% endblock %}

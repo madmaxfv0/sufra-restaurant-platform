@@ -1,0 +1,64 @@
+{% extends "admin/_base.html" %}
+
+{% block content %}
+<header class="top">
+  <div>
+    <h1>The room</h1>
+    <p>Drag a table to redraw the floor. Tap one to open it.</p>
+  </div>
+  <div class="chip"><b id="floor-count">—</b> · <span id="floor-alert">—</span></div>
+</header>
+
+<div class="room" id="room">
+  <span class="zone-label" style="left:3%;top:3%">TERRACE</span>
+  <span class="zone-label" style="left:3%;top:30%">MAIN ROOM</span>
+  <span class="zone-label" style="left:3%;top:78%">BAR</span>
+  <span class="zone-label" style="right:3%;top:34%">PRIVATE</span>
+</div>
+
+<section class="card" id="floor-control" style="margin-top:18px"></section>
+
+<div class="grid three" style="margin-top:18px">
+  <div class="card">
+    <h3>Reading the room</h3>
+    <p>Dashed outline is free. Amber means food is dying at the pass. A halo means the table has been in one state longer than it should be.</p>
+  </div>
+  <div class="card">
+    <h3>Tonight's book</h3>
+    <p>Next few hours, with no-show risk scored per booking.</p>
+    <div id="book"></div>
+  </div>
+  <div class="card">
+    <h3>Seating suggestion</h3>
+    <p>SUFRA holds larger tables back when a matching booking is close.</p>
+    <div id="seating"></div>
+  </div>
+</div>
+
+<aside class="inspector" id="inspector"></aside>
+{% endblock %}
+
+{% block script %}
+<script>
+bootFloor();
+bootFloorControl();
+
+// Tonight's book + a seating recommendation, both read from the same API.
+NOVA.api('/api/reservations').then(d => {
+  const rows = d.reservations.slice(0, 7);
+  document.querySelector('#book').innerHTML = rows.length ? rows.map(r => `
+    <div class="kv">
+      <span>${r.time} · ${NOVA.esc(r.guest)}${r.vip ? ' ·  regular' : ''}</span>
+      <b style="color:${r.risk > .3 ? 'var(--amber)' : 'var(--bone)'}">
+        ${r.party}p · ${Math.round(r.risk * 100)}% risk</b>
+    </div>`).join('') : '<div class="empty">Nothing on the book for the next few hours.</div>';
+
+  const soon = rows.filter(r => r.party >= 4)[0];
+  document.querySelector('#seating').innerHTML = soon
+    ? `<p style="font-size:13px;line-height:1.5;margin:0">Hold a four-top:
+       <b>${NOVA.esc(soon.guest)}</b> arrives at <b>${soon.time}</b> for ${soon.party}.
+       Seat the next pair on the bar or a two-top instead.</p>`
+    : '<div class="empty">No large bookings close enough to plan around.</div>';
+});
+</script>
+{% endblock %}

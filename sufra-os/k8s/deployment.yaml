@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sufra-os
+  namespace: sufra
+  labels: {app: sufra-os}
+spec:
+  # Exactly one replica, on purpose. The database is SQLite on a single
+  # ReadWriteOnce volume and the reservation scheduler (late / no-show /
+  # reminders) runs inside the process: two pods would corrupt the file and
+  # send every reminder twice. Scale up the pod's CPU/memory, not the count.
+  replicas: 1
+  # Recreate: the old pod must release the volume before the new one starts.
+  strategy: {type: Recreate}
+  selector:
+    matchLabels: {app: sufra-os}
+  template:
+    metadata:
+      labels: {app: sufra-os}
+    spec:
+      containers:
+        - name: sufra-os
+          image: REGISTRY/sufra-os:latest   # set in kustomization.yaml (images:)
+          imagePullPolicy: IfNotPresent
+          ports:
+            - {name: http, containerPort: 8123}
+          envFrom:
+            - configMapRef: {name: sufra-os-config}
+          env:
+            - {name: NOVA_DB_PATH, value: /data/nova.db}
+          volumeMounts:
+            - {name: data, mountPath: /data}
+          resources:
+            requests: {cpu: 250m, memory: 512Mi}
+            limits: {cpu: "1", memory: 1Gi}
+          startupProbe:          # first boot copies the seed database
+            httpGet: {path: /api/build, port: http}
+            periodSeconds: 5
+            failureThreshold: 36
+          readinessProbe:
+            httpGet: {path: /api/build, port: http}
+            periodSeconds: 15
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet: {path: /api/build, port: http}
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: data
+          persistentVolumeClaim: {claimName: sufra-os-data}

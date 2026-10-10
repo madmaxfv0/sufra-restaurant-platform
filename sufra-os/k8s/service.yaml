@@ -1,0 +1,11 @@
+# Cluster-internal name: http://sufra-os.sufra.svc.cluster.local
+# SUFRA 360 should set SUFRA_OS_BASE to this address.
+apiVersion: v1
+kind: Service
+metadata:
+  name: sufra-os
+  namespace: sufra
+spec:
+  selector: {app: sufra-os}
+  ports:
+    - {name: http, port: 80, targetPort: http}

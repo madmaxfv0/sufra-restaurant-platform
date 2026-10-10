@@ -1,0 +1,22 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Guests</h1>
+    <p>Who comes back, what they eat, and what would hurt them.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="guest-strip"></section>
+<div class="btn-row" style="margin-bottom:18px">
+  <input class="field" id="guest-search" placeholder="Search by name" style="max-width:280px">
+  <button class="btn" id="guest-vip">Regulars only</button>
+</div>
+<div class="card">
+  <h3>Guest book</h3>
+  <p>Held with consent. Click anyone to edit their notes, allergies and seating.</p>
+  <div id="guest-table"></div>
+</div>
+{% endblock %}
+{% block script %}<script>bootGuests();</script>{% endblock %}

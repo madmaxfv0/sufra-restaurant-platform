@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SUFRA Payment Terminal</title>
+<link rel="stylesheet" href="/static/css/nova.css?v=20260911-menu-sections1"><link rel="stylesheet" href="/static/css/sufra-upgrade.css?v=20260902-ent1"><link rel="stylesheet" href="/static/css/enterprise.css?v=20260902-ent1"><link rel="stylesheet" href="/static/css/sufra-final-responsive.css?v=20260911-final1">
+</head>
+<body class="payment-page"><main class="payment-wrap"><header class="payment-head"><div><h1>Payment terminal</h1><p class="sub">Table {{ table_id }} · separate secure settlement window</p></div><button class="btn" onclick="window.close()">Close window</button></header><div id="payment-root"></div></main>
+<script src="/static/js/nova-core.js?v=20260915-audit1"></script><script src="/static/js/enterprise.js?v=20260902-ent1"></script><script>bootPayment({{ table_id }});</script><script src="/static/js/sufra-translations.js?v=20260915-audit1"></script>
+<script src="/static/js/sufra-final-i18n.js?v=20260915-audit1"></script>
+</body></html>

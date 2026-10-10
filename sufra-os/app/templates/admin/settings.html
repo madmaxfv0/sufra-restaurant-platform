@@ -1,0 +1,50 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Settings</h1>
+    <p>Security, roles and how SUFRA behaves.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Restaurant overview</h3>
+    <p>Current operating location and group performance.</p>
+    <div id="set-locations"></div>
+  </div>
+  <div class="card">
+    <h3>Group performance</h3>
+    <p>Tonight across the connected restaurant group.</p>
+    <div id="set-group"></div>
+  </div>
+</section>
+
+<section class="grid two" style="margin-bottom:18px">
+  <div class="card">
+    <h3>Roles and access</h3>
+    <p>Who sees what. Permissions are still enforced by the backend.</p>
+    <div id="set-roles"></div>
+  </div>
+  <div class="card">
+    <h3>Data controls</h3>
+    <p>Demo controls for this local restaurant build.</p>
+    <div class="btn-row" style="margin-top:14px">
+      <button class="btn" id="set-reset">Reset demo data</button>
+    </div>
+    <div id="set-note" style="margin-top:16px"></div>
+  </div>
+</section>
+
+<section class="card v5-security-settings" style="margin-top:18px">
+  <div class="ops-card-head">
+    <div>
+      <h3>Security & sign-in</h3>
+      <p>Change PINs and manage Touch ID / Face ID / passkey enrollment.</p>
+    </div>
+  </div>
+  <div id="v5-security-settings"><div class="empty"><b>Loading security…</b></div></div>
+</section>
+{% endblock %}
+{% block script %}<script>bootSettings();</script>{% endblock %}

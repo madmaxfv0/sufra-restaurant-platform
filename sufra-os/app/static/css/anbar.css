@@ -1,0 +1,397 @@
+/* ============================================================
+   SUFRA ANBAR
+   Built entirely on the existing nova.css token set (--panel,
+   --edge, --mint, --bone, --sage ...), so both themes and any
+   future palette change carry through without touching this file.
+   ============================================================ */
+
+/* ---------------------------------------------------------- tabs */
+
+.anbar-tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 4px;
+  margin-bottom: 18px;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: var(--r-md);
+  scrollbar-width: thin;
+}
+.anbar-tabs::-webkit-scrollbar { height: 4px; }
+.anbar-tabs::-webkit-scrollbar-thumb { background: var(--edge-2); border-radius: 4px; }
+
+.anbar-tab {
+  flex: 0 0 auto;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--sage);
+  font: 600 12.5px/1 var(--sans);
+  letter-spacing: .02em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .18s var(--ease), background .18s var(--ease);
+}
+.anbar-tab:hover { color: var(--bone); background: color-mix(in srgb, var(--mint) 8%, transparent); }
+.anbar-tab.on {
+  color: var(--ink);
+  background: var(--mint);
+}
+
+.anbar-panel { min-height: 300px; }
+.anbar-loading, .anbar-empty {
+  padding: 46px 22px;
+  text-align: center;
+  color: var(--sage);
+  font-size: 13.5px;
+}
+.anbar-empty b { display: block; color: var(--bone); font-size: 15px; margin-bottom: 6px; }
+.anbar-empty p { max-width: 420px; margin: 0 auto 16px; line-height: 1.6; }
+
+/* ---------------------------------------------------------- metric cards */
+
+.anbar-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.anbar-card {
+  padding: 15px 16px;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: var(--r-md);
+  position: relative;
+  overflow: hidden;
+  transition: border-color .18s var(--ease), transform .18s var(--ease);
+}
+.anbar-card:hover { border-color: var(--edge-2); transform: translateY(-1px); }
+.anbar-card .k {
+  display: block;
+  font: 600 10.5px/1.3 var(--sans);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 9px;
+}
+.anbar-card .v {
+  display: block;
+  font: 400 26px/1.05 var(--serif);
+  color: var(--bone);
+  letter-spacing: -.01em;
+}
+.anbar-card .s {
+  display: block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: var(--dim);
+}
+.anbar-card.good::before, .anbar-card.warn::before,
+.anbar-card.bad::before, .anbar-card.crit::before {
+  content: ''; position: absolute; inset: 0 auto 0 0; width: 3px;
+}
+.anbar-card.good::before { background: var(--mint); }
+.anbar-card.warn::before { background: var(--amber); }
+.anbar-card.bad::before,
+.anbar-card.crit::before { background: var(--coral); }
+.anbar-card.crit .v { color: var(--coral); }
+
+/* ---------------------------------------------------------- brief */
+
+.anbar-brief {
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--mint) 8%, var(--panel)),
+    var(--panel) 62%);
+  border: 1px solid var(--edge-2);
+  border-radius: var(--r-lg);
+}
+.anbar-brief-head {
+  display: flex; align-items: center; gap: 9px; margin-bottom: 12px;
+  font: 600 10.5px/1 var(--sans); letter-spacing: .11em;
+  text-transform: uppercase; color: var(--mint);
+}
+.anbar-brief-head i {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mint) 18%, transparent);
+}
+.anbar-brief h3 {
+  margin: 0 0 14px; font: 400 19px/1.35 var(--serif); color: var(--bone);
+}
+.anbar-brief ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+.anbar-brief li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13.2px; line-height: 1.55; color: var(--bone);
+}
+.anbar-brief li i {
+  flex: 0 0 auto; width: 5px; height: 5px; margin-top: 7px;
+  border-radius: 50%; background: var(--sage);
+}
+.anbar-brief li.critical i { background: var(--coral); }
+.anbar-brief li.high i { background: var(--coral); opacity: .75; }
+.anbar-brief li.attention i { background: var(--amber); }
+.anbar-brief li.info i { background: var(--sage); }
+.anbar-brief .conf {
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--edge);
+  font-size: 11.5px; color: var(--dim);
+}
+
+/* ---------------------------------------------------------- tables */
+
+.anbar-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.anbar-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; min-width: 620px;
+}
+table.anbar-table th {
+  text-align: left; padding: 9px 12px;
+  font: 600 10.5px/1 var(--sans); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--sage);
+  border-bottom: 1px solid var(--edge); white-space: nowrap;
+}
+table.anbar-table td {
+  padding: 11px 12px; border-bottom: 1px solid var(--edge); color: var(--bone);
+  vertical-align: middle;
+}
+table.anbar-table tbody tr { transition: background .15s var(--ease); }
+table.anbar-table tbody tr:hover { background: color-mix(in srgb, var(--mint) 5%, transparent); }
+table.anbar-table tbody tr.clickable { cursor: pointer; }
+table.anbar-table td.num, table.anbar-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.anbar-table .muted { color: var(--dim); }
+table.anbar-table .strong { font-weight: 600; }
+table.anbar-table tr.neg td.num { color: var(--coral); }
+
+/* ---------------------------------------------------------- status chips */
+
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px; border-radius: 999px;
+  font: 600 10.5px/1.5 var(--sans); letter-spacing: .04em;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.chip.healthy  { color: var(--mint);   background: color-mix(in srgb, var(--mint) 13%, transparent); }
+.chip.low      { color: var(--amber);  background: color-mix(in srgb, var(--amber) 15%, transparent); }
+.chip.critical { color: var(--coral);  background: color-mix(in srgb, var(--coral) 15%, transparent); }
+.chip.out      { color: var(--coral);  background: color-mix(in srgb, var(--coral) 22%, transparent); border-color: color-mix(in srgb, var(--coral) 35%, transparent); }
+.chip.over     { color: var(--violet); background: color-mix(in srgb, var(--violet) 14%, transparent); }
+.chip.expiring { color: var(--amber);  background: color-mix(in srgb, var(--amber) 18%, transparent); }
+.chip.expired  { color: var(--coral);  background: color-mix(in srgb, var(--coral) 20%, transparent); }
+.chip.info     { color: var(--sage);   background: color-mix(in srgb, var(--sage) 15%, transparent); }
+.chip.attention{ color: var(--amber);  background: color-mix(in srgb, var(--amber) 15%, transparent); }
+.chip.high     { color: var(--coral);  background: color-mix(in srgb, var(--coral) 15%, transparent); }
+.chip.neutral  { color: var(--sage);   background: color-mix(in srgb, var(--sage) 12%, transparent); }
+.chip.good     { color: var(--mint);   background: color-mix(in srgb, var(--mint) 13%, transparent); }
+
+/* ---------------------------------------------------------- toolbar */
+
+.anbar-toolbar {
+  display: flex; flex-wrap: wrap; gap: 9px; align-items: center;
+  margin-bottom: 14px;
+}
+.anbar-toolbar input[type="search"],
+.anbar-toolbar input[type="text"],
+.anbar-toolbar select {
+  padding: 8px 11px;
+  background: var(--panel-2);
+  border: 1px solid var(--edge);
+  border-radius: var(--r-sm);
+  color: var(--bone);
+  font: 400 13px var(--sans);
+  min-width: 132px;
+}
+.anbar-toolbar input[type="search"] { min-width: 220px; flex: 1 1 220px; }
+.anbar-toolbar input:focus, .anbar-toolbar select:focus {
+  outline: none; border-color: var(--mint);
+}
+.anbar-toolbar .spacer { flex: 1 1 auto; }
+.anbar-count { font-size: 12px; color: var(--sage); }
+
+/* ---------------------------------------------------------- bars & charts */
+
+.anbar-bars { display: grid; gap: 10px; }
+.anbar-bar-row { display: grid; grid-template-columns: 1fr; gap: 5px; }
+.anbar-bar-label {
+  display: flex; justify-content: space-between; gap: 10px;
+  font-size: 12.5px; color: var(--bone);
+}
+.anbar-bar-label span:last-child { color: var(--sage); font-variant-numeric: tabular-nums; }
+.anbar-bar-track {
+  height: 6px; border-radius: 999px;
+  background: color-mix(in srgb, var(--sage) 18%, transparent);
+  overflow: hidden;
+}
+.anbar-bar-fill {
+  height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--mint), var(--jade));
+  transition: width .5s var(--ease);
+}
+.anbar-bar-fill.warn { background: linear-gradient(90deg, var(--amber), color-mix(in srgb, var(--amber) 60%, var(--coral))); }
+.anbar-bar-fill.bad  { background: linear-gradient(90deg, var(--coral), color-mix(in srgb, var(--coral) 70%, var(--violet))); }
+
+.anbar-spark { display: flex; align-items: flex-end; gap: 3px; height: 64px; }
+.anbar-spark i {
+  flex: 1 1 0; min-width: 2px; border-radius: 2px 2px 0 0;
+  background: color-mix(in srgb, var(--mint) 55%, transparent);
+  transition: background .18s var(--ease);
+}
+.anbar-spark i:hover { background: var(--mint); }
+
+.anbar-health {
+  display: flex; height: 10px; border-radius: 999px; overflow: hidden;
+  border: 1px solid var(--edge);
+}
+.anbar-health i { display: block; height: 100%; }
+.anbar-health-key {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px;
+  font-size: 11.5px; color: var(--sage);
+}
+.anbar-health-key span { display: inline-flex; align-items: center; gap: 5px; }
+.anbar-health-key i { width: 7px; height: 7px; border-radius: 2px; }
+
+/* ---------------------------------------------------------- alerts */
+
+.anbar-alert {
+  display: flex; gap: 12px; padding: 13px 15px;
+  background: var(--panel-2); border: 1px solid var(--edge);
+  border-left-width: 3px; border-radius: var(--r-sm);
+  margin-bottom: 9px;
+}
+.anbar-alert.critical { border-left-color: var(--coral); }
+.anbar-alert.high     { border-left-color: var(--coral); }
+.anbar-alert.attention{ border-left-color: var(--amber); }
+.anbar-alert.info     { border-left-color: var(--sage); }
+.anbar-alert-body { flex: 1 1 auto; min-width: 0; }
+.anbar-alert b { display: block; font-size: 13.5px; color: var(--bone); margin-bottom: 3px; }
+.anbar-alert p { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--sage); }
+.anbar-alert time { flex: 0 0 auto; font-size: 11px; color: var(--dim); white-space: nowrap; }
+
+.anbar-why {
+  margin-top: 9px; padding: 9px 11px;
+  background: color-mix(in srgb, var(--sage) 8%, transparent);
+  border-radius: var(--r-sm);
+  font-size: 12px; color: var(--sage);
+}
+.anbar-why ul { margin: 5px 0 0; padding-left: 16px; display: grid; gap: 3px; }
+details.anbar-explain > summary {
+  cursor: pointer; font-size: 11.5px; color: var(--mint);
+  list-style: none; user-select: none; margin-top: 7px;
+}
+details.anbar-explain > summary::-webkit-details-marker { display: none; }
+details.anbar-explain > summary::before { content: 'Why? '; font-weight: 600; }
+details.anbar-explain[open] > summary::before { content: 'Why — '; }
+
+/* ---------------------------------------------------------- drawer */
+
+.anbar-drawer {
+  position: fixed; inset: 0 0 0 auto;
+  width: min(560px, 100vw);
+  background: var(--room);
+  border-left: 1px solid var(--edge-2);
+  box-shadow: var(--shadow-lift);
+  z-index: 90;
+  overflow-y: auto;
+  animation: anbar-slide .26s var(--ease);
+}
+@keyframes anbar-slide { from { transform: translateX(24px); opacity: 0 } to { transform: none; opacity: 1 } }
+.anbar-drawer-inner { padding: 24px 26px 60px; }
+.anbar-drawer-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 14px; margin-bottom: 18px;
+}
+.anbar-drawer-head h2 { margin: 0 0 6px; font: 400 23px/1.2 var(--serif); color: var(--bone); }
+.anbar-drawer-head p { margin: 0; font-size: 12.5px; color: var(--sage); }
+.anbar-drawer section { margin-bottom: 22px; }
+.anbar-drawer section > h4 {
+  margin: 0 0 10px; font: 600 10.5px/1 var(--sans);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--sage);
+}
+.anbar-kv { display: grid; grid-template-columns: 1fr auto; gap: 7px 14px; font-size: 13px; }
+.anbar-kv dt { color: var(--sage); }
+.anbar-kv dd { margin: 0; color: var(--bone); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------- forms */
+
+.anbar-form { display: grid; gap: 12px; }
+.anbar-form label { display: grid; gap: 5px; font-size: 12px; color: var(--sage); }
+.anbar-form input, .anbar-form select, .anbar-form textarea {
+  padding: 9px 11px; background: var(--panel-2);
+  border: 1px solid var(--edge); border-radius: var(--r-sm);
+  color: var(--bone); font: 400 13px var(--sans); width: 100%;
+}
+.anbar-form input:focus, .anbar-form select:focus, .anbar-form textarea:focus {
+  outline: none; border-color: var(--mint);
+}
+.anbar-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.anbar-form .full { grid-column: 1 / -1; }
+.anbar-line-editor { display: grid; gap: 8px; }
+.anbar-line {
+  display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 8px; align-items: end;
+}
+.anbar-error {
+  padding: 9px 12px; border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--coral) 12%, transparent);
+  color: var(--coral); font-size: 12.5px;
+}
+.anbar-note {
+  padding: 11px 13px; border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--sage) 9%, transparent);
+  color: var(--sage); font-size: 12.5px; line-height: 1.6;
+}
+
+/* ---------------------------------------------------------- layout helpers */
+
+.anbar-split { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; align-items: start; }
+.anbar-split-even { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.anbar-stack { display: grid; gap: 16px; }
+.anbar-section-title {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 14px; margin-bottom: 12px;
+}
+.anbar-section-title h3 { margin: 0; font: 400 17px/1.3 var(--serif); color: var(--bone); }
+.anbar-section-title p { margin: 3px 0 0; font-size: 12.5px; color: var(--sage); }
+
+/* ---------------------------------------------------------- responsive */
+
+@media (max-width: 1100px) {
+  .anbar-split, .anbar-split-even { grid-template-columns: 1fr; }
+}
+@media (max-width: 820px) {
+  .anbar-cards { grid-template-columns: repeat(auto-fit, minmax(144px, 1fr)); }
+  .anbar-card .v { font-size: 22px; }
+  .anbar-form-grid { grid-template-columns: 1fr; }
+  .anbar-line { grid-template-columns: 1fr 1fr; }
+  .anbar-drawer { width: 100vw; }
+  .anbar-toolbar input[type="search"] { min-width: 100%; }
+
+  /* A wide table on a phone becomes a list of cards rather than a
+     horizontal scroll nobody discovers. */
+  table.anbar-table.stack-mobile { min-width: 0; }
+  table.anbar-table.stack-mobile thead { display: none; }
+  table.anbar-table.stack-mobile tbody tr {
+    display: grid; grid-template-columns: 1fr auto; gap: 2px 10px;
+    padding: 12px 2px; border-bottom: 1px solid var(--edge);
+  }
+  table.anbar-table.stack-mobile td { border: 0; padding: 2px 0; }
+  table.anbar-table.stack-mobile td[data-label]::before {
+    content: attr(data-label) ': ';
+    color: var(--sage); font-size: 11px; text-transform: uppercase;
+    letter-spacing: .06em; margin-right: 5px;
+  }
+  table.anbar-table.stack-mobile td.primary {
+    grid-column: 1; font-weight: 600; font-size: 14px;
+  }
+  table.anbar-table.stack-mobile td.primary::before { content: none; }
+  table.anbar-table.stack-mobile td.trailing { grid-column: 2; grid-row: 1; text-align: right; }
+  table.anbar-table.stack-mobile td.trailing::before { content: none; }
+}
+
+/* Recipe consumption controls and readable gram quantities. */
+.warehouse-usage-controls {display:grid;grid-template-columns:minmax(220px,2fr) 1fr 1fr auto auto;gap:14px;align-items:end;margin:22px 0}
+.warehouse-usage-controls label {display:grid;gap:8px;font-size:13px}
+.warehouse-usage-controls input,.warehouse-usage-controls select {width:100%;min-width:0;padding:12px;border:1px solid var(--line,#334155);border-radius:12px;background:var(--panel,#132033);color:inherit}
+.warehouse-usage .anbar-table-wrap {overflow-x:auto}
+@media(max-width:1000px){.warehouse-usage-controls{grid-template-columns:1fr 1fr}.warehouse-usage-controls label:first-child{grid-column:1/-1}}

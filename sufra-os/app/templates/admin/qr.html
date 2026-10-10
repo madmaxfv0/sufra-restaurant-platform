@@ -1,0 +1,6 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="ent-hero"><div><h1>Table QR ordering</h1><p>Every physical table gets a unique QR link. Guests scan, browse and send their order to the same live kitchen workflow.</p></div></header>
+<div id="enterprise-qr"></div>
+{% endblock %}
+{% block script %}<script>bootEnterpriseQR();</script>{% endblock %}

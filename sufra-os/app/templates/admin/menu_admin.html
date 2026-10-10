@@ -1,0 +1,25 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Menu</h1>
+    <p>Prices, availability, allergens and what each dish is worth.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="card" id="menu-ops" style="margin-bottom:18px"></section>
+<section class="strip" id="menu-strip"></section>
+<div class="btn-row" style="margin-bottom:18px" id="menu-filters"></div>
+<section class="card" style="margin-bottom:18px">
+  <h3>Menu engineering</h3>
+  <p>Split on median margin and median sales. Four groups, four different decisions.</p>
+  <div id="menu-matrix"></div>
+</section>
+<div class="card">
+  <h3>All dishes</h3>
+  <p>Click a row to edit price, description, timing or allergens. Toggle availability to pull a dish from every screen at once.</p>
+  <div id="menu-table"></div>
+</div>
+{% endblock %}
+{% block script %}<script>bootMenuAdmin();bootMenuOps();</script>{% endblock %}

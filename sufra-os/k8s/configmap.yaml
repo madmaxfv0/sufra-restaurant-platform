@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sufra-os-config
+  namespace: sufra
+data:
+  SUFRA_TZ: "Asia/Baku"
+  # demo switches stay off in production: no simulated service, no reseed, no reset
+  NOVA_SIMULATE: "0"

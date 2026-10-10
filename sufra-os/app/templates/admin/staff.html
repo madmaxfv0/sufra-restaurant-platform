@@ -1,0 +1,29 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Staff</h1>
+    <p>The rota, the wage bill, and whether it matches forecast demand.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="staff-strip"></section>
+<div class="btn-row" style="margin-bottom:18px">
+  <button class="btn ghost" id="wk-prev">Last week</button>
+  <button class="btn ghost" id="wk-this">This week</button>
+  <button class="btn ghost" id="wk-next">Next week</button>
+  <button class="btn solid" id="auto-roster">Fill gaps from the forecast</button>
+</div>
+<section class="card" style="margin-bottom:18px">
+  <h3>Demand against cover</h3>
+  <p>What the forecast says each day needs, against who is actually on the rota.</p>
+  <div id="staff-demand"></div>
+</section>
+<div class="card">
+  <h3>Rota</h3>
+  <p>Click a cell to add, change or clear a shift.</p>
+  <div id="staff-rota"></div>
+</div>
+{% endblock %}
+{% block script %}<script>bootStaff();</script>{% endblock %}

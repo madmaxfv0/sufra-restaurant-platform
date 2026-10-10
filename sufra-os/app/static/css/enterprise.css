@@ -1,0 +1,110 @@
+/* ============================================================
+   SUFRA ENTERPRISE UI — universal light mode, explicit controls,
+   QR ordering, HR/accounting/owner intelligence and payment terminal.
+   ============================================================ */
+
+:root,[data-theme="dark"]{
+  --ent-bg:#081220;--ent-surface:#0f1f31;--ent-surface-2:#142a3f;--ent-text:#eef5fb;
+  --ent-muted:#9eb1c2;--ent-line:rgba(142,187,224,.20);--ent-blue:#62b5ff;
+  --ent-green:#55d7ae;--ent-amber:#f1b85b;--ent-red:#f27c73;--ent-purple:#a69af7;
+}
+[data-theme="light"]{
+  color-scheme:light;
+  --ent-bg:#f4f7fa;--ent-surface:#fff;--ent-surface-2:#edf3f7;--ent-text:#13273a;
+  --ent-muted:#556d82;--ent-line:rgba(35,70,100,.18);--ent-blue:#176eae;
+  --ent-green:#16836a;--ent-amber:#9c6314;--ent-red:#b6443e;--ent-purple:#6555b3;
+  --room:#f4f7fa!important;--panel:#fff!important;--panel-2:#edf3f7!important;--ink:#e6edf3!important;
+  --bone:#13273a!important;--sage:#556d82!important;--dim:#8090a0!important;
+  --edge:rgba(31,64,92,.13)!important;--edge-2:rgba(31,64,92,.23)!important;
+  --mint:#16836a!important;--jade:#106f5a!important;--blue:#176eae!important;--sky:#3b8ec8!important;
+  --amber:#a56b19!important;--coral:#b94b45!important;--violet:#6555b3!important;
+}
+
+[data-theme="light"] html,[data-theme="light"] body,[data-theme="light"] .app-admin,
+[data-theme="light"] .app-waiter,[data-theme="light"] .app-launcher{background:#f4f7fa!important;color:#13273a!important}
+[data-theme="light"] body::before{background:radial-gradient(900px 500px at 82% -12%,rgba(23,110,174,.09),transparent 65%),radial-gradient(700px 500px at 0 100%,rgba(22,131,106,.06),transparent 68%)!important}
+[data-theme="light"] .shell,[data-theme="light"] main,[data-theme="light"] .waiter-shell,[data-theme="light"] .guest-shell{color:#13273a}
+[data-theme="light"] .rail{background:rgba(250,252,254,.97)!important;border-color:rgba(31,64,92,.13)!important}
+[data-theme="light"] .card,[data-theme="light"] .strip,[data-theme="light"] .task,
+[data-theme="light"] .ticket,[data-theme="light"] .signin-box,[data-theme="light"] .calm-card,
+[data-theme="light"] .workspace,[data-theme="light"] .seat-card,[data-theme="light"] .note-card,
+[data-theme="light"] .bill-pro,[data-theme="light"] .sheet,[data-theme="light"] .modal-card,
+[data-theme="light"] .inspector,[data-theme="light"] .sufra-order-bar,[data-theme="light"] .ent-panel,
+[data-theme="light"] .ent-kpi,[data-theme="light"] .ent-table-wrap,[data-theme="light"] .payment-terminal{
+  background:#fff!important;color:#13273a!important;border-color:rgba(31,64,92,.14)!important;box-shadow:0 14px 40px -30px rgba(20,45,65,.28)!important
+}
+[data-theme="light"] .guest-hero,[data-theme="light"] .g-hero{background:linear-gradient(145deg,rgba(23,110,174,.10),#fff 68%)!important;color:#13273a!important}
+[data-theme="light"] .dish,[data-theme="light"] .quick button,[data-theme="light"] .foresight,
+[data-theme="light"] .room,[data-theme="light"] .tbl,[data-theme="light"] .field,[data-theme="light"] input,
+[data-theme="light"] select,[data-theme="light"] textarea,[data-theme="light"] .msg.nova,
+[data-theme="light"] .reservation-label,[data-theme="light"] .sufra-calendar{
+  background:#fff!important;color:#13273a!important;border-color:rgba(31,64,92,.17)!important
+}
+[data-theme="light"] .room{background:repeating-linear-gradient(90deg,rgba(31,64,92,.045) 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,rgba(31,64,92,.045) 0 1px,transparent 1px 64px),#edf3f7!important}
+[data-theme="light"] .basket,[data-theme="light"] .g-tabs,[data-theme="light"] .waiter-nav{background:rgba(255,255,255,.96)!important;color:#13273a!important}
+[data-theme="light"] .sub,[data-theme="light"] .micro,[data-theme="light"] .card p,
+[data-theme="light"] .dish p,[data-theme="light"] .quick span,[data-theme="light"] .rail a,
+[data-theme="light"] .kv span,[data-theme="light"] table.data th{color:#556d82!important}
+[data-theme="light"] .btn.ghost,[data-theme="light"] .chip-pick,[data-theme="light"] .chip-x,
+[data-theme="light"] .course-nav button,[data-theme="light"] .seeds button{background:#fff!important;color:#26425a!important}
+[data-theme="light"] .tbl[data-status="available"]{background:#f6fafc!important}
+[data-theme="light"] .ticket.status-cooking{background:#fff7e9!important}
+[data-theme="light"] .ticket.status-ready,.ticket.ready{background:#ecfaf5!important}
+
+/* Explicit, visible controls — no mystery tiny icon-only controls. */
+.btn,button:not(.close):not(.inspector .close):not(.keypad button),a.btn{
+  min-height:42px;min-width:42px;padding:9px 15px;font-size:13px;font-weight:650;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;line-height:1.2
+}
+.btn.tiny,.tiny.btn{min-height:36px!important;padding:7px 11px!important;font-size:12px!important}
+.ent-icon{display:inline-grid;place-items:center;width:18px;height:18px;flex:0 0 18px;font-size:15px;font-style:normal}
+.theme-toggle{right:18px!important;bottom:18px!important;min-height:46px!important;padding:0 17px!important;font-weight:700!important;background:color-mix(in srgb,var(--panel) 94%,transparent)!important}
+.theme-toggle em{font-size:12px!important}.theme-toggle span{font-size:17px!important}
+.dish-actions{display:flex;gap:8px;flex-direction:column;align-items:stretch;min-width:112px}
+.dish-save{width:auto!important;height:auto!important;min-height:38px!important;border-radius:999px!important;padding:7px 11px!important;font-size:12px!important;white-space:nowrap}
+.dish-add-order{white-space:nowrap!important}
+
+/* QR guest order bar */
+.sufra-order-bar{position:fixed;left:50%;bottom:82px;z-index:80;width:min(760px,calc(100vw - 30px));
+  transform:translate(-50%,150%);transition:transform .32s var(--ease);display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:13px 15px;border:1px solid var(--edge-2);border-radius:18px;background:rgba(10,24,39,.96);box-shadow:var(--shadow-lift);backdrop-filter:blur(20px)}
+.sufra-order-bar.up{transform:translate(-50%,0)}.sufra-order-bar div{display:flex;flex-direction:column;min-width:0}.sufra-order-bar b{font-size:13px}.sufra-order-bar span{font-size:11px;color:var(--sage)}
+.qr-cart-lines{display:flex;flex-direction:column;gap:8px;margin:8px 0 16px}.qr-cart-line{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--edge);border-radius:14px}.qr-cart-line div:first-child{display:flex;flex-direction:column}.qr-cart-line span{font-size:11px;color:var(--sage)}
+.qty-stepper{display:flex!important;align-items:center;gap:8px}.qty-stepper button{min-width:34px!important;min-height:34px!important;padding:0!important;border-radius:50%;border:1px solid var(--edge-2);background:var(--panel-2);color:var(--bone)}
+.qr-order-warning{padding:10px 12px;border:1px solid color-mix(in srgb,var(--amber) 35%,var(--edge));background:color-mix(in srgb,var(--amber) 8%,var(--panel));border-radius:12px;color:var(--amber);font-size:12px;margin:10px 0}
+
+/* Enterprise page system */
+.ent-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}.ent-hero h1{font-family:var(--serif);font-size:34px;margin:0}.ent-hero p{margin:4px 0 0;color:var(--sage)}
+.ent-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:18px}.ent-kpi{border:1px solid var(--edge);background:var(--panel);border-radius:18px;padding:16px}.ent-kpi span{display:block;color:var(--sage);font-size:11px;margin-bottom:4px}.ent-kpi b{font-family:var(--serif);font-size:26px}.ent-kpi small{display:block;color:var(--dim);font-size:10px;margin-top:3px}
+.ent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.ent-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.ent-panel{border:1px solid var(--edge);background:var(--panel);border-radius:20px;padding:18px}.ent-panel h2,.ent-panel h3{margin:0 0 3px}.ent-panel>p{color:var(--sage);font-size:12px;margin:0 0 14px}
+.ent-action{display:grid;grid-template-columns:5px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--edge)}.ent-action:last-child{border-bottom:0}.ent-action i{border-radius:5px;background:var(--blue)}.ent-action.critical i{background:var(--coral)}.ent-action.warning i{background:var(--amber)}.ent-action.good i{background:var(--mint)}.ent-action b{font-size:13px}.ent-action p{font-size:11.5px;color:var(--sage);margin:2px 0 0}
+.ent-table-wrap{overflow:auto;border:1px solid var(--edge);border-radius:16px}.ent-table{width:100%;border-collapse:collapse;font-size:12px;min-width:680px}.ent-table th{position:sticky;top:0;background:var(--panel-2);color:var(--sage);text-align:left;padding:10px;font-size:10px;z-index:1}.ent-table td{padding:10px;border-top:1px solid var(--edge);vertical-align:middle}.ent-table tr:hover td{background:color-mix(in srgb,var(--mint) 4%,transparent)}
+.ent-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:15px}.ent-tabs button{border:1px solid var(--edge-2);background:transparent;color:var(--sage);border-radius:999px}.ent-tabs button.on{background:var(--mint);color:var(--ink);border-color:var(--mint)}
+.ent-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ent-form .full{grid-column:1/-1}.ent-form label{font-size:11px;color:var(--sage);display:flex;flex-direction:column;gap:4px}.ent-form .field{width:100%}
+.staff-photo{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--edge)}.staff-initial{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--panel-2);font-weight:800}
+.status-pill{display:inline-flex;align-items:center;min-height:25px;padding:3px 8px;border-radius:999px;border:1px solid var(--edge-2);font-size:10px;font-weight:700}.status-pill.ok{color:var(--mint)}.status-pill.warn{color:var(--amber)}.status-pill.bad{color:var(--coral)}
+.spark-bars{display:flex;gap:5px;align-items:flex-end;height:120px;padding-top:12px}.spark-bars i{flex:1;background:color-mix(in srgb,var(--blue) 55%,transparent);border-radius:6px 6px 2px 2px;min-width:8px}.spark-labels{display:flex;gap:5px;color:var(--dim);font-size:9px}.spark-labels span{flex:1;text-align:center}
+.scenario-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--edge);font-size:12px}.scenario-row:last-child{border-bottom:0}
+
+/* QR print grid */
+.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}.qr-card{border:1px solid var(--edge);border-radius:18px;background:var(--panel);padding:15px;text-align:center;break-inside:avoid}.qr-card img{width:170px;height:170px;background:#fff;border-radius:12px;padding:8px}.qr-card h3{margin:8px 0 1px}.qr-card p{font-size:10px;color:var(--sage);word-break:break-all}.qr-card .btn{width:100%}
+@media print{.rail,.topbar,.theme-toggle,.qr-actions,.ent-hero .btn-row{display:none!important}main{padding:0!important}.qr-grid{grid-template-columns:repeat(3,1fr)!important}.qr-card{border:1px solid #bbb!important;background:#fff!important;color:#111!important}.qr-card .btn{display:none!important}.qr-card p{color:#555!important}}
+
+/* Separate secure payment terminal */
+.payment-page{min-height:100vh;background:var(--room);color:var(--bone);padding:24px;font-family:var(--sans)}.payment-wrap{max-width:920px;margin:0 auto}.payment-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:16px}.payment-head h1{font-family:var(--serif);margin:0}.payment-terminal{border:1px solid var(--edge);border-radius:24px;background:var(--panel);padding:20px}.pay-line{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--edge)}.pay-line:last-child{border-bottom:0}.pay-kind-grid,.pay-method-grid,.pay-tip-grid{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}.pay-choice{border:1px solid var(--edge-2);background:transparent;color:var(--bone);border-radius:999px}.pay-choice.on{background:var(--mint);color:var(--ink);border-color:var(--mint)}.pay-total-box{display:flex;justify-content:space-between;align-items:flex-end;padding:16px 0}.pay-total-box b{font-family:var(--serif);font-size:34px}.pay-success{padding:28px;text-align:center;border-radius:18px;background:color-mix(in srgb,var(--mint) 10%,var(--panel));border:1px solid color-mix(in srgb,var(--mint) 35%,var(--edge))}
+
+/* Biometric/passkey */
+.bio-card{padding:14px;border:1px solid var(--edge);border-radius:16px;background:var(--panel-2)}.bio-card b{display:block}.bio-card p{font-size:11px;color:var(--sage);margin:3px 0 10px}.privacy-note{font-size:11px;color:var(--sage);padding:10px 12px;border-left:3px solid var(--blue);background:color-mix(in srgb,var(--blue) 6%,transparent);border-radius:0 10px 10px 0}
+
+@media(max-width:900px){.ent-grid,.ent-grid.three{grid-template-columns:1fr}.ent-form{grid-template-columns:1fr}.dish{display:grid!important;grid-template-columns:96px 1fr}.dish-actions{grid-column:1/-1;flex-direction:row}.sufra-order-bar{bottom:78px}}
+@media(max-width:520px){.sufra-order-bar{align-items:stretch;flex-direction:column}.sufra-order-bar .btn{width:100%}.qr-cart-line{grid-template-columns:1fr auto}.qr-cart-line>strong{grid-column:1/-1;text-align:right}.ent-kpis{grid-template-columns:repeat(2,1fr)}}
+
+
+/* SUFRA: biometric login button intentionally disabled */
+#bio-login,
+button#bio-login,
+.pin-screen #bio-login {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}

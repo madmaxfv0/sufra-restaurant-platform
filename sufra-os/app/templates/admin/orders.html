@@ -1,0 +1,18 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Orders</h1>
+    <p>Every bill open in the building, and everything closed today.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="ord-strip"></section>
+<div class="btn-row" style="margin-bottom:18px">
+  <button class="btn solid" data-scope="open">Open bills</button>
+  <button class="btn" data-scope="all">Everything today</button>
+</div>
+<div id="ord-list"></div>
+{% endblock %}
+{% block script %}<script>bootOrders();</script>{% endblock %}

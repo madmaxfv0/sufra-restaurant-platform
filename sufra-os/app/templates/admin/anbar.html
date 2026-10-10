@@ -1,0 +1,40 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Warehouse</h1>
+    <p>Supplier to shelf to plate — one chain, one set of numbers.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<!-- data-en holds the untranslated label. The shared i18n layer rewrites text
+     nodes in place, which is one-way: once "Overview" has become "Ümumi baxış"
+     nothing can map it back, so switching language again would strand the tabs
+     in the first language chosen. anbar.js restores from data-en before
+     re-translating. -->
+<nav class="anbar-tabs" id="anbar-tabs" role="tablist">
+  <button class="anbar-tab on" data-tab="overview" data-en="Overview">Overview</button>
+  <button class="anbar-tab" data-tab="inventory" data-en="Inventory">Inventory</button>
+  <button class="anbar-tab" data-tab="receiving" data-en="Receiving">Receiving</button>
+  <button class="anbar-tab" data-tab="purchases" data-en="Purchases">Purchases</button>
+  <button class="anbar-tab" data-tab="suppliers" data-en="Suppliers">Suppliers</button>
+  <button class="anbar-tab" data-tab="transfers" data-en="Transfers">Transfers</button>
+  <button class="anbar-tab" data-tab="stocktake" data-en="Stocktake">Stocktake</button>
+  <button class="anbar-tab" data-tab="waste" data-en="Waste">Waste</button>
+  <button class="anbar-tab" data-tab="recipes" data-en="Recipes &amp; Costing">Recipes &amp; Costing</button>
+  <button class="anbar-tab" data-tab="usage" data-en="Dish ingredient usage">Dish ingredient usage</button>
+  <button class="anbar-tab" data-tab="intelligence" data-en="AI Intelligence">AI Intelligence</button>
+  <button class="anbar-tab" data-tab="reports" data-en="Reports">Reports</button>
+  <button class="anbar-tab" data-tab="activity" data-en="Activity">Activity</button>
+</nav>
+
+<div id="anbar-panel" class="anbar-panel" aria-live="polite">
+  <div class="anbar-loading">Opening Warehouse…</div>
+</div>
+
+<aside class="anbar-drawer" id="anbar-drawer" hidden>
+  <div class="anbar-drawer-inner" id="anbar-drawer-body"></div>
+</aside>
+{% endblock %}
+{% block script %}<script>bootAnbar();</script>{% endblock %}

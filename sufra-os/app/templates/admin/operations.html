@@ -1,0 +1,39 @@
+{% extends "admin/_base.html" %}
+{% block content %}
+<header class="top">
+  <div>
+    <h1>Live operations</h1>
+    <p>Every moving part of the service on one screen.</p>
+  </div>
+  <div id="head-slot"></div>
+</header>
+
+<section class="strip" id="ops-strip"></section>
+<section class="grid two">
+  <div class="card">
+    <h3>Alerts as they happen</h3>
+    <p>Kitchen, service, stock, equipment and money, ranked by cost of ignoring.</p>
+    <div id="ops-alerts"></div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:18px">
+      <h3>At the pass</h3>
+      <p>Food plated and waiting for a runner.</p>
+      <div id="ops-pass"></div>
+    </div>
+    <div class="card">
+      <h3>Open requests</h3>
+      <p>Everything a guest has asked for and not yet received.</p>
+      <div id="ops-tasks"></div>
+    </div>
+  </div>
+</section>
+<section class="card" style="margin-top:18px">
+  <div class="ops-card-head"><div><h3>Activity stream</h3>
+    <p>Real events only — reservations, seating, tables, waitlist and menu, from SUFRA OS and SUFRA 360 alike.</p></div></div>
+  <div id="ops-feed"></div>
+</section>
+
+<section class="card" style="margin-top:18px"><div class="ops-card-head"><div><h3>Manager & complaint desk</h3><p>Guest and waiter complaints arrive here in real time.</p></div></div><div id="ops-complaints"></div></section>
+{% endblock %}
+{% block script %}<script>bootOperations();bootComplaints();</script>{% endblock %}

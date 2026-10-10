@@ -1,0 +1,16 @@
+/* Staff sign-in and administrator-issued badges. */
+#auth-mount .signin-box {width:min(1080px,100%);margin:0 auto;padding:24px;box-sizing:border-box}
+#auth-mount .auth-head {margin:0 auto 28px;text-align:center;max-width:660px}
+#auth-mount .who-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;width:100%}
+#auth-mount .who {min-width:0;min-height:150px!important;padding:22px!important;border-radius:20px!important}
+#auth-mount .who b {font-size:20px;line-height:1.3;overflow-wrap:anywhere}
+#auth-mount .who-role {font-size:14px;line-height:1.4}
+#auth-mount .who-face {width:56px;height:56px;flex-shrink:0}
+#auth-mount .pin-screen {max-width:420px}
+#auth-mount .pin-screen .keypad {max-width:340px;margin:18px auto}
+#auth-mount .pin-screen .pin-submit {max-width:340px;margin:16px auto}
+.staff-badge-card {text-align:center;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.staff-badge-card h3,.staff-badge-card p {width:100%;margin:4px 0;line-height:1.5}
+.staff-badge-card img {display:block;max-width:100%;background:white;padding:12px;border-radius:14px;margin:12px auto}
+.staff-badge-card .btn {width:auto!important;flex:0 1 auto}
+@media(max-width:560px){#auth-mount .signin-box{padding:16px}#auth-mount .who-grid{grid-template-columns:1fr}#auth-mount .who{min-height:108px!important}}

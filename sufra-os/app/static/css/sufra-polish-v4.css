@@ -1,0 +1,38 @@
+/* SUFRA POLISH V4 — loaded last. */
+#loc-switch{display:none!important}
+
+/* Real employee photos */
+.who-face{overflow:hidden!important}.v4-person-photo{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}.v4-person-photo.big{border-radius:50%}.who .who-face:has(.v4-person-photo){background:transparent!important;border-color:rgba(105,185,255,.26)!important}.v4-staff-identity{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:6px 11px 6px 7px;border:1px solid var(--edge-2);border-radius:999px;background:color-mix(in srgb,var(--panel) 92%,transparent);color:var(--bone);cursor:pointer;box-shadow:0 12px 32px -24px rgba(0,0,0,.7)}.v4-staff-identity>img,.v4-staff-initial{width:31px;height:31px;border-radius:50%;object-fit:cover;display:grid;place-items:center;background:rgba(105,185,255,.12);color:var(--sky);font-weight:800}.v4-staff-identity span:last-child{display:block;text-align:left}.v4-staff-identity b,.v4-staff-identity small{display:block}.v4-staff-identity b{font-size:10.5px}.v4-staff-identity small{font-size:8.5px;color:var(--sage);text-transform:capitalize}.v4-profile-modal{text-align:center;padding:6px}.v4-profile-modal>.v4-person-photo.large,.v4-profile-fallback{width:92px;height:92px;border-radius:50%;object-fit:cover;display:grid;margin:0 auto 12px;place-items:center;background:linear-gradient(135deg,rgba(105,185,255,.18),rgba(173,155,255,.16));font-size:30px}.v4-profile-modal h2{margin:5px 0 2px}.v4-profile-modal p{margin:0 0 18px;color:var(--sage);text-transform:capitalize}.v4-profile-modal .btn+.btn{margin-top:12px}
+
+/* PIN: password field already shows dots; do not duplicate them below. */
+.pin-screen .pin-dots{display:none!important}.pin-screen #pin-go{margin-top:18px!important}.pin-screen #bio-login{margin-top:22px!important;padding-top:13px!important;padding-bottom:13px!important}.pin-screen .v3-biometric-note{display:none!important}
+
+/* Buttons: one action icon maximum and no duplicate + + / icon icon. */
+.btn>.ent-icon{margin-right:7px}.btn>.ent-icon~.ent-icon{display:none!important}#pin-go>.ent-icon,#bio-login>.ent-icon{display:none!important}.btn.tiny{min-height:34px!important;padding:7px 11px!important;font-size:10.5px!important}
+
+/* Guest menu navigation is part of the page, not a huge bottom dock. */
+.app-guest{padding-bottom:34px!important}.app-guest .g-tabs.v4-top-tabs{position:sticky!important;left:auto!important;right:auto!important;top:10px!important;bottom:auto!important;width:100%!important;transform:none!important;margin:10px 0 18px!important;padding:5px!important;border-radius:17px!important;background:color-mix(in srgb,var(--panel) 94%,transparent)!important;box-shadow:0 12px 34px -28px rgba(0,0,0,.8)!important;z-index:55!important}.app-guest .g-tabs.v4-top-tabs button{min-height:40px!important}.app-guest .basket.v4-hidden-basket,.app-guest .qr-order-basket.v4-hidden-basket{visibility:hidden!important;pointer-events:none!important}.app-guest .basket.up,.app-guest .qr-order-basket.up{visibility:visible!important;pointer-events:auto!important}
+
+/* Booking remains intelligent; remove the explanatory Smart Seating side card. */
+.booking-grid{grid-template-columns:minmax(0,820px)!important;justify-content:center!important}.booking-aside{display:none!important}.booking-card{width:100%!important}.booking-shell{max-width:960px!important}.seat-preview{margin-bottom:18px!important}
+
+/* Food photo controls */
+.menu-add-photo{grid-template-columns:128px minmax(0,1fr)!important}.menu-photo-preview img{width:100%;height:100%;object-fit:cover;border-radius:12px}.v4-dish-photo{display:grid;gap:12px}.v4-dish-photo>img{width:100%;max-height:270px;object-fit:cover;border-radius:16px;border:1px solid var(--edge)}
+
+/* Persistent sidebar icons */
+.rail a .nav-icon{display:grid!important;place-items:center!important;width:18px!important;height:18px!important;flex:0 0 18px!important;color:currentColor!important}.rail a .nav-icon svg{display:block!important;width:17px!important;height:17px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}.rail a.on .nav-icon{color:var(--nav-accent,var(--sky))!important}
+
+/* Light mode finishing: no grey blocks that look disabled. */
+[data-theme="light"] .who,[data-theme="light"] .dish,[data-theme="light"] .w-section,[data-theme="light"] .ent-panel,[data-theme="light"] .booking-card{background:#FFFFFF!important;border-color:rgba(25,62,92,.13)!important;color:#10263A!important}[data-theme="light"] .v4-staff-identity{background:#FFF!important;color:#10263A!important;border-color:rgba(25,62,92,.16)!important}[data-theme="light"] .app-guest .g-tabs.v4-top-tabs{background:rgba(255,255,255,.97)!important}[data-theme="light"] .v4-dish-photo>img{background:#EEF4F8!important}
+
+@media(max-width:760px){.v4-staff-identity span:last-child{display:none}.v4-staff-identity{padding-right:7px}.booking-shell{padding-left:14px!important;padding-right:14px!important}}
+
+
+/* SUFRA: biometric login button intentionally disabled */
+#bio-login,
+button#bio-login,
+.pin-screen #bio-login {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
