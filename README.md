@@ -1,5 +1,7 @@
 # SUFRA — Restaurant Platform
 
+[![CI](https://github.com/madmaxfv0/sufra-restaurant-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/madmaxfv0/sufra-restaurant-platform/actions/workflows/ci.yml)
+
 SUFRA is a restaurant management system in two connected applications. **SUFRA OS** is what staff use: reservations, floor, orders, kitchen display, menu, warehouse, HR, accounting and analytics. **SUFRA 360** is what guests see: a live 3D model of the venue where they can check which tables are free, choose one and book it.
 
 Both run against one source of truth. SUFRA 360 holds no restaurant data of its own; every table, booking and menu item is read from and written to SUFRA OS.
