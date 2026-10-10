@@ -1,0 +1,639 @@
+{
+ "venue_id": "sufra-waterfront",
+ "name": "SUFRA Waterfront",
+ "tagline": "Garden court, promenade windows and umbrella terrace",
+ "address": "Bulvar, Baku",
+ "timezone": "Asia/Baku",
+ "weather_city": "Baku",
+ "weather": {
+  "lat": 40.4093,
+  "lng": 49.8671
+ },
+ "map": {
+  "width": 720,
+  "height": 1280,
+  "image": "/assets/map/ground.png?v=5",
+  "units_to_m": 0.05
+ },
+ "geometry": {
+  "water": [
+   0,
+   0,
+   62,
+   1280
+  ],
+  "sea": [
+   0,
+   0,
+   62,
+   1280
+  ],
+  "promenade": [
+   62,
+   0,
+   232,
+   1280
+  ],
+  "plot": [
+   236,
+   56,
+   704,
+   1244
+  ],
+  "building": [
+   246,
+   78,
+   692,
+   986
+  ],
+  "rooms": {
+   "garden": [
+    258,
+    92,
+    680,
+    298
+   ],
+   "window": [
+    258,
+    302,
+    360,
+    848
+   ],
+   "main": [
+    360,
+    302,
+    560,
+    848
+   ],
+   "east": [
+    560,
+    302,
+    680,
+    848
+   ],
+   "lounge": [
+    500,
+    96,
+    680,
+    296
+   ],
+   "private": [
+    286,
+    856,
+    470,
+    972
+   ],
+   "wc": [
+    478,
+    856,
+    596,
+    934
+   ],
+   "terrace": [
+    250,
+    1000,
+    690,
+    1238
+   ]
+  },
+  "bar_counter": [
+   378,
+   420,
+   432,
+   660
+  ],
+  "back_bar": [
+   446,
+   420,
+   496,
+   660
+  ],
+  "pass": [
+   382,
+   700,
+   556,
+   792
+  ],
+  "wc": [
+   478,
+   856,
+   596,
+   934
+  ],
+  "kiosk": [
+   66,
+   782,
+   100,
+   838
+  ],
+  "entrance": [
+   652,
+   976
+  ],
+  "fireplace": [
+   300,
+   800
+  ],
+  "noise_sources": [
+   [
+    410,
+    540,
+    1.0
+   ],
+   [
+    652,
+    976,
+    0.72
+   ],
+   [
+    468,
+    746,
+    0.86
+   ],
+   [
+    590,
+    190,
+    0.8
+   ]
+  ],
+  "windows": [
+   [
+    246,
+    302,
+    246,
+    848
+   ],
+   [
+    692,
+    302,
+    692,
+    848
+   ],
+   [
+    258,
+    92,
+    680,
+    92
+   ]
+  ],
+  "trees": [
+   [
+    120,
+    118,
+    46
+   ],
+   [
+    150,
+    248,
+    40
+   ],
+   [
+    108,
+    372,
+    44
+   ],
+   [
+    152,
+    470,
+    38
+   ],
+   [
+    112,
+    600,
+    46
+   ],
+   [
+    150,
+    700,
+    36
+   ],
+   [
+    110,
+    820,
+    44
+   ],
+   [
+    148,
+    930,
+    40
+   ],
+   [
+    112,
+    1050,
+    46
+   ],
+   [
+    150,
+    1170,
+    38
+   ],
+   [
+    198,
+    190,
+    27
+   ],
+   [
+    198,
+    560,
+    25
+   ],
+   [
+    198,
+    900,
+    26
+   ],
+   [
+    198,
+    1120,
+    24
+   ],
+   [
+    300,
+    132,
+    22
+   ],
+   [
+    648,
+    128,
+    20
+   ],
+   [
+    272,
+    1180,
+    20
+   ],
+   [
+    660,
+    1186,
+    20
+   ]
+  ],
+  "lamps": [
+   [
+    80,
+    62,
+    1
+   ],
+   [
+    80,
+    192,
+    1
+   ],
+   [
+    80,
+    322,
+    1
+   ],
+   [
+    80,
+    452,
+    1
+   ],
+   [
+    80,
+    582,
+    1
+   ],
+   [
+    80,
+    712,
+    1
+   ],
+   [
+    80,
+    842,
+    1
+   ],
+   [
+    80,
+    972,
+    1
+   ],
+   [
+    80,
+    1102,
+    1
+   ],
+   [
+    80,
+    1232,
+    1
+   ],
+   [
+    214,
+    128,
+    1
+   ],
+   [
+    214,
+    418,
+    1
+   ],
+   [
+    214,
+    718,
+    1
+   ],
+   [
+    214,
+    1018,
+    1
+   ],
+   [
+    300,
+    200,
+    0
+   ],
+   [
+    600,
+    200,
+    0
+   ],
+   [
+    300,
+    560,
+    0
+   ],
+   [
+    620,
+    560,
+    0
+   ],
+   [
+    300,
+    900,
+    0
+   ],
+   [
+    620,
+    900,
+    0
+   ],
+   [
+    350,
+    1090,
+    1
+   ],
+   [
+    560,
+    1090,
+    1
+   ]
+  ],
+  "boats": [],
+  "jetty": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "walk_paths": [
+   [
+    [
+     652,
+     966
+    ],
+    [
+     600,
+     900
+    ],
+    [
+     540,
+     860
+    ],
+    [
+     500,
+     780
+    ],
+    [
+     470,
+     660
+    ],
+    [
+     440,
+     500
+    ],
+    [
+     430,
+     340
+    ]
+   ],
+   [
+    [
+     300,
+     320
+    ],
+    [
+     300,
+     460
+    ],
+    [
+     304,
+     620
+    ],
+    [
+     312,
+     760
+    ],
+    [
+     330,
+     840
+    ]
+   ],
+   [
+    [
+     620,
+     330
+    ],
+    [
+     626,
+     470
+    ],
+    [
+     626,
+     620
+    ],
+    [
+     612,
+     760
+    ],
+    [
+     570,
+     840
+    ]
+   ],
+   [
+    [
+     340,
+     1080
+    ],
+    [
+     450,
+     1120
+    ],
+    [
+     600,
+     1104
+    ],
+    [
+     664,
+     1010
+    ]
+   ],
+   [
+    [
+     120,
+     120
+    ],
+    [
+     140,
+     400
+    ],
+    [
+     130,
+     700
+    ],
+    [
+     150,
+     1000
+    ],
+    [
+     140,
+     1230
+    ]
+   ],
+   [
+    [
+     200,
+     1200
+    ],
+    [
+     200,
+     900
+    ],
+    [
+     200,
+     600
+    ],
+    [
+     200,
+     300
+    ]
+   ],
+   [
+    [
+     470,
+     160
+    ],
+    [
+     560,
+     180
+    ],
+    [
+     640,
+     200
+    ]
+   ],
+   [
+    [
+     470,
+     300
+    ],
+    [
+     470,
+     420
+    ],
+    [
+     466,
+     620
+    ],
+    [
+     470,
+     780
+    ]
+   ]
+  ]
+ },
+ "service": {
+  "open": "12:00",
+  "close": "23:00",
+  "slot_minutes": 15,
+  "default_duration": 105,
+  "turnover_buffer": 15,
+  "last_seating": "21:30"
+ },
+ "events": {
+  "dinner": {
+   "name": "Seated dinner",
+   "blurb": "Full a la carte service, every table laid.",
+   "capacity": null,
+   "min_spend": 0
+  },
+  "reception": {
+   "name": "Standing reception",
+   "blurb": "Main room cleared, the bar and the garden court in play, canapes circulating.",
+   "capacity": 150,
+   "min_spend": 4500,
+   "clear_zones": [
+    "window",
+    "east"
+   ]
+  },
+  "live_music": {
+   "name": "Live music night",
+   "blurb": "A duo in the lounge corner of the court from 20:00.",
+   "capacity": 100,
+   "min_spend": 3200,
+   "boost": {
+    "stage_view": 2.5,
+    "lively": 1.4
+   }
+  },
+  "private_dinner": {
+   "name": "Private dinner",
+   "blurb": "The private room, doors closed, set menu.",
+   "capacity": 10,
+   "min_spend": 900,
+   "only_zones": [
+    "private"
+   ]
+  }
+ },
+ "pricing": {
+  "currency": "AZN",
+  "symbol": "₼",
+  "avg_per_head_dinner": 58,
+  "set_menu": [
+   {
+    "name": "Three courses",
+    "price": 45
+   },
+   {
+    "name": "Tasting menu",
+    "price": 78
+   },
+   {
+    "name": "Canape package",
+    "price": 32
+   }
+  ],
+  "deposit_per_head": 20,
+  "private_room_hire": 350,
+  "full_venue_hire": 6000,
+  "service_charge_pct": 12.5
+ },
+ "logistics": {
+  "seated_capacity": 96,
+  "standing_capacity": 150,
+  "step_free": true,
+  "accessible_wc": true,
+  "nearest_transport": "6 minutes on foot along the promenade",
+  "parking": "Public car park 200 m north, 40 spaces",
+  "load_in": "Service gate on the promenade side, 1.9 m clear",
+  "av": "House PA in the court, two wireless mics, DI box in the lounge corner",
+  "stage_size_m": "3.2 m x 2.4 m lounge corner, no riser",
+  "curfew": "Amplified music until 22:30 outdoors, 23:00 indoors",
+  "kitchen_last_orders": "21:45"
+ },
+ "verification": "PLACEHOLDER"
+}

@@ -1,0 +1,8 @@
+sufra_immersive.db*
+__pycache__/
+*.pyc
+node_modules/
+# raw Poly Haven downloads: hundreds of MB of photogrammetry that
+# blender/prep_assets.py decimates into the small GLBs under static/3d/
+assets_src/polyhaven/
+captures/

@@ -1,0 +1,93 @@
+[
+ {
+  "id": "garden",
+  "bounds": [
+   258,
+   92,
+   680,
+   298
+  ],
+  "name": "Garden Court",
+  "floor": 0,
+  "outdoor": true,
+  "blurb": "Walled court at the front, under the vines and string lights."
+ },
+ {
+  "id": "lounge",
+  "bounds": [
+   500,
+   96,
+   680,
+   296
+  ],
+  "name": "The Lounge",
+  "floor": 0,
+  "outdoor": true,
+  "blurb": "Low sofas in the corner of the court. A duo plays here on weekends."
+ },
+ {
+  "id": "window",
+  "bounds": [
+   258,
+   302,
+   360,
+   848
+  ],
+  "name": "Promenade Windows",
+  "floor": 0,
+  "outdoor": false,
+  "blurb": "West row. Windows onto the lamplit promenade and the water."
+ },
+ {
+  "id": "bar",
+  "bounds": [
+   360,
+   302,
+   560,
+   848
+  ],
+  "name": "The Bar",
+  "floor": 0,
+  "outdoor": false,
+  "blurb": "High tops along the marble counter."
+ },
+ {
+  "id": "east",
+  "bounds": [
+   560,
+   302,
+   680,
+   848
+  ],
+  "name": "Flower Wall",
+  "floor": 0,
+  "outdoor": false,
+  "blurb": "East row, windows onto the flowering wall."
+ },
+ {
+  "id": "private",
+  "bounds": [
+   286,
+   856,
+   470,
+   972
+  ],
+  "name": "Private Room",
+  "floor": 0,
+  "outdoor": false,
+  "blurb": "A door that closes. Six to ten guests."
+ },
+ {
+  "id": "terrace",
+  "bounds": [
+   250,
+   1000,
+   690,
+   1238
+  ],
+  "name": "Umbrella Terrace",
+  "floor": 0,
+  "outdoor": true,
+  "blurb": "Umbrella tables under the string lights, facing the water."
+ }
+]

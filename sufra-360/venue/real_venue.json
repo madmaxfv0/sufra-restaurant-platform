@@ -1,0 +1,23 @@
+{
+ "enabled": true,
+ "provider": "Kukan AI",
+ "name": "Giri",
+ "kind": "Cafe, restaurant and bar",
+ "address": "Hermannstrasse 14, 12049 Berlin, Germany",
+ "website": "https://giri.berlin",
+ "embed_base": "https://app.kukan.ai/view/giri",
+ "credit": "Real 3D capture of Giri, Berlin. Hosted and rendered by Kukan AI, embedded live. Not our venue, not modified.",
+ "note": "Verified: Giri UG operates a cafe/restaurant and bar at this address. The walkthrough is Kukan's own embeddable viewer.",
+ "viewpoints": [
+  {
+   "id": "entry",
+   "label": "Where the tour opens",
+   "pos": "-3.420,0.450,-0.300",
+   "rot": "-3.079,-1.053,-3.142",
+   "verified": true,
+   "note": "The exact camera the Kukan share link opens at."
+  }
+ ],
+ "table_viewpoints": {},
+ "how_to_add": "Walk to a spot inside the embedded tour, copy the pos and rot from Kukan's own share link, then run: python3 tools/real_venue.py --add-viewpoint bar --label 'At the bar' --pos X,Y,Z --rot X,Y,Z   and map it with --map-table t13 --viewpoint bar"
+}

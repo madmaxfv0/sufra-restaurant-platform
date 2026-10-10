@@ -1,0 +1,519 @@
+/* SUFRA 360 - build 9 chrome.
+   Display serif for the brand and headings, a clean sans for the interface.
+   backdrop-filter is used on exactly two surfaces (panel, assistant): every
+   blurred chip over an animating WebGL canvas costs Safari a full-screen
+   pass per frame, so the rest use a deep, near-opaque glass instead. */
+:root{
+  --s-serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --s-sans:"Manrope","Inter",-apple-system,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,sans-serif;
+  --s-ink:#0a1120;
+  --s-glass:rgba(9,14,26,.80);
+  --s-glass-strong:rgba(9,14,26,.92);
+  --s-hair:rgba(232,200,138,.16);
+  --s-hair-strong:rgba(232,200,138,.38);
+  --s-gold:#d8b26c;
+  --s-gold-soft:#ecd3a0;
+  --s-gold-deep:#b58c52;
+  --s-text:#eef1f7;
+  --s-muted:#9aa7bd;
+  --s-mint:#6fe0b8;
+  --s-rose:#ff7a6a;
+  --s-amber:#ffc65c;
+  --s-radius:14px;
+  --s-shadow:0 18px 50px rgba(0,0,0,.45);
+  --s-ease:cubic-bezier(.2,.7,.2,1);
+}
+/* No box-sizing rule existed anywhere in this stylesheet, so every input/
+   select rendered content-box: a grid track stretches an item to the track's
+   width, then padding (.45rem .6rem on every #p-reserve input) added on top
+   of that width instead of eating into it. Across the "Almost done" step's
+   five stacked fields that alone should have been survivable, but the
+   compounding push shoved the drawer 175px past its own edge (measured:
+   panel clientWidth 358, scrollWidth 533) - the "LAST NAME" field and the
+   confirm button's own text clipping off the right edge in testing. */
+body.s360, body.s360 *, body.s360 *::before, body.s360 *::after{box-sizing:border-box}
+body.s360{font-family:var(--s-sans);overflow:hidden;background:#070c16;color:var(--s-text);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.s360 h1,body.s360 h2,body.s360 h3,body.s360 .mark,body.s360 .deg{font-family:var(--s-serif)}
+body.s360 button{font-family:var(--s-sans);cursor:pointer;color:inherit;background:none;border:0}
+body.s360 button:focus-visible,body.s360 input:focus-visible,body.s360 select:focus-visible{outline:2px solid var(--s-gold);outline-offset:2px}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.hidden{display:none!important}
+
+/* ---- entry ---- */
+#entry{position:fixed;inset:0;z-index:70;display:grid;place-items:center;
+  background:radial-gradient(90% 65% at 50% 46%,rgba(6,10,20,.18) 0%,rgba(6,10,20,.66) 70%,rgba(6,10,20,.88) 100%);
+  transition:opacity 1.1s var(--s-ease)}
+#entry.gone{opacity:0;pointer-events:none}
+.entry-inner{text-align:center;padding:2rem;transform:translateY(0);transition:transform 1.1s var(--s-ease)}
+#entry.gone .entry-inner{transform:translateY(-24px)}
+.entry-rule{height:1px;width:min(58vw,380px);margin:0 auto;
+  background:linear-gradient(90deg,transparent,var(--s-gold),transparent);opacity:.8}
+.entry-kicker{margin:1.1rem 0 0;font-size:.64rem;letter-spacing:.42em;text-transform:uppercase;color:var(--s-muted)}
+#entry h1{font-size:clamp(3.8rem,13vw,8rem);letter-spacing:.42em;margin:.15rem 0 0 .42em;font-weight:500;line-height:1;
+  color:var(--s-gold-soft);text-shadow:0 0 80px rgba(216,178,108,.38),0 2px 0 rgba(0,0,0,.35)}
+.entry-sub{margin:.35rem 0 1.1rem;font-family:var(--s-serif);font-size:1.05rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(236,211,160,.72)}
+#entry-bar{width:min(46vw,260px);height:2px;margin:1.4rem auto 0;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+#entry-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--s-gold-deep),var(--s-gold-soft));transition:width .6s var(--s-ease)}
+#entry-bar.done{opacity:0;transition:opacity .8s}
+.entry-btn{margin-top:1.4rem;padding:1rem 3.4rem;border-radius:999px;border:1px solid var(--s-hair-strong);
+  background:linear-gradient(180deg,#e6c684,#c79c4f);color:#20170a;
+  font-size:.82rem;letter-spacing:.34em;text-transform:uppercase;font-weight:600;
+  box-shadow:0 14px 44px rgba(216,178,108,.28);transition:transform .25s var(--s-ease),box-shadow .25s,opacity .4s}
+.entry-btn:hover{transform:translateY(-2px);box-shadow:0 20px 56px rgba(216,178,108,.4)}
+.entry-btn:active{transform:translateY(0)}
+.entry-btn:disabled{opacity:.42;cursor:progress;transform:none;box-shadow:none}
+.entry-hint{margin-top:1.1rem;min-height:1.2em;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(154,167,189,.75)}
+
+/* ---- loader (only before the renderer exists, and for hard failures) ---- */
+#loader{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:#070c16;transition:opacity .6s}
+#loader.gone{opacity:0;pointer-events:none}
+#loader p{max-width:30rem;text-align:center;color:var(--s-muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+#loader p.fail{color:#e0817b;text-transform:none;letter-spacing:0;font-size:.95rem;line-height:1.55}
+#loader p.fail-help{text-transform:none;letter-spacing:0;font-size:.8rem}
+#loader .spin{width:28px;height:28px;border-radius:50%;border:2px solid rgba(216,178,108,.18);border-top-color:var(--s-gold);animation:s360spin 1s linear infinite;margin-bottom:.8rem}
+@keyframes s360spin{to{transform:rotate(360deg)}}
+
+/* ---- HUD ---- */
+.hud{position:fixed;z-index:20;pointer-events:none;opacity:0;transition:opacity .9s var(--s-ease) .3s}
+body.entered .hud,body.entered #ask,body.entered #zones,body.entered #hud-bl{opacity:1}
+.hud *{pointer-events:auto}
+#ask,#zones,#hud-bl{opacity:0;transition:opacity .9s var(--s-ease) .5s}
+#hud-tl{top:max(.9rem,env(safe-area-inset-top));left:1.1rem;display:flex;align-items:baseline;gap:.6rem}
+#hud-tl .mark{letter-spacing:.34em;color:var(--s-gold-soft);font-size:1.2rem;font-weight:500}
+#hud-tl .deg{color:var(--s-gold);font-size:1rem}
+#hud-tl .sub{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--s-muted)}
+.link{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:.2rem .5rem;border-radius:999px;border:1px solid var(--s-hair)}
+.link.live{color:var(--s-mint)} .link.polling{color:var(--s-amber)} .link.table{color:var(--s-rose)}
+#hud-tc{top:max(.9rem,env(safe-area-inset-top));left:50%;transform:translateX(-50%);
+  font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--s-gold-soft);
+  padding:.5rem 1.1rem;border-radius:999px;background:var(--s-glass);border:1px solid var(--s-hair);white-space:nowrap}
+#hud-tr{top:max(.9rem,env(safe-area-inset-top));right:1.1rem;display:flex;gap:.5rem;align-items:flex-start}
+/* An open dropdown has to outrank the table panel beneath it; at z-index 20
+   against the panel's 25 it opened behind it. */
+#hud-tr:has(#scene-menu[open]){z-index:30}
+.chip{display:flex;align-items:center;gap:.5rem;padding:.5rem .9rem;border-radius:999px;
+  background:var(--s-glass);border:1px solid var(--s-hair);font-size:.7rem;color:var(--s-muted);letter-spacing:.02em;min-height:36px}
+.chip.wx{color:var(--s-text)}
+.chip.menu{padding:0;display:block;border-radius:18px}
+.chip.menu summary{list-style:none;padding:.5rem 1rem;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--s-gold-soft);cursor:pointer;min-height:36px;display:flex;align-items:center;gap:.5rem}
+.chip.menu summary::-webkit-details-marker{display:none}
+.chip.menu summary::after{content:"";width:6px;height:6px;border-right:1px solid var(--s-gold);border-bottom:1px solid var(--s-gold);transform:rotate(45deg);margin-left:.2rem;transition:.2s}
+.chip.menu[open] summary::after{transform:rotate(-135deg)}
+.menu-body{padding:.4rem 1rem 1rem;display:grid;gap:.75rem;width:16rem;background:var(--s-glass-strong);border-top:1px solid var(--s-hair);border-radius:0 0 18px 18px}
+.menu-body label{display:grid;gap:.35rem}
+.menu-body label>span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--s-muted)}
+.menu-body select{background:rgba(255,255,255,.06);border:1px solid var(--s-hair);border-radius:9px;color:var(--s-text);padding:.45rem .6rem;font-size:.76rem;font-family:var(--s-sans)}
+.menu-body b{font-size:.62rem;color:var(--s-gold-soft);font-weight:500;letter-spacing:.04em}
+.menu-note{margin:0;font-size:.64rem;color:var(--s-muted);line-height:1.5}
+.menu-note kbd{font-family:var(--s-sans);border:1px solid var(--s-hair);border-radius:4px;padding:0 .3rem}
+.seg{display:flex;border:1px solid var(--s-hair);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.04)}
+.seg button{flex:1;padding:.5rem .5rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--s-muted);transition:.18s}
+.seg button:hover{color:var(--s-gold-soft)}
+.seg button.on{color:#20170a;background:linear-gradient(180deg,#e6c684,#c79c4f);font-weight:600}
+#hud-l{left:1.1rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.3rem}
+#hud-l a{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--s-muted);
+  padding:.55rem .8rem;border-radius:10px;background:var(--s-glass);border:1px solid transparent;text-decoration:none;transition:.18s}
+#hud-l a.on,#hud-l a:hover{color:var(--s-gold-soft);border-color:var(--s-hair)}
+#hud-b{left:50%;transform:translateX(-50%);bottom:max(1rem,env(safe-area-inset-bottom));
+  display:flex;gap:1.1rem;padding:.6rem 1.2rem;border-radius:999px;background:var(--s-glass);
+  border:1px solid var(--s-hair);font-size:.66rem;letter-spacing:.08em;color:var(--s-muted);white-space:nowrap;align-items:center}
+#hud-b b{color:var(--s-text);font-weight:600;margin-right:.3rem;font-variant-numeric:tabular-nums}
+#hud-b .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.4rem;vertical-align:1px;box-shadow:0 0 8px currentColor}
+#hud-b .free{color:var(--s-mint)} #hud-b .occ{color:var(--s-rose)} #hud-b .res{color:var(--s-amber)}
+#hud-b .free .dot{background:var(--s-mint)} #hud-b .occ .dot{background:var(--s-rose)} #hud-b .res .dot{background:var(--s-amber)}
+#zones{position:fixed;z-index:20;right:1.1rem;bottom:max(1rem,env(safe-area-inset-bottom));display:flex;gap:.3rem;flex-wrap:wrap;justify-content:flex-end;max-width:46vw}
+#zones button{padding:.5rem .85rem;border-radius:999px;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;min-height:34px;
+  background:var(--s-glass);border:1px solid var(--s-hair);color:var(--s-muted);transition:.18s var(--s-ease)}
+#zones button:hover{border-color:var(--s-hair-strong);color:var(--s-gold-soft);transform:translateY(-1px)}
+#zones button.on{color:var(--s-gold-soft);border-color:var(--s-gold);background:rgba(216,178,108,.12)}
+#hud-bl{position:fixed;z-index:20;left:1.1rem;bottom:max(1rem,env(safe-area-inset-bottom));display:flex;gap:.4rem}
+body.s360 .ghost{padding:.55rem 1rem;border-radius:999px;border:1px solid var(--s-hair);background:var(--s-glass);
+  font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--s-muted);min-height:36px;transition:.18s var(--s-ease)}
+body.s360 .ghost:hover{border-color:var(--s-gold);color:var(--s-gold-soft)}
+body.s360 .ghost.small{padding:.55rem .7rem;font-size:.56rem}
+
+/* ---- the assistant ---- */
+#ask{position:fixed;z-index:26;left:50%;transform:translateX(-50%);
+  bottom:calc(max(1rem,env(safe-area-inset-bottom)) + 3.6rem);width:min(92vw,44rem);
+  display:flex;flex-direction:column;gap:.55rem;align-items:center}
+.ask-row{display:flex;align-items:center;gap:.5rem;width:100%;padding:.4rem .4rem .4rem 1.1rem;
+  border-radius:999px;background:var(--s-glass-strong);border:1px solid var(--s-hair);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--s-shadow);transition:border-color .2s}
+.ask-row:focus-within{border-color:var(--s-hair-strong)}
+.ask-icon{color:var(--s-gold);font-size:1rem}
+#ask-q{flex:1;min-width:0;background:none;border:0;outline:none;font-size:.92rem;color:var(--s-text);font-family:var(--s-sans);padding:.4rem 0}
+#ask-q::placeholder{color:rgba(154,167,189,.72)}
+.ask-ctx{display:flex;gap:.25rem}
+.ask-ctx select{background:rgba(255,255,255,.06);border:1px solid var(--s-hair);border-radius:999px;color:var(--s-gold-soft);
+  font-size:.7rem;padding:.4rem .6rem;font-family:var(--s-sans);-webkit-appearance:none;appearance:none;text-align:center}
+#ask-go{padding:.65rem 1.25rem;border-radius:999px;background:linear-gradient(180deg,#e6c684,#c79c4f);
+  color:#20170a;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;transition:.2s;min-height:38px}
+#ask-go:hover{filter:brightness(1.08)}
+.ask-x{display:none;width:34px;height:34px;border-radius:50%;font-size:1.2rem;color:var(--s-muted);line-height:1}
+#ask.open .ask-x{display:block}
+.ask-x:hover{color:var(--s-text);background:rgba(255,255,255,.06)}
+.ask-chips{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center}
+/* body.s360 button{background:none;border:0} is (0,1,2) - one specificity
+   point above .ask-chips button's (0,1,1) - and won regardless of source
+   order, so every chip rendered as bare text with no pill at all: no
+   background, no border. That's what made this row look like loose text
+   floating over the scene instead of a row of buttons, and made the whole
+   area read as cluttered even though nothing technically overlapped.
+   #ask qualifies the selector up to (1,1,1), which wins outright. */
+#ask .ask-chips button{padding:.42rem .8rem;border-radius:999px;border:1px solid var(--s-hair);background:var(--s-glass);
+  font-size:.64rem;letter-spacing:.06em;color:var(--s-muted);transition:.18s var(--s-ease);min-height:32px}
+#ask .ask-chips button:hover{color:var(--s-gold-soft);border-color:var(--s-hair-strong);transform:translateY(-1px)}
+#ask-answer{width:100%;padding:1rem 1.15rem;border-radius:18px;background:var(--s-glass-strong);
+  border:1px solid var(--s-hair-strong);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  font-size:.88rem;line-height:1.55;box-shadow:var(--s-shadow);animation:s360rise .35s var(--s-ease)}
+@keyframes s360rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.a-head{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem}
+.a-icon{color:var(--s-gold)} .a-ctx{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--s-muted)}
+.a-msg{color:var(--s-text)}
+.a-thinking{display:flex;gap:.3rem;padding:.3rem 0}
+.a-thinking i{width:6px;height:6px;border-radius:50%;background:var(--s-gold);animation:s360dots 1.1s infinite ease-in-out}
+.a-thinking i:nth-child(2){animation-delay:.15s} .a-thinking i:nth-child(3){animation-delay:.3s}
+@keyframes s360dots{0%,80%,100%{opacity:.25;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.a-tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:.45rem;margin-top:.7rem}
+.a-card{position:relative;border:1px solid var(--s-hair);border-radius:12px;padding:.55rem .7rem .55rem 1.5rem;text-align:left;
+  color:var(--s-gold-soft);background:rgba(216,178,108,.07);transition:.18s var(--s-ease)}
+.a-card:hover{background:rgba(216,178,108,.16);transform:translateY(-1px)}
+.a-card b{display:block;font-weight:600;font-size:.78rem}
+.a-card small{display:block;color:var(--s-muted);font-size:.62rem;letter-spacing:.03em;line-height:1.4;margin-top:.15rem}
+.a-card .dot{position:absolute;left:.6rem;top:.85rem;width:8px;height:8px;border-radius:50%;background:var(--s-muted)}
+.a-card .dot.available{background:var(--s-mint);box-shadow:0 0 8px var(--s-mint)}
+.a-card .dot.occupied{background:var(--s-rose);box-shadow:0 0 8px var(--s-rose)}
+.a-card .dot.reserved_soon,.a-card .dot.held{background:var(--s-amber);box-shadow:0 0 8px var(--s-amber)}
+
+/* ---- hover card ---- */
+#tip{position:fixed;z-index:30;pointer-events:none;padding:.6rem .85rem;border-radius:12px;
+  background:var(--s-glass-strong);border:1px solid var(--s-hair-strong);font-size:.74rem;line-height:1.4;box-shadow:var(--s-shadow);max-width:16rem}
+#tip b{display:block;font-family:var(--s-serif);letter-spacing:.06em;font-size:.95rem;color:var(--s-gold-soft)}
+#tip span{display:block;color:var(--s-text)} #tip small{display:block;color:var(--s-muted);font-size:.64rem;margin-top:.1rem}
+#tip span.available{color:var(--s-mint)} #tip span.occupied{color:var(--s-rose)} #tip span.reserved_soon,#tip span.held{color:var(--s-amber)}
+
+/* ---- table panel ---- */
+#panel{position:fixed;z-index:25;right:1.1rem;top:4.6rem;width:min(90vw,22.5rem);max-height:calc(100vh - 9.5rem);overflow:auto;
+  padding:1.25rem 1.35rem 1.15rem;border-radius:18px;border:1px solid var(--s-hair-strong);background:var(--s-glass-strong);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:var(--s-shadow);animation:s360rise .35s var(--s-ease);scrollbar-width:thin}
+#panel h2{font-size:1.9rem;letter-spacing:.02em;margin:.35rem 0 0;font-weight:500;line-height:1.1}
+#panel .close{position:absolute;top:.55rem;right:.7rem;width:34px;height:34px;border-radius:50%;font-size:1.4rem;line-height:1;color:var(--s-muted)}
+#panel .close:hover{color:var(--s-text);background:rgba(255,255,255,.06)}
+.p-zone{margin:.15rem 0 .85rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--s-muted);line-height:1.5}
+#panel .pill{display:inline-flex;align-items:center;gap:.45rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;border:1px solid var(--s-hair);color:var(--s-muted)}
+#panel .pill i{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+#panel .pill.available{color:var(--s-mint);border-color:rgba(111,224,184,.3)}
+#panel .pill.occupied{color:var(--s-rose);border-color:rgba(255,122,106,.3)}
+#panel .pill.reserved_soon,#panel .pill.held{color:var(--s-amber);border-color:rgba(255,198,92,.3)}
+.traits{display:grid;gap:.4rem;margin:.2rem 0 .9rem}
+.trow{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
+.trow em{font-style:normal;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--s-muted);width:5.2rem;flex:0 0 5.2rem}
+.trow span{font-size:.62rem;letter-spacing:.06em;padding:.26rem .58rem;border-radius:8px;
+  background:rgba(216,178,108,.10);border:1px solid var(--s-hair);color:var(--s-gold-soft)}
+.trow span.cool{color:#bfe7de;background:rgba(126,214,196,.10);border-color:rgba(126,214,196,.25)}
+.trow span.warm{color:#f6c9c0;background:rgba(255,140,120,.10);border-color:rgba(255,140,120,.25)}
+.meters{display:grid;grid-template-columns:auto 1fr auto;gap:.32rem .6rem;align-items:center;margin:.2rem 0 .9rem;font-size:.7rem}
+.meters .k{color:var(--s-muted);letter-spacing:.06em}
+.meters .bar{height:4px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden}
+.meters .bar i{display:block;height:100%;border-radius:2px;background:linear-gradient(90deg,var(--s-gold-deep),var(--s-gold-soft))}
+.meters .v{color:var(--s-text);font-variant-numeric:tabular-nums}
+#p-rows{display:grid;grid-template-columns:auto 1fr;gap:.34rem .8rem;margin:.4rem 0;font-size:.8rem}
+#p-rows dt{color:var(--s-muted);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding-top:.12rem}
+#p-rows dd{margin:0}
+.p-best{margin:.7rem 0 .2rem;padding:.65rem .85rem;border-left:2px solid var(--s-gold);font-size:.8rem;line-height:1.5;
+  color:var(--s-gold-soft);background:rgba(216,178,108,.06);border-radius:0 10px 10px 0;font-family:var(--s-serif);font-size:.98rem}
+#p-actions{display:grid;gap:.45rem;margin-top:.8rem}
+#p-actions button{text-align:center;padding:.8rem .9rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;border-radius:12px;min-height:42px;transition:.18s var(--s-ease)}
+#p-actions .primary,#p-reserve .primary{background:linear-gradient(180deg,#e6c684,#c79c4f);color:#20170a;border:0;font-weight:600;box-shadow:0 10px 30px rgba(216,178,108,.22)}
+#p-actions .primary:hover,#p-reserve .primary:hover{filter:brightness(1.07);transform:translateY(-1px)}
+#p-actions .ghost{border-radius:12px}
+#p-reserve{margin-top:.8rem;padding:.9rem;border-radius:14px;border:1px solid var(--s-hair);background:rgba(255,255,255,.035);display:grid;gap:.55rem;animation:s360rise .3s var(--s-ease)}
+/* Stacked, not a fixed 4.2rem label column: the English labels fit that
+   track and the Azerbaijani and Russian ones do not, and a grid track that
+   cannot hold its label is how text ends up on top of a field. */
+#p-reserve label{display:grid;grid-template-columns:1fr;gap:.25rem;font-size:.7rem;min-width:0}
+#p-reserve label span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--s-muted)}
+#p-reserve input,#p-reserve select{background:rgba(255,255,255,.06);border:1px solid var(--s-hair);border-radius:9px;color:var(--s-text);padding:.45rem .6rem;font-size:.78rem;font-family:var(--s-sans);color-scheme:dark;width:100%;min-width:0}
+#p-reserve .primary{padding:.8rem .9rem;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;border-radius:12px;min-height:42px}
+#p-reserve small{color:var(--s-muted);font-size:.66rem;line-height:1.45;text-align:center}
+
+/* ---- toast, diagnostics ---- */
+#toast{position:fixed;z-index:60;left:50%;bottom:calc(max(1rem,env(safe-area-inset-bottom)) + 8.6rem);transform:translateX(-50%);
+  padding:.7rem 1.1rem;border-radius:12px;background:var(--s-glass-strong);border:1px solid var(--s-hair-strong);font-size:.8rem;box-shadow:var(--s-shadow);max-width:min(90vw,32rem);text-align:center;animation:s360rise .3s var(--s-ease)}
+#diag{position:fixed;z-index:40;left:1.1rem;top:4.4rem;margin:0;padding:.7rem .9rem;border-radius:10px;background:var(--s-glass-strong);
+  border:1px solid var(--s-hair);font:11px/1.55 ui-monospace,Menlo,monospace;color:#cfeee5;pointer-events:none;white-space:pre}
+
+@media (max-width:820px){
+  #hud-tr{gap:.3rem} .chip.wx span:last-child{max-width:9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #panel{right:.6rem;left:.6rem;width:auto;top:auto;bottom:calc(max(1rem,env(safe-area-inset-bottom)) + 3.4rem);max-height:60vh}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ==================================================================
+   build 11 - Ask AI in the main menu, and booking inside the scene
+   ================================================================== */
+
+/* main menu */
+#hud-l .nav-ask,#hud-l .nav-book,#hud-l .nav-menu,#hud-l .nav-about{display:flex;align-items:center;gap:.4rem;width:100%;
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.55rem .8rem;border-radius:10px;
+  background:var(--s-glass);border:1px solid transparent;color:var(--s-muted);transition:.18s var(--s-ease)}
+#hud-l .nav-ask{color:var(--s-gold-soft);border-color:var(--s-hair)}
+#hud-l .nav-ask span{font-size:.85rem;line-height:1}
+#hud-l .nav-ask:hover{border-color:var(--s-gold);background:rgba(216,178,108,.14);transform:translateX(2px)}
+#hud-l .nav-book{background:linear-gradient(180deg,#e6c684,#c79c4f);color:#20170a;font-weight:600;justify-content:center;
+  box-shadow:0 8px 24px rgba(216,178,108,.2)}
+#hud-l .nav-book:hover{filter:brightness(1.07);transform:translateX(2px)}
+
+/* booking drawer */
+.bk-head{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:.2rem}
+.bk-head b{font-family:var(--s-serif);font-size:1.05rem;font-weight:500;color:var(--s-gold-soft);letter-spacing:.02em}
+.bk-step{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--s-muted);white-space:nowrap}
+.bk-sizes{display:flex;gap:.22rem;flex-wrap:wrap}
+.bk-sizes button{min-width:2rem;padding:.4rem .3rem;border-radius:8px;border:1px solid var(--s-hair);
+  background:rgba(255,255,255,.05);color:var(--s-muted);font-size:.76rem;font-variant-numeric:tabular-nums;transition:.15s}
+.bk-sizes button:hover{border-color:var(--s-hair-strong);color:var(--s-gold-soft)}
+.bk-sizes button.on{background:linear-gradient(180deg,#e6c684,#c79c4f);color:#20170a;border-color:transparent;font-weight:600}
+.bk-two{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;min-width:0}
+.bk-two label{gap:.25rem;min-width:0}
+#p-reserve textarea{background:rgba(255,255,255,.06);border:1px solid var(--s-hair);border-radius:9px;
+  color:var(--s-text);padding:.45rem .6rem;font-size:.78rem;font-family:var(--s-sans);resize:vertical;width:100%}
+.bk-summary{display:flex;align-items:center;justify-content:space-between;gap:.7rem;
+  padding:.6rem .75rem;border-radius:10px;background:rgba(216,178,108,.09);
+  border:1px solid var(--s-hair);font-size:.72rem;line-height:1.45;color:var(--s-text);margin-bottom:.1rem}
+/* The countdown used to be position:absolute over the summary, so any
+   summary long enough to reach it - a longer table label, or the same
+   sentence in Azerbaijani or Russian - ran straight underneath the digits.
+   It is a sibling in the row now and reserves its own width. */
+.bk-timer{flex:none;font-style:normal;font-variant-numeric:tabular-nums;
+  font-size:.8rem;font-weight:600;color:var(--s-gold-soft);letter-spacing:.02em}
+.bk-timer.low{color:var(--s-rose);animation:bkpulse 1s infinite}
+@keyframes bkpulse{0%,100%{opacity:1}50%{opacity:.45}}
+.bk-back{padding:.6rem;border-radius:10px;border:1px solid var(--s-hair);background:var(--s-glass);
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--s-muted);transition:.18s}
+.bk-back:hover{color:var(--s-gold-soft);border-color:var(--s-hair-strong)}
+.bk-link{background:none;border:0;padding:0;color:var(--s-gold-soft);text-decoration:underline;font-size:inherit;font-family:inherit}
+.bk-done{display:grid;justify-items:center;gap:.35rem;text-align:center;padding:.6rem 0 .2rem}
+.bk-tick{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;
+  background:rgba(111,224,184,.14);border:1px solid rgba(111,224,184,.4);color:var(--s-mint);margin-bottom:.2rem}
+.bk-done b{font-family:var(--s-serif);font-size:1.25rem;font-weight:500;color:var(--s-gold-soft)}
+.bk-code{font-size:1.3rem;letter-spacing:.28em;color:var(--s-text);font-variant-numeric:tabular-nums;
+  padding:.3rem .8rem;border:1px dashed var(--s-hair-strong);border-radius:9px;margin:.1rem 0}
+.bk-done small{color:var(--s-muted);font-size:.7rem;line-height:1.5;max-width:17rem}
+@media (max-width:820px){
+  #hud-l{display:flex;flex-direction:row;left:.6rem;right:.6rem;top:3.4rem;transform:none;gap:.3rem;overflow-x:auto}
+  #hud-l a{display:none}
+  #hud-l .nav-ask,#hud-l .nav-book,#hud-l .nav-menu,#hud-l .nav-about{width:auto;white-space:nowrap}
+  .bk-two{grid-template-columns:1fr}
+}
+
+/* Menu and About open as overlays rather than pages, so they are <button>s in
+   a nav of <a>s. Without this they rendered as unstyled body text beside four
+   styled pills. */
+#hud-l .nav-menu,#hud-l .nav-about{justify-content:flex-start;cursor:pointer}
+#hud-l .nav-menu:hover,#hud-l .nav-about:hover{border-color:var(--s-gold);background:rgba(216,178,108,.14);
+  color:var(--s-gold-soft);transform:translateX(2px)}
+
+
+/* ==================================================================
+   Bottom HUD layout.
+   #hud-b, #zones and #hud-bl were all pinned to the same bottom edge and
+   collided: the zone pills sat on top of the status counts, and Ask AI
+   overlapped both. They are now one centred column that flows upward, so
+   nothing can share a Y coordinate, and the Ask bar is measured off the
+   stack instead of a hard-coded offset.
+   ================================================================== */
+#hud-stack{position:fixed;z-index:20;left:50%;transform:translateX(-50%);
+  bottom:max(.9rem,env(safe-area-inset-bottom));display:flex;flex-direction:column-reverse;
+  align-items:center;gap:.5rem;width:min(94vw,60rem);pointer-events:none}
+#hud-stack > *{pointer-events:auto}
+
+/* neutralise the old fixed positioning now that they live in the stack */
+#hud-b{position:static!important;left:auto!important;transform:none!important;bottom:auto!important;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem}
+#zones{position:static!important;right:auto!important;bottom:auto!important;max-width:100%!important;
+  justify-content:center;gap:.35rem}
+
+/* Ask AI: slightly smaller, and lifted clear of the whole stack rather than
+   a guessed 3.6rem that no longer matched once zones wrapped to two rows */
+#ask{bottom:calc(max(.9rem,env(safe-area-inset-bottom)) + 7.3rem);width:min(88vw,40rem)}
+.ask-row{padding:.3rem .3rem .3rem 1rem}
+#ask-q{font-size:.86rem}
+
+/* Typography: Manrope for UI, Cormorant for display. The old defaults were
+   thin with heavy tracking on every control, which read as dated and hurt
+   legibility; uppercase is now reserved for the zone pills and small labels. */
+body.s360{font-synthesis-weight:none;letter-spacing:0}
+#hud-l .nav-ask,#hud-l .nav-book,#hud-l .nav-menu,#hud-l .nav-about,#hud-l a{
+  font-size:.72rem;letter-spacing:.04em;text-transform:none;font-weight:600;padding:.55rem .85rem}
+#hud-b{font-size:.72rem;letter-spacing:.01em}
+#hud-b b{font-weight:700}
+#zones button{font-size:.62rem;letter-spacing:.08em;font-weight:600;padding:.45rem .8rem;min-height:31px}
+#hud-bl button{font-size:.72rem;letter-spacing:.02em;text-transform:none;font-weight:600}
+#panel h2{letter-spacing:.01em}
+#p-actions button{font-size:.78rem;letter-spacing:.01em;text-transform:none;font-weight:600}
+
+/* #hud-tl grows rightward from a fixed left edge while #hud-tc sits
+   centred, independent of it - at narrow widths the two collided. Capping
+   hud-tl's width and letting its own text elide keeps a gap between them at
+   every size instead of guessing a breakpoint where they happen not to touch. */
+#hud-tl{max-width:44vw;overflow:hidden}
+#hud-tl .sub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+@media (max-width:1000px){
+  /* Ask AI's suggestion chips are what actually crowded the zone pills row
+     beneath it (they used to hide at 820px, well after the two rows had
+     already started touching between ~820-1000px). Drop them earlier instead
+     of shrinking everything else to fit around them. */
+  .ask-chips{display:none} .ask-ctx{display:none}
+}
+/* The service pill sits centred between the mark on the left and the weather
+   and scene chips on the right. Below about 1120px those three groups stop
+   fitting on one line and the centre one is the first to be run over, so drop
+   it there rather than waiting for 820px. The same reading is on the bottom
+   strip anyway. */
+@media (max-width:1120px){ #hud-tc{display:none} }
+@media (max-width:820px){
+  #hud-l{display:none} #hud-tc{display:none}
+  #hud-b{font-size:.58rem;gap:.7rem;padding:.5rem .8rem}
+}
+@media (max-width:900px){
+  #hud-stack{width:96vw;gap:.4rem}
+  #zones{overflow-x:auto;flex-wrap:nowrap;max-width:96vw;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #zones::-webkit-scrollbar{display:none}
+  #zones button{flex:0 0 auto}
+  #ask{bottom:calc(max(.9rem,env(safe-area-inset-bottom)) + 7.4rem);width:96vw}
+}
+
+/* ─────────────────────────── language, slot picker ──────────────────────
+   Added with build 13. Everything here follows the chrome that was already
+   in the scene: the same glass chip, the same brass accent, the same type. */
+
+.lang-pick, .chip.lang { display: flex; gap: 2px; padding: 3px; }
+.chip.lang button, .lang-pick button {
+  background: transparent; border: 0; color: #8b9099; cursor: pointer;
+  font: 600 11px/1 'Manrope', system-ui, sans-serif; letter-spacing: .09em;
+  padding: 6px 9px; border-radius: 6px; transition: color .18s, background .18s;
+}
+.chip.lang button:hover, .lang-pick button:hover { color: #e8e3d8; }
+.chip.lang button.on, .lang-pick button.on {
+  color: #0d0f14; background: #f0d9a8;
+}
+#entry-lang { justify-content: center; margin: 16px 0 6px; }
+#entry-lang button {
+  border: 1px solid rgba(240, 217, 168, .22); margin: 0 3px; padding: 7px 13px;
+}
+
+/* The slot picker.
+   It lives under the mark in the top-left corner, not floating over the room:
+   at the bottom it sat on top of the assistant bar and the two fought for the
+   same strip of glass. It is also the control that decides what the table
+   colours mean, so it belongs beside the brand rather than buried in the
+   furniture. Built from the same glass, hairline and gold as every other
+   chip in the scene. */
+#slotbar {
+  position: fixed; z-index: 22;
+  top: calc(max(.9rem, env(safe-area-inset-top)) + 2.9rem);
+  left: 1.1rem; width: 14.5rem;
+  background: var(--s-glass-strong); border: 1px solid var(--s-hair);
+  border-radius: 18px; padding: .85rem .9rem .75rem;
+  display: flex; flex-direction: column; gap: .7rem;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--s-shadow);
+}
+/* minmax(0,1fr) rather than 1fr: a grid track refuses to shrink below its
+   own min-content by default, so the longer Azerbaijani and Russian button
+   labels pushed the whole panel wider than its declared width. */
+#slotbar .slot-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .55rem; }
+#slotbar label { display: grid; gap: .35rem; min-width: 0; }
+#slotbar label:first-child { grid-column: 1 / -1; }
+#slotbar label > span {
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--s-muted);
+}
+#slotbar input, #slotbar select {
+  background: rgba(255, 255, 255, .06); border: 1px solid var(--s-hair);
+  border-radius: 9px; color: var(--s-text); padding: .45rem .6rem;
+  font-size: .76rem; font-family: var(--s-sans); width: 100%; min-width: 0;
+}
+#slotbar input:focus, #slotbar select:focus { outline: 0; border-color: var(--s-gold) }
+#slotbar button {
+  grid-column: span 1; min-width: 0; min-height: 34px; padding: .45rem .55rem;
+  border-radius: 999px; line-height: 1.25; text-wrap: balance;
+  font-size: .58rem; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid var(--s-hair); background: var(--s-glass);
+  color: var(--s-muted); transition: .18s var(--s-ease); cursor: pointer;
+}
+#slotbar button:hover { border-color: var(--s-gold); color: var(--s-gold-soft) }
+#slotbar button.primary {
+  color: #20170a; font-weight: 600; border-color: transparent;
+  background: linear-gradient(180deg, #e6c684, #c79c4f);
+}
+#slotbar button.primary:hover { filter: brightness(1.06) }
+#slotbar button:disabled { opacity: .4; cursor: default; filter: none }
+#slotbar #sb-note {
+  margin: 0; font-size: .6rem; line-height: 1.45; color: var(--s-muted); text-align: center;
+}
+#slotbar.slot-mode #sb-note { color: var(--s-gold-soft) }
+#slotbar.hidden { display: none }
+
+/* Short viewports: the picker, the left nav and the corner buttons all want
+   the same column, so give it back its horizontal shape below the mark. */
+@media (max-height: 760px), (max-width: 720px) {
+  #slotbar {
+    width: auto; max-width: calc(100vw - 2.2rem);
+    flex-direction: row; align-items: center; gap: .55rem;
+    border-radius: 14px; padding: .5rem .7rem;
+  }
+  #slotbar .slot-fields { display: flex; align-items: flex-end; gap: .45rem; flex-wrap: wrap }
+  #slotbar label { min-width: 0 }
+  #slotbar input, #slotbar select { width: auto; padding: .4rem .45rem; font-size: .72rem }
+  #slotbar #sb-note { text-align: left; max-width: 12rem }
+}
+@media (max-width: 560px) {
+  #slotbar { left: .7rem; right: .7rem; width: auto }
+  #slotbar .slot-fields { flex: 1 }
+}
+
+/* Booking drawer additions: language choice, calendar buttons, waitlist. */
+#p-reserve .bk-done { text-align: center; padding: 6px 2px 4px; }
+#p-reserve .bk-done b { display: block; font: 500 20px/1.2 'Cormorant Garamond', Georgia, serif;
+  color: #f0d9a8; margin: 10px 0 8px; }
+#p-reserve .bk-done p { font-size: 13px; line-height: 1.55; color: #b6bac2; margin: 0 0 14px; }
+#p-reserve .bk-cal { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 6px; }
+#p-reserve .bk-cal a, #p-reserve .bk-cal button {
+  border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .05);
+  color: #e8e3d8; border-radius: 8px; padding: 9px 14px; font-size: 12.5px;
+  text-decoration: none; cursor: pointer; font-family: 'Manrope', system-ui, sans-serif;
+}
+#p-reserve .bk-warn { color: #e0a878; font-size: 12px; margin: 0 0 10px; }
+#p-reserve .wl-head { font: 500 17px/1.2 'Cormorant Garamond', Georgia, serif;
+  color: #f0d9a8; margin: 0 0 4px; }
+#p-reserve .wl-blurb { font-size: 12.5px; color: #8b9099; margin: 0 0 12px; }
+
+/* The picker belongs to the room, not the entry veil. It fades in with the
+   rest of the HUD rather than appearing over the brand. */
+body:not(.entered) #slotbar { opacity: 0; pointer-events: none; transform: translateY(-8px) }
+body.entered #slotbar { opacity: 1; transform: none; transition: opacity .9s var(--s-ease) .4s, transform .9s var(--s-ease) .4s }
+
+/* About, as a panel on the room. */
+#aboutpanel {
+  position: fixed; right: 22px; top: 92px; width: min(360px, calc(100vw - 44px)); z-index: 55;
+  background: rgba(12, 14, 20, .82); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; padding: 22px 22px 20px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .5);
+}
+#aboutpanel.hidden { display: none; }
+#aboutpanel h2 { font: 500 24px/1.15 'Cormorant Garamond', Georgia, serif; color: #f0d9a8; margin: 0 0 4px; }
+#aboutpanel .ab-sub { font-size: 12.5px; color: #8b9099; margin: 0 0 16px; }
+#aboutpanel dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; margin: 0 0 14px; }
+#aboutpanel dt {
+  font: 600 9.5px/1.5 'Manrope', system-ui, sans-serif; letter-spacing: .13em;
+  text-transform: uppercase; color: #8b9099;
+}
+#aboutpanel dd { margin: 0; font-size: 13px; line-height: 1.5; color: #ece7dc; }
+#aboutpanel .ab-policy { font-size: 12px; line-height: 1.55; color: #9aa0a9; margin: 0; }
+#aboutpanel .close {
+  position: absolute; top: 12px; right: 12px; background: none; border: 0;
+  color: #8b9099; font-size: 20px; cursor: pointer; line-height: 1;
+}

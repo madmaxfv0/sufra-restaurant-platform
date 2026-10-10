@@ -1,0 +1,64 @@
+{
+  "version": 6,
+  "characters": [
+    {
+      "name": "Adventurer",
+      "gender": "male",
+      "url": "/static/models/clothed_people/men_pack/Individual%20Characters/glTF/Adventurer.gltf",
+      "walk": "Walk",
+      "idle": "Idle",
+      "forward_offset": 0,
+      "source": "men_pack/Individual Characters/glTF/Adventurer.gltf"
+    },
+    {
+      "name": "Beach",
+      "gender": "male",
+      "url": "/static/models/clothed_people/men_pack/Individual%20Characters/glTF/Beach.gltf",
+      "walk": "Walk",
+      "idle": "Idle",
+      "forward_offset": 0,
+      "source": "men_pack/Individual Characters/glTF/Beach.gltf"
+    },
+    {
+      "name": "Casual_2",
+      "gender": "male",
+      "url": "/static/models/clothed_people/men_pack/Individual%20Characters/glTF/Casual_2.gltf",
+      "walk": "Walk",
+      "idle": "Idle",
+      "forward_offset": 0,
+      "source": "men_pack/Individual Characters/glTF/Casual_2.gltf"
+    },
+    {
+      "name": "Adventurer",
+      "gender": "female",
+      "url": "/static/models/clothed_people/women_pack/Individual%20Characters/glTF/Adventurer.gltf",
+      "walk": "Walk",
+      "idle": "Idle",
+      "forward_offset": 0,
+      "source": "women_pack/Individual Characters/glTF/Adventurer.gltf"
+    },
+    {
+      "name": "Casual",
+      "gender": "female",
+      "url": "/static/models/clothed_people/women_pack/Individual%20Characters/glTF/Casual.gltf",
+      "walk": "Walk",
+      "idle": "Idle",
+      "forward_offset": 0,
+      "source": "women_pack/Individual Characters/glTF/Casual.gltf"
+    },
+    {
+      "name": "Formal",
+      "gender": "female",
+      "url": "/static/models/clothed_people/women_pack/Individual%20Characters/glTF/Formal.gltf",
+      "walk": "Walk",
+      "idle": "Idle",
+      "forward_offset": 0,
+      "source": "women_pack/Individual Characters/glTF/Formal.gltf"
+    }
+  ],
+  "generated_at": "2026-09-04T14:04:45.754398+00:00",
+  "source_archives": [
+    "Ultimate Modular Men- Feb 2022-20260904T135926Z-1-001.zip",
+    "Ultimate Modular Women - April 2022-20260904T135903Z-1-001.zip"
+  ]
+}

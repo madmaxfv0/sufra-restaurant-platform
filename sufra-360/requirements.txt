@@ -1,0 +1,4 @@
+fastapi>=0.95
+uvicorn>=0.20
+pillow>=8.0
+websockets>=10

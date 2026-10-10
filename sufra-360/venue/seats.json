@@ -1,0 +1,1858 @@
+[
+ {
+  "id": "t01-A",
+  "table_id": "t01",
+  "label": "Seat A",
+  "x": 322.0,
+  "y": 118.0,
+  "eye": {
+   "x": -1.9,
+   "y": 1.18,
+   "z": -26.1
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t01.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t01-B",
+  "table_id": "t01",
+  "label": "Seat B",
+  "x": 372.0,
+  "y": 168.0,
+  "eye": {
+   "x": 0.6,
+   "y": 1.18,
+   "z": -23.6
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t01.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t01-C",
+  "table_id": "t01",
+  "label": "Seat C",
+  "x": 322.0,
+  "y": 218.0,
+  "eye": {
+   "x": -1.9,
+   "y": 1.18,
+   "z": -21.1
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t01.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t01-D",
+  "table_id": "t01",
+  "label": "Seat D",
+  "x": 272.0,
+  "y": 168.0,
+  "eye": {
+   "x": -4.4,
+   "y": 1.18,
+   "z": -23.6
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t01.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t02-A",
+  "table_id": "t02",
+  "label": "Seat A",
+  "x": 440.0,
+  "y": 160.0,
+  "eye": {
+   "x": 4.0,
+   "y": 1.18,
+   "z": -24.0
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t02.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t02-B",
+  "table_id": "t02",
+  "label": "Seat B",
+  "x": 490.0,
+  "y": 210.0,
+  "eye": {
+   "x": 6.5,
+   "y": 1.18,
+   "z": -21.5
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t02.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t02-C",
+  "table_id": "t02",
+  "label": "Seat C",
+  "x": 440.0,
+  "y": 260.0,
+  "eye": {
+   "x": 4.0,
+   "y": 1.18,
+   "z": -19.0
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t02.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t02-D",
+  "table_id": "t02",
+  "label": "Seat D",
+  "x": 390.0,
+  "y": 210.0,
+  "eye": {
+   "x": 1.5,
+   "y": 1.18,
+   "z": -21.5
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t02.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t03-A",
+  "table_id": "t03",
+  "label": "Seat A",
+  "x": 344.0,
+  "y": 217.0,
+  "eye": {
+   "x": -0.8,
+   "y": 1.18,
+   "z": -21.15
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t03.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t03-B",
+  "table_id": "t03",
+  "label": "Seat B",
+  "x": 344.0,
+  "y": 307.0,
+  "eye": {
+   "x": -0.8,
+   "y": 1.18,
+   "z": -16.65
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t03.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04-A",
+  "table_id": "t04",
+  "label": "Seat A",
+  "x": 404.0,
+  "y": 90.0,
+  "eye": {
+   "x": 2.2,
+   "y": 1.18,
+   "z": -27.5
+  },
+  "yaw": 123.7,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t04.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04-B",
+  "table_id": "t04",
+  "label": "Seat B",
+  "x": 500.0,
+  "y": 90.0,
+  "eye": {
+   "x": 7.0,
+   "y": 1.18,
+   "z": -27.5
+  },
+  "yaw": 236.3,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t04.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04-C",
+  "table_id": "t04",
+  "label": "Seat C",
+  "x": 404.0,
+  "y": 122.0,
+  "eye": {
+   "x": 2.2,
+   "y": 1.18,
+   "z": -25.9
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t04.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04-D",
+  "table_id": "t04",
+  "label": "Seat D",
+  "x": 500.0,
+  "y": 122.0,
+  "eye": {
+   "x": 7.0,
+   "y": 1.18,
+   "z": -25.9
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t04.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04-E",
+  "table_id": "t04",
+  "label": "Seat E",
+  "x": 404.0,
+  "y": 154.0,
+  "eye": {
+   "x": 2.2,
+   "y": 1.18,
+   "z": -24.3
+  },
+  "yaw": 56.3,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t04.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04-F",
+  "table_id": "t04",
+  "label": "Seat F",
+  "x": 500.0,
+  "y": 154.0,
+  "eye": {
+   "x": 7.0,
+   "y": 1.18,
+   "z": -24.3
+  },
+  "yaw": 303.7,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t04.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t05-A",
+  "table_id": "t05",
+  "label": "Seat A",
+  "x": 556.0,
+  "y": 217.0,
+  "eye": {
+   "x": 9.8,
+   "y": 1.18,
+   "z": -21.15
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t05.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t05-B",
+  "table_id": "t05",
+  "label": "Seat B",
+  "x": 556.0,
+  "y": 307.0,
+  "eye": {
+   "x": 9.8,
+   "y": 1.18,
+   "z": -16.65
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t05.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t06-A",
+  "table_id": "t06",
+  "label": "Seat A",
+  "x": 592.0,
+  "y": 103.0,
+  "eye": {
+   "x": 11.6,
+   "y": 1.18,
+   "z": -26.85
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t06.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t06-B",
+  "table_id": "t06",
+  "label": "Seat B",
+  "x": 639.0,
+  "y": 150.0,
+  "eye": {
+   "x": 13.95,
+   "y": 1.18,
+   "z": -24.5
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t06.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t06-C",
+  "table_id": "t06",
+  "label": "Seat C",
+  "x": 592.0,
+  "y": 197.0,
+  "eye": {
+   "x": 11.6,
+   "y": 1.18,
+   "z": -22.15
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t06.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t06-D",
+  "table_id": "t06",
+  "label": "Seat D",
+  "x": 545.0,
+  "y": 150.0,
+  "eye": {
+   "x": 9.25,
+   "y": 1.18,
+   "z": -24.5
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t06.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t07-A",
+  "table_id": "t07",
+  "label": "Seat A",
+  "x": 654.0,
+  "y": 169.0,
+  "eye": {
+   "x": 14.7,
+   "y": 1.18,
+   "z": -23.55
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t07.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t07-B",
+  "table_id": "t07",
+  "label": "Seat B",
+  "x": 701.0,
+  "y": 216.0,
+  "eye": {
+   "x": 17.05,
+   "y": 1.18,
+   "z": -21.2
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t07.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t07-C",
+  "table_id": "t07",
+  "label": "Seat C",
+  "x": 654.0,
+  "y": 263.0,
+  "eye": {
+   "x": 14.7,
+   "y": 1.18,
+   "z": -18.85
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t07.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t07-D",
+  "table_id": "t07",
+  "label": "Seat D",
+  "x": 607.0,
+  "y": 216.0,
+  "eye": {
+   "x": 12.35,
+   "y": 1.18,
+   "z": -21.2
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t07.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t08-A",
+  "table_id": "t08",
+  "label": "Seat A",
+  "x": 302.0,
+  "y": 324.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": -15.8
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t08.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t08-B",
+  "table_id": "t08",
+  "label": "Seat B",
+  "x": 350.0,
+  "y": 372.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -13.4
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t08.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t08-C",
+  "table_id": "t08",
+  "label": "Seat C",
+  "x": 302.0,
+  "y": 420.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": -11.0
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t08.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t08-D",
+  "table_id": "t08",
+  "label": "Seat D",
+  "x": 254.0,
+  "y": 372.0,
+  "eye": {
+   "x": -5.3,
+   "y": 1.18,
+   "z": -13.4
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t08.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t09-A",
+  "table_id": "t09",
+  "label": "Seat A",
+  "x": 302.0,
+  "y": 414.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": -11.3
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t09.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t09-B",
+  "table_id": "t09",
+  "label": "Seat B",
+  "x": 350.0,
+  "y": 462.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -8.9
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t09.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t09-C",
+  "table_id": "t09",
+  "label": "Seat C",
+  "x": 302.0,
+  "y": 510.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": -6.5
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t09.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t09-D",
+  "table_id": "t09",
+  "label": "Seat D",
+  "x": 254.0,
+  "y": 462.0,
+  "eye": {
+   "x": -5.3,
+   "y": 1.18,
+   "z": -8.9
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t09.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-A",
+  "table_id": "t10",
+  "label": "Seat A",
+  "x": 256.0,
+  "y": 539.8,
+  "eye": {
+   "x": -5.2,
+   "y": 1.18,
+   "z": -5.013
+  },
+  "yaw": 139.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-B",
+  "table_id": "t10",
+  "label": "Seat B",
+  "x": 352.0,
+  "y": 539.8,
+  "eye": {
+   "x": -0.4,
+   "y": 1.18,
+   "z": -5.013
+  },
+  "yaw": 220.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-C",
+  "table_id": "t10",
+  "label": "Seat C",
+  "x": 256.0,
+  "y": 577.2,
+  "eye": {
+   "x": -5.2,
+   "y": 1.18,
+   "z": -3.138
+  },
+  "yaw": 111.3,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-D",
+  "table_id": "t10",
+  "label": "Seat D",
+  "x": 352.0,
+  "y": 577.2,
+  "eye": {
+   "x": -0.4,
+   "y": 1.18,
+   "z": -3.138
+  },
+  "yaw": 248.7,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-E",
+  "table_id": "t10",
+  "label": "Seat E",
+  "x": 256.0,
+  "y": 614.8,
+  "eye": {
+   "x": -5.2,
+   "y": 1.18,
+   "z": -1.263
+  },
+  "yaw": 68.7,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-F",
+  "table_id": "t10",
+  "label": "Seat F",
+  "x": 352.0,
+  "y": 614.8,
+  "eye": {
+   "x": -0.4,
+   "y": 1.18,
+   "z": -1.263
+  },
+  "yaw": 291.3,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-G",
+  "table_id": "t10",
+  "label": "Seat G",
+  "x": 256.0,
+  "y": 652.2,
+  "eye": {
+   "x": -5.2,
+   "y": 1.18,
+   "z": 0.613
+  },
+  "yaw": 40.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10-H",
+  "table_id": "t10",
+  "label": "Seat H",
+  "x": 352.0,
+  "y": 652.2,
+  "eye": {
+   "x": -0.4,
+   "y": 1.18,
+   "z": 0.613
+  },
+  "yaw": 319.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t10.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t11-A",
+  "table_id": "t11",
+  "label": "Seat A",
+  "x": 302.0,
+  "y": 678.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": 1.9
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t11.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t11-B",
+  "table_id": "t11",
+  "label": "Seat B",
+  "x": 350.0,
+  "y": 726.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": 4.3
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t11.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t11-C",
+  "table_id": "t11",
+  "label": "Seat C",
+  "x": 302.0,
+  "y": 774.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": 6.7
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t11.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t11-D",
+  "table_id": "t11",
+  "label": "Seat D",
+  "x": 254.0,
+  "y": 726.0,
+  "eye": {
+   "x": -5.3,
+   "y": 1.18,
+   "z": 4.3
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t11.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t12-A",
+  "table_id": "t12",
+  "label": "Seat A",
+  "x": 302.0,
+  "y": 767.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": 6.35
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t12.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t12-B",
+  "table_id": "t12",
+  "label": "Seat B",
+  "x": 302.0,
+  "y": 857.0,
+  "eye": {
+   "x": -2.9,
+   "y": 1.18,
+   "z": 10.85
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t12.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t13-A",
+  "table_id": "t13",
+  "label": "Seat A",
+  "x": 350.0,
+  "y": 412.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -11.4
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t13.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t13-B",
+  "table_id": "t13",
+  "label": "Seat B",
+  "x": 350.0,
+  "y": 492.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -7.4
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t13.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t14-A",
+  "table_id": "t14",
+  "label": "Seat A",
+  "x": 350.0,
+  "y": 488.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -7.6
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t14.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t14-B",
+  "table_id": "t14",
+  "label": "Seat B",
+  "x": 350.0,
+  "y": 568.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -3.6
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t14.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t15-A",
+  "table_id": "t15",
+  "label": "Seat A",
+  "x": 350.0,
+  "y": 564.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": -3.8
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t15.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t15-B",
+  "table_id": "t15",
+  "label": "Seat B",
+  "x": 350.0,
+  "y": 644.0,
+  "eye": {
+   "x": -0.5,
+   "y": 1.18,
+   "z": 0.2
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t15.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t16-A",
+  "table_id": "t16",
+  "label": "Seat A",
+  "x": 620.0,
+  "y": 322.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -15.9
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t16.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t16-B",
+  "table_id": "t16",
+  "label": "Seat B",
+  "x": 670.0,
+  "y": 372.0,
+  "eye": {
+   "x": 15.5,
+   "y": 1.18,
+   "z": -13.4
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t16.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t16-C",
+  "table_id": "t16",
+  "label": "Seat C",
+  "x": 620.0,
+  "y": 422.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -10.9
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t16.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t16-D",
+  "table_id": "t16",
+  "label": "Seat D",
+  "x": 570.0,
+  "y": 372.0,
+  "eye": {
+   "x": 10.5,
+   "y": 1.18,
+   "z": -13.4
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t16.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t17-A",
+  "table_id": "t17",
+  "label": "Seat A",
+  "x": 620.0,
+  "y": 416.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -11.2
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t17.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t17-B",
+  "table_id": "t17",
+  "label": "Seat B",
+  "x": 670.0,
+  "y": 466.0,
+  "eye": {
+   "x": 15.5,
+   "y": 1.18,
+   "z": -8.7
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t17.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t17-C",
+  "table_id": "t17",
+  "label": "Seat C",
+  "x": 620.0,
+  "y": 516.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -6.2
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t17.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t17-D",
+  "table_id": "t17",
+  "label": "Seat D",
+  "x": 570.0,
+  "y": 466.0,
+  "eye": {
+   "x": 10.5,
+   "y": 1.18,
+   "z": -8.7
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t17.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t18-A",
+  "table_id": "t18",
+  "label": "Seat A",
+  "x": 620.0,
+  "y": 510.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -6.5
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t18.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t18-B",
+  "table_id": "t18",
+  "label": "Seat B",
+  "x": 670.0,
+  "y": 560.0,
+  "eye": {
+   "x": 15.5,
+   "y": 1.18,
+   "z": -4.0
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t18.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t18-C",
+  "table_id": "t18",
+  "label": "Seat C",
+  "x": 620.0,
+  "y": 610.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -1.5
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t18.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t18-D",
+  "table_id": "t18",
+  "label": "Seat D",
+  "x": 570.0,
+  "y": 560.0,
+  "eye": {
+   "x": 10.5,
+   "y": 1.18,
+   "z": -4.0
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t18.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t19-A",
+  "table_id": "t19",
+  "label": "Seat A",
+  "x": 620.0,
+  "y": 604.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": -1.8
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t19.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t19-B",
+  "table_id": "t19",
+  "label": "Seat B",
+  "x": 670.0,
+  "y": 654.0,
+  "eye": {
+   "x": 15.5,
+   "y": 1.18,
+   "z": 0.7
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t19.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t19-C",
+  "table_id": "t19",
+  "label": "Seat C",
+  "x": 620.0,
+  "y": 704.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": 3.2
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t19.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t19-D",
+  "table_id": "t19",
+  "label": "Seat D",
+  "x": 570.0,
+  "y": 654.0,
+  "eye": {
+   "x": 10.5,
+   "y": 1.18,
+   "z": 0.7
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t19.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t20-A",
+  "table_id": "t20",
+  "label": "Seat A",
+  "x": 620.0,
+  "y": 733.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": 4.65
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t20.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t20-B",
+  "table_id": "t20",
+  "label": "Seat B",
+  "x": 620.0,
+  "y": 827.0,
+  "eye": {
+   "x": 13.0,
+   "y": 1.18,
+   "z": 9.35
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t20.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-A",
+  "table_id": "t21",
+  "label": "Seat A",
+  "x": 326.0,
+  "y": 862.0,
+  "eye": {
+   "x": -1.7,
+   "y": 1.18,
+   "z": 11.1
+  },
+  "yaw": 133.9,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-B",
+  "table_id": "t21",
+  "label": "Seat B",
+  "x": 326.0,
+  "y": 962.0,
+  "eye": {
+   "x": -1.7,
+   "y": 1.18,
+   "z": 16.1
+  },
+  "yaw": 46.1,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-C",
+  "table_id": "t21",
+  "label": "Seat C",
+  "x": 352.0,
+  "y": 862.0,
+  "eye": {
+   "x": -0.4,
+   "y": 1.18,
+   "z": 11.1
+  },
+  "yaw": 152.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-D",
+  "table_id": "t21",
+  "label": "Seat D",
+  "x": 352.0,
+  "y": 962.0,
+  "eye": {
+   "x": -0.4,
+   "y": 1.18,
+   "z": 16.1
+  },
+  "yaw": 27.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-E",
+  "table_id": "t21",
+  "label": "Seat E",
+  "x": 378.0,
+  "y": 862.0,
+  "eye": {
+   "x": 0.9,
+   "y": 1.18,
+   "z": 11.1
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-F",
+  "table_id": "t21",
+  "label": "Seat F",
+  "x": 378.0,
+  "y": 962.0,
+  "eye": {
+   "x": 0.9,
+   "y": 1.18,
+   "z": 16.1
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-G",
+  "table_id": "t21",
+  "label": "Seat G",
+  "x": 404.0,
+  "y": 862.0,
+  "eye": {
+   "x": 2.2,
+   "y": 1.18,
+   "z": 11.1
+  },
+  "yaw": 207.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-H",
+  "table_id": "t21",
+  "label": "Seat H",
+  "x": 404.0,
+  "y": 962.0,
+  "eye": {
+   "x": 2.2,
+   "y": 1.18,
+   "z": 16.1
+  },
+  "yaw": 332.5,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-I",
+  "table_id": "t21",
+  "label": "Seat I",
+  "x": 430.0,
+  "y": 862.0,
+  "eye": {
+   "x": 3.5,
+   "y": 1.18,
+   "z": 11.1
+  },
+  "yaw": 226.1,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21-J",
+  "table_id": "t21",
+  "label": "Seat J",
+  "x": 430.0,
+  "y": 962.0,
+  "eye": {
+   "x": 3.5,
+   "y": 1.18,
+   "z": 16.1
+  },
+  "yaw": 313.9,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t21.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t22-A",
+  "table_id": "t22",
+  "label": "Seat A",
+  "x": 340.0,
+  "y": 1030.0,
+  "eye": {
+   "x": -1.0,
+   "y": 1.18,
+   "z": 19.5
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t22.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t22-B",
+  "table_id": "t22",
+  "label": "Seat B",
+  "x": 392.0,
+  "y": 1082.0,
+  "eye": {
+   "x": 1.6,
+   "y": 1.18,
+   "z": 22.1
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t22.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t22-C",
+  "table_id": "t22",
+  "label": "Seat C",
+  "x": 340.0,
+  "y": 1134.0,
+  "eye": {
+   "x": -1.0,
+   "y": 1.18,
+   "z": 24.7
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t22.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t22-D",
+  "table_id": "t22",
+  "label": "Seat D",
+  "x": 288.0,
+  "y": 1082.0,
+  "eye": {
+   "x": -3.6,
+   "y": 1.18,
+   "z": 22.1
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t22.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t23-A",
+  "table_id": "t23",
+  "label": "Seat A",
+  "x": 452.0,
+  "y": 1076.0,
+  "eye": {
+   "x": 4.6,
+   "y": 1.18,
+   "z": 21.8
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t23.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t23-B",
+  "table_id": "t23",
+  "label": "Seat B",
+  "x": 504.0,
+  "y": 1128.0,
+  "eye": {
+   "x": 7.2,
+   "y": 1.18,
+   "z": 24.4
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t23.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t23-C",
+  "table_id": "t23",
+  "label": "Seat C",
+  "x": 452.0,
+  "y": 1180.0,
+  "eye": {
+   "x": 4.6,
+   "y": 1.18,
+   "z": 27.0
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t23.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t23-D",
+  "table_id": "t23",
+  "label": "Seat D",
+  "x": 400.0,
+  "y": 1128.0,
+  "eye": {
+   "x": 2.0,
+   "y": 1.18,
+   "z": 24.4
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t23.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t24-A",
+  "table_id": "t24",
+  "label": "Seat A",
+  "x": 606.0,
+  "y": 1056.0,
+  "eye": {
+   "x": 12.3,
+   "y": 1.18,
+   "z": 20.8
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t24.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t24-B",
+  "table_id": "t24",
+  "label": "Seat B",
+  "x": 658.0,
+  "y": 1108.0,
+  "eye": {
+   "x": 14.9,
+   "y": 1.18,
+   "z": 23.4
+  },
+  "yaw": 270.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t24.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t24-C",
+  "table_id": "t24",
+  "label": "Seat C",
+  "x": 606.0,
+  "y": 1160.0,
+  "eye": {
+   "x": 12.3,
+   "y": 1.18,
+   "z": 26.0
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t24.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t24-D",
+  "table_id": "t24",
+  "label": "Seat D",
+  "x": 554.0,
+  "y": 1108.0,
+  "eye": {
+   "x": 9.7,
+   "y": 1.18,
+   "z": 23.4
+  },
+  "yaw": 90.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t24.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t25-A",
+  "table_id": "t25",
+  "label": "Seat A",
+  "x": 330.0,
+  "y": 1142.0,
+  "eye": {
+   "x": -1.5,
+   "y": 1.18,
+   "z": 25.1
+  },
+  "yaw": 180.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t25.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t25-B",
+  "table_id": "t25",
+  "label": "Seat B",
+  "x": 330.0,
+  "y": 1230.0,
+  "eye": {
+   "x": -1.5,
+   "y": 1.18,
+   "z": 29.5
+  },
+  "yaw": 0.0,
+  "pitch": 0.0,
+  "panorama": "/assets/panoramas/t25.jpg?v=5",
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t26-A",
+  "table_id": "t26",
+  "label": "Seat A",
+  "x": 451.1,
+  "y": 1050.4,
+  "eye": {
+   "x": 4.56,
+   "y": 1.18,
+   "z": 20.52
+  },
+  "yaw": 247.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t26-B",
+  "table_id": "t26",
+  "label": "Seat B",
+  "x": 401.6,
+  "y": 1071.1,
+  "eye": {
+   "x": 2.08,
+   "y": 1.18,
+   "z": 21.56
+  },
+  "yaw": 157.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t26-C",
+  "table_id": "t26",
+  "label": "Seat C",
+  "x": 380.9,
+  "y": 1021.6,
+  "eye": {
+   "x": 1.04,
+   "y": 1.18,
+   "z": 19.08
+  },
+  "yaw": 67.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t26-D",
+  "table_id": "t26",
+  "label": "Seat D",
+  "x": 430.4,
+  "y": 1000.9,
+  "eye": {
+   "x": 3.52,
+   "y": 1.18,
+   "z": 18.04
+  },
+  "yaw": 337.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t27-A",
+  "table_id": "t27",
+  "label": "Seat A",
+  "x": 430.2,
+  "y": 352.1,
+  "eye": {
+   "x": 3.51,
+   "y": 1.18,
+   "z": -14.4
+  },
+  "yaw": 247.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t27-B",
+  "table_id": "t27",
+  "label": "Seat B",
+  "x": 381.9,
+  "y": 372.2,
+  "eye": {
+   "x": 1.1,
+   "y": 1.18,
+   "z": -13.39
+  },
+  "yaw": 157.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t27-C",
+  "table_id": "t27",
+  "label": "Seat C",
+  "x": 361.8,
+  "y": 323.9,
+  "eye": {
+   "x": 0.09,
+   "y": 1.18,
+   "z": -15.8
+  },
+  "yaw": 67.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t27-D",
+  "table_id": "t27",
+  "label": "Seat D",
+  "x": 410.1,
+  "y": 303.8,
+  "eye": {
+   "x": 2.5,
+   "y": 1.18,
+   "z": -16.81
+  },
+  "yaw": 337.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t28-A",
+  "table_id": "t28",
+  "label": "Seat A",
+  "x": 541.1,
+  "y": 1050.4,
+  "eye": {
+   "x": 9.06,
+   "y": 1.18,
+   "z": 20.52
+  },
+  "yaw": 247.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t28-B",
+  "table_id": "t28",
+  "label": "Seat B",
+  "x": 491.6,
+  "y": 1071.1,
+  "eye": {
+   "x": 6.58,
+   "y": 1.18,
+   "z": 21.56
+  },
+  "yaw": 157.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t28-C",
+  "table_id": "t28",
+  "label": "Seat C",
+  "x": 470.9,
+  "y": 1021.6,
+  "eye": {
+   "x": 5.54,
+   "y": 1.18,
+   "z": 19.08
+  },
+  "yaw": 67.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t28-D",
+  "table_id": "t28",
+  "label": "Seat D",
+  "x": 520.4,
+  "y": 1000.9,
+  "eye": {
+   "x": 8.02,
+   "y": 1.18,
+   "z": 18.04
+  },
+  "yaw": 337.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t29-A",
+  "table_id": "t29",
+  "label": "Seat A",
+  "x": 520.2,
+  "y": 352.1,
+  "eye": {
+   "x": 8.01,
+   "y": 1.18,
+   "z": -14.4
+  },
+  "yaw": 247.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t29-B",
+  "table_id": "t29",
+  "label": "Seat B",
+  "x": 471.9,
+  "y": 372.2,
+  "eye": {
+   "x": 5.6,
+   "y": 1.18,
+   "z": -13.39
+  },
+  "yaw": 157.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t29-C",
+  "table_id": "t29",
+  "label": "Seat C",
+  "x": 451.8,
+  "y": 323.9,
+  "eye": {
+   "x": 4.59,
+   "y": 1.18,
+   "z": -15.8
+  },
+  "yaw": 67.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t29-D",
+  "table_id": "t29",
+  "label": "Seat D",
+  "x": 500.1,
+  "y": 303.8,
+  "eye": {
+   "x": 7.0,
+   "y": 1.18,
+   "z": -16.81
+  },
+  "yaw": 337.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t30-A",
+  "table_id": "t30",
+  "label": "Seat A",
+  "x": 571.1,
+  "y": 1180.4,
+  "eye": {
+   "x": 10.56,
+   "y": 1.18,
+   "z": 27.02
+  },
+  "yaw": 247.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t30-B",
+  "table_id": "t30",
+  "label": "Seat B",
+  "x": 521.6,
+  "y": 1201.1,
+  "eye": {
+   "x": 8.08,
+   "y": 1.18,
+   "z": 28.06
+  },
+  "yaw": 157.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t30-C",
+  "table_id": "t30",
+  "label": "Seat C",
+  "x": 500.9,
+  "y": 1151.6,
+  "eye": {
+   "x": 7.04,
+   "y": 1.18,
+   "z": 25.58
+  },
+  "yaw": 67.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ },
+ {
+  "id": "t30-D",
+  "table_id": "t30",
+  "label": "Seat D",
+  "x": 550.4,
+  "y": 1130.9,
+  "eye": {
+   "x": 9.52,
+   "y": 1.18,
+   "z": 24.54
+  },
+  "yaw": 337.7,
+  "pitch": 0.0,
+  "panorama": null,
+  "verification": "GENERATED"
+ }
+]

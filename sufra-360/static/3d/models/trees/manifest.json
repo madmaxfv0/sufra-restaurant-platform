@@ -1,0 +1,9 @@
+{
+  "_source": "Poly Haven (CC0). Fetched by tools/fetch_polyhaven.py, decimated and re-exported by blender/prep_assets.py. See static/3d/ASSET_CREDITS.md.",
+  "_lod": "The *_lod files are the same trees welded and collapsed to ~2-3 k triangles. They are only used by the parkland scatter, 60 m out and beyond, where a tree is a silhouette rather than a plant.",
+  "trees": [
+    { "file": "island_tree_01.glb", "height": 7.5, "lod": "island_tree_01_lod.glb" },
+    { "file": "island_tree_02.glb", "height": 6.2, "lod": "island_tree_02_lod.glb" },
+    { "file": "tree_small_02.glb", "height": 5.4, "lod": "tree_small_02_lod.glb" }
+  ]
+}

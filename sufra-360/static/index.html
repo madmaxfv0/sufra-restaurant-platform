@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="theme-color" content="#070c16">
+<title>Sufra Waterfront — Reservations</title>
+<link rel="stylesheet" href="/static/css/app.css?v=6">
+</head>
+<body>
+
+<canvas id="map"></canvas>
+<div id="scrim"></div>
+
+<!-- ─────────────────────────────── overview ─────────────────────────── -->
+<section id="overview" class="screen show">
+  <div class="ov-inner">
+    <div class="mark">
+      <div class="mark-rule"></div>
+      <h1>SUFRA</h1>
+      <p class="mark-sub">Waterfront · Seaside kitchen &amp; garden room</p>
+      <div class="mark-rule"></div>
+    </div>
+    <nav class="ov-nav">
+      <a href="/360" class="primary" style="text-decoration:none;display:inline-block">SUFRA 360° · Live 3D</a>
+      <button data-go="explore">2D map</button>
+      <button data-go="reserve" class="primary">Reserve</button>
+      <button data-go="menu">Menu</button>
+      <button data-go="about">About</button>
+      <button data-go="arrival" id="ov-arrival" class="hidden">Arrival</button>
+      <button data-go="real" id="ov-real">Walk a real venue</button>
+      <button data-go="tour" id="ov-tour">Show me everything</button>
+    </nav>
+    <p class="ov-hint">Drag to move · pinch or scroll to zoom · tap a table</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── top bar ──────────────────────────── -->
+<header id="topbar" class="hidden">
+  <button id="home" class="icon" title="Overview">SUFRA</button>
+  <div class="crit">
+    <label>Date<input type="date" id="f-date"></label>
+    <label>Time<select id="f-time"></select></label>
+    <label>Guests<select id="f-party"></select></label>
+    <label>Event<select id="f-event">
+      <option value="dinner">Seated dinner</option>
+      <option value="reception">Standing reception</option>
+      <option value="live_music">Live music night</option>
+      <option value="private_dinner">Private dinner</option>
+    </select></label>
+    <label class="wide">Seating<select id="f-pref">
+      <option value="best">Best available</option>
+      <option value="sea">Sea view</option>
+      <option value="stage">Facing the stage</option>
+      <option value="quiet">Quiet</option>
+      <option value="window">Near a window</option>
+      <option value="terrace">Terrace</option>
+      <option value="garden">Garden room</option>
+      <option value="private">Private</option>
+      <option value="bar">At the bar</option>
+      <option value="romantic">Romantic</option>
+      <option value="lively">Lively</option>
+      <option value="view">Best view</option>
+      <option value="accessible">Step-free access</option>
+    </select></label>
+  </div>
+  <div class="topright">
+    <button id="btn-tour" class="ghost">Features</button>
+    <button id="btn-menu" class="ghost">Menu</button>
+    <button id="btn-fit" class="ghost">Overview</button>
+  </div>
+</header>
+
+<div id="holdchip" class="hidden">
+  <span class="dot"></span><span id="holdtext">Holding table</span>
+  <strong id="holdclock">5:00</strong>
+  <button id="holdrelease">release</button>
+</div>
+
+<div id="wx" class="hidden"><span id="wx-icon">☁</span><span id="wx-text">Baku</span></div>
+<div id="eventbar" class="hidden"></div>
+
+<div id="legend" class="hidden">
+  <span><i class="sw av"></i>Available</span>
+  <span><i class="sw hd"></i>Being booked</span>
+  <span><i class="sw rs"></i>Reserved</span>
+  <span class="ver">Layout: <b>PLACEHOLDER</b></span>
+</div>
+
+<!-- ─────────────────────────────── guide ────────────────────────────── -->
+<div id="guide" class="hidden">
+  <input id="guide-q" placeholder="Ask: “show me somewhere quiet for two”" autocomplete="off">
+  <button id="guide-go">Ask</button>
+</div>
+<div id="guide-answer" class="hidden"></div>
+
+<!-- ───────────────────────────── table card ─────────────────────────── -->
+<aside id="card" class="panel hidden">
+  <button class="close" data-close="card">×</button>
+  <div class="card-head">
+    <span id="c-state" class="pill">Available</span>
+    <h2>Table <span id="c-label">—</span></h2>
+    <p id="c-zone" class="muted">—</p>
+  </div>
+  <ul id="c-traits" class="traits"></ul>
+  <dl id="c-facts" class="facts"></dl>
+  <p id="c-why" class="why hidden"></p>
+  <div class="card-actions">
+    <button id="c-seat" class="ghost">View from a seat</button>
+    <button id="c-hold" class="primary">Reserve this table</button>
+  </div>
+  <button id="c-alts" class="link">Compare nearby tables</button>
+  <div id="c-altlist"></div>
+</aside>
+
+<!-- ──────────────────────────── seat view ───────────────────────────── -->
+<section id="seatview" class="screen fullscreen hidden">
+  <canvas id="pano"></canvas>
+  <iframe id="gsv" class="hidden" allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="sv-top">
+    <button id="sv-back" class="ghost">← Back to the room</button>
+    <div class="sv-title">Table <span id="sv-label"></span> · <span id="sv-seat"></span></div>
+    <div class="sv-tools">
+      <button id="sv-walk" class="ghost hidden" title="Walk a real 3D captured venue">Real 3D venue</button>
+      <button id="sv-real" class="ghost hidden" title="Google Street View for this venue">Real 360</button>
+      <button id="sv-gyro" class="ghost" title="Move your phone to look around">Gyro</button>
+      <button id="sv-vr" class="ghost" title="Split screen for a phone headset">VR</button>
+      <button id="sv-full" class="ghost">Full screen</button>
+    </div>
+  </div>
+  <div id="compass"></div>
+  <div id="svmarks"></div>
+  <div class="sv-bottom">
+    <div id="sv-seats" class="seatpicker"></div>
+    <button id="sv-reserve" class="primary">Reserve this table</button>
+  </div>
+  <div class="sv-note">Placeholder capture — replaced by the real 360 scan of this table.</div>
+</section>
+
+<!-- ─────────────────────────── booking form ─────────────────────────── -->
+<aside id="form" class="panel wide hidden">
+  <button class="close" data-close="form">×</button>
+  <h2>Your reservation</h2>
+  <p id="fm-summary" class="muted"></p>
+  <div class="grid2">
+    <label>First name<input id="fm-first" autocomplete="given-name"></label>
+    <label>Last name<input id="fm-last" autocomplete="family-name"></label>
+    <label>Email<input id="fm-email" type="email" autocomplete="email"></label>
+    <label>Phone<input id="fm-phone" type="tel" autocomplete="tel"></label>
+    <label>Occasion<select id="fm-occasion">
+      <option value="">—</option><option>Birthday</option><option>Anniversary</option>
+      <option>Business dinner</option><option>Proposal</option><option>Celebration</option>
+    </select></label>
+    <label>High chairs<select id="fm-chairs">
+      <option value="0">0</option><option>1</option><option>2</option><option>3</option>
+    </select></label>
+  </div>
+  <label>Allergies<input id="fm-allergies" placeholder="e.g. shellfish, sesame"></label>
+  <label>Dietary requirements<input id="fm-dietary" placeholder="e.g. two vegans"></label>
+  <label>Accessibility requirements<input id="fm-access" placeholder="e.g. step-free route"></label>
+  <label>Anything else<textarea id="fm-notes" rows="2"></textarea></label>
+  <label class="check"><input type="checkbox" id="fm-marketing">
+    Email me occasionally about menus and events (optional, separate from this booking)</label>
+  <p id="fm-error" class="error hidden"></p>
+  <button id="fm-submit" class="primary big">Confirm reservation</button>
+</aside>
+
+<!-- ──────────────────────────── confirmation ────────────────────────── -->
+<section id="confirm" class="screen fullscreen hidden">
+  <div class="cf-inner">
+    <p class="cf-eyebrow">Confirmed</p>
+    <h1 id="cf-code">—</h1>
+    <div class="cf-grid">
+      <div><span>Guest</span><b id="cf-name"></b></div>
+      <div><span>Date</span><b id="cf-date"></b></div>
+      <div><span>Time</span><b id="cf-time"></b></div>
+      <div><span>Party</span><b id="cf-party"></b></div>
+      <div><span>Table</span><b id="cf-table"></b></div>
+      <div><span>Room</span><b id="cf-zone"></b></div>
+    </div>
+    <canvas id="cf-map" width="360" height="640"></canvas>
+    <div class="cf-actions">
+      <button id="cf-ics" class="ghost">Add to calendar</button>
+      <button id="cf-view" class="ghost">View your table</button>
+      <button id="cf-cancel" class="ghost danger">Cancel booking</button>
+      <button id="cf-done" class="primary">Done</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── menu ─────────────────────────────── -->
+<section id="menuscreen" class="screen fullscreen hidden">
+  <div class="mn-top">
+    <button id="mn-back" class="ghost">← Back</button>
+    <h1>The Menu</h1>
+    <p class="muted">Browse only. Ordering happens in the dining room.</p>
+  </div>
+  <div id="mn-body"></div>
+</section>
+
+<!-- ─────────────────────────────── about ────────────────────────────── -->
+<section id="about" class="screen fullscreen hidden">
+  <div class="ab-inner">
+    <button id="ab-back" class="ghost">← Back</button>
+    <h1>Sufra Waterfront</h1>
+    <p>A sample venue built for the SUFRA Immersive Reservations prototype.
+       Nineteen tables across a garden room, a main dining room, the bar,
+       a private room and a waterfront terrace.</p>
+    <h3>About what you're looking at</h3>
+    <p>Every table, seat, sightline and 360 view in this prototype is marked
+       <b>PLACEHOLDER</b>. The layout is illustrative. It is generated, not
+       measured, and it is not a photograph of a real room. The software is
+       built so that measured floor plans, LiDAR scans, photogrammetry and
+       real 360 captures drop into <code>venue/</code> and replace the
+       placeholders without any change to the booking logic.</p>
+    <h3>Verification levels</h3>
+    <ul>
+      <li><b>PLACEHOLDER</b> — generated approximation. What you see now.</li>
+      <li><b>MEASURED</b> — from architectural plans and tape measurements.</li>
+      <li><b>SCAN_VERIFIED</b> — from LiDAR or photogrammetry.</li>
+      <li><b>PHOTOGRAPH_VERIFIED</b> — a real 360 capture from that seat.</li>
+    </ul>
+    <h3>Find a booking</h3>
+    <div class="lookup">
+      <input id="ab-code" placeholder="Confirmation code, e.g. SF7K2QMD">
+      <button id="ab-find" class="ghost">Find</button>
+    </div>
+    <p id="ab-result" class="muted"></p>
+  </div>
+</section>
+
+<section id="arrival" class="screen fullscreen hidden">
+  <div class="sv-top">
+    <button id="ar-back" class="ghost">← Back</button>
+    <div class="sv-title">Arriving at <span id="ar-name"></span></div>
+    <div class="sv-tools">
+      <button id="ar-street" class="ghost on">Street</button>
+      <button id="ar-air" class="ghost">From the air</button>
+    </div>
+  </div>
+  <iframe id="ar-frame" allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="sv-note">Imagery © Google · embedded live, never modified</div>
+</section>
+
+<aside id="tour" class="panel wide hidden">
+  <button class="close" data-close="tour">×</button>
+  <h2>Every function</h2>
+  <p class="muted" id="tour-sub">Tap any one to run it live.</p>
+  <ol id="tour-list"></ol>
+</aside>
+
+<section id="realview" class="screen fullscreen hidden">
+  <div class="sv-top">
+    <button id="rv-back" class="ghost">← Back</button>
+    <div class="sv-title"><span id="rv-name"></span> · <span id="rv-kind" class="muted"></span></div>
+    <div class="sv-tools">
+      <select id="rv-vp" class="vpsel"></select>
+      <button id="rv-tables" class="ghost on">Live tables</button>
+      <button id="rv-full" class="ghost">Full screen</button>
+    </div>
+  </div>
+  <iframe id="rv-frame" allowfullscreen allow="accelerometer; gyroscope; xr-spatial-tracking; fullscreen"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <aside id="rv-list">
+    <h3>Right now</h3>
+    <p class="muted" id="rv-when"></p>
+    <div id="rv-rows"></div>
+  </aside>
+  <div class="sv-note" id="rv-credit"></div>
+</section>
+
+<div id="toast" class="hidden"></div>
+<div id="loader"><div class="spin"></div><p>Lighting the room…</p></div>
+
+<script type="module" src="/static/js/app.js?v=6"></script>
+</body>
+</html>

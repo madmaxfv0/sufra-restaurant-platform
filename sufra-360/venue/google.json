@@ -1,0 +1,17 @@
+{
+ "mode": "keyless",
+ "use_real": true,
+ "api_key": "",
+ "place_query": "Baku Boulevard, Baku, Azerbaijan",
+ "place_id": "",
+ "display_name": "SUFRA Waterfront",
+ "display_city": "Baku",
+ "location": {
+  "lat": 40.4093,
+  "lng": 49.8671
+ },
+ "exterior_pano_id": "",
+ "interior_pano_id": "",
+ "table_panos": {},
+ "notes": "Keyless embeds use Google Maps' public Share-and-embed endpoint. Imagery stays Google's: embedded live, never downloaded, cached or modified. Add an API key for the supported Maps Embed API path."
+}

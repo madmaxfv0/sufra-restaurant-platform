@@ -1,0 +1,5 @@
+{
+  "characters": [
+    { "file": "guest_casual.glb", "height": 1.74, "animations": { "walk_idle": "mixamo_walk_idle.glb" } }
+  ]
+}

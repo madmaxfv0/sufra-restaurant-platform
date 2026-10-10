@@ -1,0 +1,13 @@
+# Only app/, venue/, assets/ and static/ are served. The rest is source
+# material and history - 4 GB that must not be uploaded to the builder.
+.git
+assets_src
+blender
+captures
+backups
+tools
+**/__pycache__
+*.pyc
+*.db
+*.db-*
+.DS_Store

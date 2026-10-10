@@ -1,0 +1,222 @@
+[
+ {
+  "id": "dining_chair_02",
+  "name": "dining_chair_02",
+  "category": "furniture",
+  "file": "dining_chair_02.glb",
+  "height": 0.92,
+  "tris": 5998,
+  "tris_source": 22013,
+  "leaf_materials": 0,
+  "bytes": 409788
+ },
+ {
+  "id": "GreenChair_01",
+  "name": "GreenChair_01",
+  "category": "furniture",
+  "file": "GreenChair_01.glb",
+  "height": 0.9,
+  "tris": 4213,
+  "tris_source": 4213,
+  "leaf_materials": 0,
+  "bytes": 510640
+ },
+ {
+  "id": "WoodenChair_01",
+  "name": "WoodenChair_01",
+  "category": "furniture",
+  "file": "WoodenChair_01.glb",
+  "height": 0.9,
+  "tris": 5000,
+  "tris_source": 19992,
+  "leaf_materials": 0,
+  "bytes": 569604
+ },
+ {
+  "id": "ArmChair_01",
+  "name": "ArmChair_01",
+  "category": "furniture",
+  "file": "ArmChair_01.glb",
+  "height": 0.82,
+  "tris": 5626,
+  "tris_source": 5626,
+  "leaf_materials": 0,
+  "bytes": 644708
+ },
+ {
+  "id": "Sofa_01",
+  "name": "Sofa_01",
+  "category": "furniture",
+  "file": "Sofa_01.glb",
+  "height": 0.84,
+  "tris": 4101,
+  "tris_source": 4101,
+  "leaf_materials": 0,
+  "bytes": 427148
+ },
+ {
+  "id": "dining_table",
+  "name": "dining_table",
+  "category": "furniture",
+  "file": "dining_table.glb",
+  "height": 0.75,
+  "tris": 1048,
+  "tris_source": 1048,
+  "leaf_materials": 0,
+  "bytes": 2258992
+ },
+ {
+  "id": "WoodenTable_02",
+  "name": "WoodenTable_02",
+  "category": "furniture",
+  "file": "WoodenTable_02.glb",
+  "height": 0.75,
+  "tris": 1514,
+  "tris_source": 1514,
+  "leaf_materials": 0,
+  "bytes": 463972
+ },
+ {
+  "id": "coffee_table_round_01",
+  "name": "coffee_table_round_01",
+  "category": "furniture",
+  "file": "coffee_table_round_01.glb",
+  "height": 0.75,
+  "tris": 4000,
+  "tris_source": 4044,
+  "leaf_materials": 0,
+  "bytes": 1452000
+ },
+ {
+  "id": "bar_chair_round_01",
+  "name": "bar_chair_round_01",
+  "category": "furniture",
+  "file": "bar_chair_round_01.glb",
+  "height": 0.78,
+  "tris": 5000,
+  "tris_source": 14373,
+  "leaf_materials": 0,
+  "bytes": 1873632
+ },
+ {
+  "id": "metal_stool_02",
+  "name": "metal_stool_02",
+  "category": "furniture",
+  "file": "metal_stool_02.glb",
+  "height": 0.76,
+  "tris": 4000,
+  "tris_source": 6532,
+  "leaf_materials": 0,
+  "bytes": 135972
+ },
+ {
+  "id": "Shelf_01",
+  "name": "Shelf_01",
+  "category": "furniture",
+  "file": "Shelf_01.glb",
+  "height": 1.8,
+  "tris": 182,
+  "tris_source": 182,
+  "leaf_materials": 0,
+  "bytes": 103352
+ },
+ {
+  "id": "modern_wooden_cabinet",
+  "name": "modern_wooden_cabinet",
+  "category": "furniture",
+  "file": "modern_wooden_cabinet.glb",
+  "height": 0.85,
+  "tris": 4998,
+  "tris_source": 24976,
+  "leaf_materials": 0,
+  "bytes": 143752
+ },
+ {
+  "id": "ceramic_vase_02",
+  "name": "ceramic_vase_02",
+  "category": "tableware",
+  "file": "ceramic_vase_02.glb",
+  "height": 0.22,
+  "tris": 2500,
+  "tris_source": 11128,
+  "leaf_materials": 0,
+  "bytes": 99184
+ },
+ {
+  "id": "brass_vase_01",
+  "name": "brass_vase_01",
+  "category": "tableware",
+  "file": "brass_vase_01.glb",
+  "height": 0.26,
+  "tris": 2500,
+  "tris_source": 21440,
+  "leaf_materials": 0,
+  "bytes": 78192
+ },
+ {
+  "id": "ceramic_pot",
+  "name": "ceramic_pot",
+  "category": "plants",
+  "file": "ceramic_pot.glb",
+  "height": 0.34,
+  "tris": 2499,
+  "tris_source": 3592,
+  "leaf_materials": 1,
+  "bytes": 107180
+ },
+ {
+  "id": "food_pomegranate_01",
+  "name": "food_pomegranate_01",
+  "category": "tableware",
+  "file": "food_pomegranate_01.glb",
+  "height": 0.09,
+  "tris": 1800,
+  "tris_source": 8142,
+  "leaf_materials": 0,
+  "bytes": 95840
+ },
+ {
+  "id": "food_apple_01",
+  "name": "food_apple_01",
+  "category": "tableware",
+  "file": "food_apple_01.glb",
+  "height": 0.08,
+  "tris": 1499,
+  "tris_source": 7012,
+  "leaf_materials": 0,
+  "bytes": 79544
+ },
+ {
+  "id": "desk_lamp_arm_01",
+  "name": "desk_lamp_arm_01",
+  "category": "lamps",
+  "file": "desk_lamp_arm_01.glb",
+  "height": 0.42,
+  "tris": 3500,
+  "tris_source": 24102,
+  "leaf_materials": 0,
+  "bytes": 174428
+ },
+ {
+  "id": "industrial_wall_lamp",
+  "name": "industrial_wall_lamp",
+  "category": "lamps",
+  "file": "industrial_wall_lamp.glb",
+  "height": 0.3,
+  "tris": 2999,
+  "tris_source": 4446,
+  "leaf_materials": 0,
+  "bytes": 451496
+ },
+ {
+  "id": "modern_ceiling_lamp_01",
+  "name": "modern_ceiling_lamp_01",
+  "category": "lamps",
+  "file": "modern_ceiling_lamp_01.glb",
+  "height": 0.35,
+  "tris": 3000,
+  "tris_source": 5602,
+  "leaf_materials": 0,
+  "bytes": 83580
+ }
+]

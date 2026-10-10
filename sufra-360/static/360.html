@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070c16">
+<title>SUFRA 360 — Live Restaurant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- non-blocking: if there is no internet the system serif/sans take over, nothing waits -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/static/css/app.css?v=13">
+<link rel="stylesheet" href="/static/css/sufra360.css?v=13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Menu overlay. Deliberately scoped to #menuscreen so nothing here can reach
+   the SUFRA 360 chrome; only the menu markup was taken from the other build. */
+#menuscreen{position:fixed;inset:0;z-index:60;overflow-y:auto;
+  background:rgba(9,11,16,.86);backdrop-filter:blur(20px);padding:28px 30px 70px}
+#menuscreen.hidden{display:none}
+#menuscreen .mn-top{max-width:1080px;margin:0 auto 22px;position:relative}
+#menuscreen h1{font:500 30px/1.15 'Cormorant Garamond',Georgia,serif;color:#f0d9a8;margin:14px 0 4px;letter-spacing:.02em}
+#menuscreen .muted{color:#8b9099;font-size:13px;margin:0}
+#menuscreen #mn-back{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  color:#e8e3d8;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:13px}
+#menuscreen #mn-back:hover{background:rgba(255,255,255,.12)}
+#menuscreen #mn-body{max-width:1080px;margin:0 auto}
+#menuscreen .mn-sec{margin:0 0 40px}
+#menuscreen .mn-sec h2{font:600 12px/1 'Manrope',system-ui,sans-serif;letter-spacing:.16em;
+  text-transform:uppercase;color:#b8a074;border-bottom:1px solid rgba(240,217,168,.2);
+  padding-bottom:10px;margin:0 0 20px}
+#menuscreen .dishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+#menuscreen .dish{display:flex;gap:14px;background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden}
+#menuscreen .dish img{width:112px;height:112px;object-fit:cover;object-position:center;flex:0 0 112px;background:#15171d}
+#menuscreen .d-body{padding:11px 13px 11px 0;min-width:0}
+/* A row, not a float: floated text only shortens the LINE BOXES beside it,
+   so a dish name long enough to wrap ran its second line back under the
+   price. */
+#menuscreen .d-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+#menuscreen .d-price{flex:none;color:#f0d9a8;font:600 13px/1 'Manrope',system-ui,sans-serif;font-variant-numeric:tabular-nums}
+#menuscreen .dish h3{font:600 14px/1.35 'Manrope',system-ui,sans-serif;letter-spacing:.005em;color:#ece7dc;margin:0;min-width:0}
+#menuscreen .dish p{font-size:12px;line-height:1.45;color:#949aa4;margin:5px 0 8px}
+#menuscreen .tagrow{display:flex;flex-wrap:wrap;gap:5px}
+#menuscreen .tag{font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  padding:2px 7px;border-radius:99px;border:1px solid rgba(255,255,255,.14);color:#8b9099}
+#menuscreen .tag.diet{color:#8fd6a4;border-color:rgba(143,214,164,.3)}
+#menuscreen .tag.alg{color:#e0a878;border-color:rgba(224,168,120,.3)}
+</style>
+</head>
+<body class="s360">
+<canvas id="gl"></canvas>
+
+<!-- branded entry: the scene is already alive behind this -->
+<section id="entry">
+  <div class="entry-inner">
+    <div class="entry-rule"></div>
+    <p class="entry-kicker" data-i18n="entry.kicker">Waterfront · Live restaurant</p>
+    <h1>SUFRA</h1>
+    <p class="entry-sub" data-i18n="entry.sub">Three hundred and sixty degrees</p>
+    <div class="entry-rule"></div>
+    <div id="entry-lang" class="lang-pick" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="az">AZ</button>
+      <button type="button" data-lang="ru">RU</button>
+    </div>
+    <div id="entry-bar"><i></i></div>
+    <button id="entry-go" class="entry-btn" disabled data-i18n="entry.preparing">Preparing</button>
+    <p class="entry-hint" id="entry-hint" data-i18n="entry.waking">Waking the restaurant…</p>
+  </div>
+</section>
+
+<header id="hud-tl" class="hud">
+  <span class="mark">SUFRA</span><span class="deg">360°</span>
+  <span class="sub" data-i18n="hud.live">Live restaurant</span>
+  <span id="link" class="link polling" data-i18n="hud.connecting">connecting</span>
+</header>
+<div id="hud-tc" class="hud"><span id="service">Service · Live</span></div>
+<div id="hud-tr" class="hud">
+  <div class="chip lang" id="lang-pick" aria-label="Language">
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="az">AZ</button>
+    <button type="button" data-lang="ru">RU</button>
+  </div>
+  <div class="chip wx"><span id="wx-icon">☁</span><span id="wx-text">Weather</span></div>
+  <details class="chip menu" id="scene-menu">
+    <summary>Scene</summary>
+    <div class="menu-body">
+      <label><span data-i18n="hud.timeofday">Time of day</span>
+        <div class="seg"><button data-time="auto" class="on" data-i18n="hud.auto">Auto</button><button data-time="day" data-i18n="hud.day">Day</button>
+          <button data-time="sunset" data-i18n="hud.sunset">Sunset</button><button data-time="night" data-i18n="hud.night">Night</button></div></label>
+      <label><span data-i18n="hud.weather">Weather</span><select id="wx-demo">
+        <option value="auto">Auto · live</option><option value="clear">☀ Clear</option><option value="partly_cloudy">⛅ Cloudy</option>
+        <option value="overcast">☁ Overcast</option><option value="drizzle">🌦 Drizzle</option><option value="rain">🌧 Rain</option>
+        <option value="heavy_rain">🌧 Heavy rain</option><option value="thunderstorm">⛈ Storm</option><option value="fog">🌫 Fog</option>
+        <option value="snow">❄ Snow</option><option value="wind">💨 Wind</option><option value="strong_wind">💨 Strong wind</option>
+      </select><b id="wx-live"></b></label>
+      <label><span data-i18n="hud.quality">Quality</span><select id="q-sel">
+        <option value="ultra">Ultra</option><option value="high">High</option>
+        <option value="balanced">Balanced · recommended</option><option value="smooth">Smooth</option></select></label>
+      <p class="menu-note" data-i18n="hud.quality.note">Balanced keeps the look and drops the heavy passes.</p>
+    </div>
+  </details>
+</div>
+
+<!-- the assistant: ask where to sit -->
+<div id="ask">
+  <div id="ask-answer" class="hidden"></div>
+  <div class="ask-row">
+    <span class="ask-icon">✦</span>
+    <input id="ask-q" data-i18n-ph="ask.ph" placeholder="Ask where to sit…" autocomplete="off" spellcheck="false">
+    <div class="ask-ctx">
+      <select id="ask-party" title="Party size"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option>
+        <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option><option value="10">10</option></select>
+      <select id="ask-time" title="Time"></select>
+    </div>
+    <button id="ask-go" data-i18n="ask.go">Ask</button>
+    <button id="ask-close" class="ask-x" title="Close">×</button>
+  </div>
+  <div class="ask-chips">
+    <button data-q="somewhere quiet for two" data-i18n="ask.quiet2">Quiet for two</button>
+    <button data-q="which tables are closer to the water" data-i18n="ask.water">By the water</button>
+    <button data-q="best for a romantic dinner" data-i18n="ask.romantic">Romantic</button>
+    <button data-q="best for a family of four" data-i18n="ask.family">Family</button>
+    <button data-q="which tables are non-smoking" data-i18n="ask.nonsmoking">Non-smoking</button>
+    <button data-q="show tables with shade" data-i18n="ask.shade">Shade</button>
+    <button data-q="which tables are best for privacy" data-i18n="ask.privacy">Privacy</button>
+    <button data-q="which tables are reserved soon" data-i18n="ask.soon">Arriving soon</button>
+  </div>
+</div>
+
+<nav id="hud-l" class="hud">
+  <a href="/360" class="on">360&deg;</a>
+  <button id="nav-ask" class="nav-ask" data-i18n-title="hud.ask"><span>&#10022;</span><b data-i18n="hud.ask">Ask AI</b></button>
+  <button id="nav-book" class="nav-book" data-i18n="hud.reserve">Reserve</button>
+  <button id="nav-menu" class="nav-menu" data-i18n="hud.menu">Menu</button><button id="nav-about" class="nav-about" data-i18n="hud.about">About</button>
+</nav>
+
+<div id="hud-stack">
+<div id="hud-b" class="hud">
+  <span><b id="s-tables">–</b><em data-i18n="hud.tables">tables</em></span>
+  <span class="free"><i class="dot"></i><b id="s-free">–</b><em data-i18n="hud.available">available</em></span>
+  <span class="occ"><i class="dot"></i><b id="s-occ">–</b><em data-i18n="hud.occupied">occupied</em></span>
+  <span class="res"><i class="dot"></i><b id="s-res">–</b><em data-i18n="hud.reserved">reserved</em></span>
+  <span><b id="s-guests">–</b><em data-i18n="hud.guests">guests</em></span>
+  <span><b id="s-load">–</b><em data-i18n="hud.load">load</em></span>
+</div>
+<div id="zones"></div>
+</div>
+<div id="hud-bl">
+  <button id="btn-overview" class="ghost" data-i18n="hud.overview">Overview</button>
+  <button id="btn-diag" class="ghost small" data-i18n="hud.diag">Diag</button>
+</div>
+
+<!-- Choosing a date and a time is what turns the room from "what is
+     happening now" into "what can I book" — two different questions, so the
+     picker states which one the colours are answering. -->
+<section id="slotbar">
+  <div class="slot-fields">
+    <label><span data-i18n="av.date">Date</span><input type="date" id="sb-date"></label>
+    <label><span data-i18n="av.time">Time</span><select id="sb-time"></select></label>
+    <label><span data-i18n="av.guests">Guests</span><select id="sb-party"></select></label>
+    <button id="sb-go" class="primary" data-i18n="av.check">Show tables</button>
+    <button id="sb-live" data-i18n="av.live">Live view</button>
+  </div>
+  <p id="sb-note" data-i18n="av.livenow">Showing the restaurant right now</p>
+</section>
+
+<div id="tip" class="hidden"></div>
+
+<aside id="panel" class="hidden">
+  <button id="p-close" class="close" title="Close (Esc)">×</button>
+  <span id="p-state" class="pill">—</span>
+  <h2 id="p-title">Table</h2>
+  <p id="p-zone" class="p-zone"></p>
+  <div id="p-traits" class="traits"></div>
+  <div id="p-meters" class="meters"></div>
+  <dl id="p-rows"></dl>
+  <p id="p-best" class="p-best"></p>
+  <div id="p-actions"></div>
+  <div id="p-reserve" class="hidden"></div>
+</aside>
+
+<!-- The Menu, as an overlay over the live 3D scene rather than a page
+     navigation: SUFRA 360 stays mounted and the camera keeps its state. -->
+<section id="menuscreen" class="hidden">
+  <div class="mn-top">
+    <button id="mn-back" class="ghost" data-i18n="menu.back">Back to the restaurant</button>
+    <h1 data-i18n="menu.title">The Menu</h1>
+    <p class="muted" data-i18n="menu.note">Browse only. Ordering happens in the dining room.</p>
+  </div>
+  <div id="mn-body"></div>
+</section>
+
+<!-- About: the restaurant's own record, in the guest's language, without
+     leaving the room. -->
+<aside id="aboutpanel" class="hidden">
+  <button id="ab-close" class="close" data-i18n-title="about.close">×</button>
+  <div id="ab-body"></div>
+</aside>
+
+<pre id="diag" class="hidden"></pre>
+<div id="toast" class="hidden"></div>
+<div id="loader"><div class="spin"></div><p data-i18n="loading">Waking the restaurant…</p></div>
+
+<!-- SUFRA OS is reached server-side (app/nova.py), so the browser never
+     needs its address and there is no second origin to keep in sync. -->
+<script type="module" src="/static/js/sufra360/Sufra360.js?v=13"></script>
+</body>
+</html>

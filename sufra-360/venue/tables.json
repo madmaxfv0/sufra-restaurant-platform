@@ -1,0 +1,1751 @@
+[
+ {
+  "id": "t01",
+  "label": "1",
+  "zone": "garden",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 322,
+  "y": 168,
+  "w": 62,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": -1.9,
+   "y": 0.75,
+   "z": -23.6
+  },
+  "tags": [
+   "outside",
+   "leafy"
+  ],
+  "scores": {
+   "quiet": 0.788,
+   "noise": 0.212,
+   "view": 0.68,
+   "privacy": 0.477,
+   "romantic": 0.589,
+   "lively": 0.272,
+   "business": 0.656,
+   "family": 0.8,
+   "window_proximity": 0.708,
+   "sea_view": 0.248,
+   "stage_view": 0.566
+  },
+  "distances": {
+   "window": 76.0,
+   "entrance": 872.8,
+   "bar": 382.3,
+   "kitchen": 596.2,
+   "stage": 268.9,
+   "fireplace": 632.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 166.7,
+   "stage": 94.7,
+   "entrance": 157.8,
+   "kitchen": 165.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t02",
+   "t03",
+   "t04"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t02",
+  "label": "2",
+  "zone": "garden",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 440,
+  "y": 210,
+  "w": 62,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": 4.0,
+   "y": 0.75,
+   "z": -21.5
+  },
+  "tags": [
+   "outside",
+   "leafy"
+  ],
+  "scores": {
+   "quiet": 0.659,
+   "noise": 0.341,
+   "view": 0.602,
+   "privacy": 0.445,
+   "romantic": 0.528,
+   "lively": 0.365,
+   "business": 0.6,
+   "family": 0.8,
+   "window_proximity": 0.546,
+   "sea_view": 0.191,
+   "stage_view": 0.756
+  },
+  "distances": {
+   "window": 118.0,
+   "entrance": 794.8,
+   "bar": 331.4,
+   "kitchen": 536.7,
+   "stage": 151.3,
+   "fireplace": 606.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 185.2,
+   "stage": 82.4,
+   "entrance": 164.5,
+   "kitchen": 177.0
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t01",
+   "t03",
+   "t04",
+   "t05"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t03",
+  "label": "3",
+  "zone": "garden",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 344,
+  "y": 262,
+  "w": 52,
+  "h": 52,
+  "rotation": 0,
+  "world": {
+   "x": -0.8,
+   "y": 0.75,
+   "z": -18.9
+  },
+  "tags": [
+   "outside",
+   "romantic"
+  ],
+  "scores": {
+   "quiet": 0.736,
+   "noise": 0.264,
+   "view": 0.625,
+   "privacy": 0.564,
+   "romantic": 0.818,
+   "lively": 0.31,
+   "business": 0.666,
+   "family": 0.5,
+   "window_proximity": 0.593,
+   "sea_view": 0.208,
+   "stage_view": 0.587
+  },
+  "distances": {
+   "window": 105.8,
+   "entrance": 777.6,
+   "bar": 285.7,
+   "kitchen": 499.6,
+   "stage": 256.3,
+   "fireplace": 539.8
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 247.8,
+   "bar": 166.6,
+   "stage": 73.7,
+   "entrance": 156.7,
+   "kitchen": 165.6
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t01",
+   "t02"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t04",
+  "label": "4",
+  "zone": "garden",
+  "shape": "rect",
+  "min_party": 4,
+  "max_party": 6,
+  "x": 452,
+  "y": 122,
+  "w": 58,
+  "h": 96,
+  "rotation": 0,
+  "world": {
+   "x": 4.6,
+   "y": 0.75,
+   "z": -25.9
+  },
+  "tags": [
+   "outside",
+   "group"
+  ],
+  "scores": {
+   "quiet": 0.697,
+   "noise": 0.303,
+   "view": 0.765,
+   "privacy": 0.454,
+   "romantic": 0.582,
+   "lively": 0.339,
+   "business": 0.616,
+   "family": 0.8,
+   "window_proximity": 0.885,
+   "sea_view": 0.31,
+   "stage_view": 0.752
+  },
+  "distances": {
+   "window": 30.0,
+   "entrance": 877.1,
+   "bar": 420.1,
+   "kitchen": 624.2,
+   "stage": 153.8,
+   "fireplace": 694.8
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 185.7,
+   "stage": 116.2,
+   "entrance": 166.8,
+   "kitchen": 178.5
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t01",
+   "t02"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t05",
+  "label": "5",
+  "zone": "garden",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 556,
+  "y": 262,
+  "w": 52,
+  "h": 52,
+  "rotation": 0,
+  "world": {
+   "x": 9.8,
+   "y": 0.75,
+   "z": -18.9
+  },
+  "tags": [
+   "outside",
+   "romantic"
+  ],
+  "scores": {
+   "quiet": 0.373,
+   "noise": 0.627,
+   "view": 0.558,
+   "privacy": 0.473,
+   "romantic": 0.684,
+   "lively": 0.572,
+   "business": 0.506,
+   "family": 0.5,
+   "window_proximity": 0.455,
+   "sea_view": 0.159,
+   "stage_view": 0.872
+  },
+  "distances": {
+   "window": 141.8,
+   "entrance": 720.4,
+   "bar": 314.0,
+   "kitchen": 491.9,
+   "stage": 79.6,
+   "fireplace": 595.8
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 106.4,
+   "bar": 207.7,
+   "stage": 25.3,
+   "entrance": 172.3,
+   "kitchen": 190.3
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t02"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t06",
+  "label": "6",
+  "zone": "lounge",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 592,
+  "y": 150,
+  "w": 56,
+  "h": 56,
+  "rotation": 0,
+  "world": {
+   "x": 11.6,
+   "y": 0.75,
+   "z": -24.5
+  },
+  "tags": [
+   "lounge",
+   "lively",
+   "stage_view"
+  ],
+  "scores": {
+   "quiet": 0.0,
+   "noise": 1.0,
+   "view": 0.713,
+   "privacy": 0.28,
+   "romantic": 0.345,
+   "lively": 0.84,
+   "business": 0.31,
+   "family": 0.8,
+   "window_proximity": 0.777,
+   "sea_view": 0.272,
+   "stage_view": 0.935
+  },
+  "distances": {
+   "window": 58.0,
+   "entrance": 828.2,
+   "bar": 430.4,
+   "kitchen": 608.8,
+   "stage": 40.0,
+   "fireplace": 712.6
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 205.0,
+   "stage": 182.9,
+   "entrance": 175.8,
+   "kitchen": 191.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t07"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t07",
+  "label": "7",
+  "zone": "lounge",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 654,
+  "y": 216,
+  "w": 56,
+  "h": 56,
+  "rotation": 0,
+  "world": {
+   "x": 14.7,
+   "y": 0.75,
+   "z": -21.2
+  },
+  "tags": [
+   "lounge",
+   "lively",
+   "stage_view"
+  ],
+  "scores": {
+   "quiet": 0.309,
+   "noise": 0.691,
+   "view": 0.646,
+   "privacy": 0.357,
+   "romantic": 0.427,
+   "lively": 0.618,
+   "business": 0.445,
+   "family": 0.8,
+   "window_proximity": 0.638,
+   "sea_view": 0.223,
+   "stage_view": 0.889
+  },
+  "distances": {
+   "window": 94.0,
+   "entrance": 760.0,
+   "bar": 405.6,
+   "kitchen": 561.7,
+   "stage": 69.1,
+   "fireplace": 682.9
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 156.2,
+   "bar": 217.0,
+   "stage": 292.1,
+   "entrance": 180.2,
+   "kitchen": 199.3
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t06"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t08",
+  "label": "8",
+  "zone": "window",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 302,
+  "y": 372,
+  "w": 58,
+  "h": 58,
+  "rotation": 0,
+  "world": {
+   "x": -2.9,
+   "y": 0.75,
+   "z": -13.4
+  },
+  "tags": [
+   "window",
+   "water_view"
+  ],
+  "scores": {
+   "quiet": 0.686,
+   "noise": 0.314,
+   "view": 0.857,
+   "privacy": 0.452,
+   "romantic": 0.602,
+   "lively": 0.346,
+   "business": 0.611,
+   "family": 0.58,
+   "window_proximity": 0.785,
+   "sea_view": 1.0,
+   "stage_view": 0.451
+  },
+  "distances": {
+   "window": 56.0,
+   "entrance": 698.1,
+   "bar": 199.7,
+   "kitchen": 409.2,
+   "stage": 340.7,
+   "fireplace": 428.0
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 147.3,
+   "stage": 57.7,
+   "entrance": 149.9,
+   "kitchen": 156.1
+  },
+  "accessible": true,
+  "premium_view": true,
+  "combinable_with": [
+   "t09"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t09",
+  "label": "9",
+  "zone": "window",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 302,
+  "y": 462,
+  "w": 58,
+  "h": 58,
+  "rotation": 0,
+  "world": {
+   "x": -2.9,
+   "y": 0.75,
+   "z": -8.9
+  },
+  "tags": [
+   "window",
+   "water_view"
+  ],
+  "scores": {
+   "quiet": 0.552,
+   "noise": 0.448,
+   "view": 0.857,
+   "privacy": 0.418,
+   "romantic": 0.559,
+   "lively": 0.443,
+   "business": 0.552,
+   "family": 0.58,
+   "window_proximity": 0.785,
+   "sea_view": 1.0,
+   "stage_view": 0.361
+  },
+  "distances": {
+   "window": 56.0,
+   "entrance": 621.8,
+   "bar": 133.2,
+   "kitchen": 329.0,
+   "stage": 396.1,
+   "fireplace": 338.0
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 125.8,
+   "stage": 46.6,
+   "entrance": 145.7,
+   "kitchen": 149.7
+  },
+  "accessible": true,
+  "premium_view": true,
+  "combinable_with": [
+   "t08",
+   "t10"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t10",
+  "label": "10",
+  "zone": "window",
+  "shape": "rect",
+  "min_party": 6,
+  "max_party": 8,
+  "x": 304,
+  "y": 596,
+  "w": 58,
+  "h": 150,
+  "rotation": 0,
+  "world": {
+   "x": -2.8,
+   "y": 0.75,
+   "z": -2.2
+  },
+  "tags": [
+   "window",
+   "water_view",
+   "group"
+  ],
+  "scores": {
+   "quiet": 0.461,
+   "noise": 0.539,
+   "view": 0.853,
+   "privacy": 0.395,
+   "romantic": 0.529,
+   "lively": 0.508,
+   "business": 0.513,
+   "family": 0.58,
+   "window_proximity": 0.777,
+   "sea_view": 1.0,
+   "stage_view": 0.199
+  },
+  "distances": {
+   "window": 58.0,
+   "entrance": 515.3,
+   "bar": 119.9,
+   "kitchen": 222.3,
+   "stage": 496.6,
+   "fireplace": 204.0
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 62.2,
+   "stage": 35.2,
+   "entrance": 137.5,
+   "kitchen": 132.4
+  },
+  "accessible": true,
+  "premium_view": true,
+  "combinable_with": [
+   "t09",
+   "t11"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t11",
+  "label": "11",
+  "zone": "window",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 302,
+  "y": 726,
+  "w": 58,
+  "h": 58,
+  "rotation": 0,
+  "world": {
+   "x": -2.9,
+   "y": 0.75,
+   "z": 4.3
+  },
+  "tags": [
+   "window",
+   "water_view"
+  ],
+  "scores": {
+   "quiet": 0.587,
+   "noise": 0.413,
+   "view": 0.857,
+   "privacy": 0.427,
+   "romantic": 0.571,
+   "lively": 0.417,
+   "business": 0.568,
+   "family": 0.58,
+   "window_proximity": 0.785,
+   "sea_view": 1.0,
+   "stage_view": 0.019
+  },
+  "distances": {
+   "window": 56.0,
+   "entrance": 430.1,
+   "bar": 215.1,
+   "kitchen": 167.2,
+   "stage": 608.5,
+   "fireplace": 74.0
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 30.1,
+   "stage": 28.2,
+   "entrance": 125.5,
+   "kitchen": 96.9
+  },
+  "accessible": true,
+  "premium_view": true,
+  "combinable_with": [
+   "t10",
+   "t12"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t12",
+  "label": "12",
+  "zone": "window",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 302,
+  "y": 812,
+  "w": 52,
+  "h": 52,
+  "rotation": 0,
+  "world": {
+   "x": -2.9,
+   "y": 0.75,
+   "z": 8.6
+  },
+  "tags": [
+   "window",
+   "water_view",
+   "romantic"
+  ],
+  "scores": {
+   "quiet": 0.653,
+   "noise": 0.347,
+   "view": 0.857,
+   "privacy": 0.543,
+   "romantic": 0.852,
+   "lively": 0.37,
+   "business": 0.629,
+   "family": 0.28,
+   "window_proximity": 0.785,
+   "sea_view": 1.0,
+   "stage_view": 0.0
+  },
+  "distances": {
+   "window": 56.0,
+   "entrance": 386.5,
+   "bar": 292.7,
+   "kitchen": 178.6,
+   "stage": 685.4,
+   "fireplace": 12.2
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 21.7,
+   "stage": 24.8,
+   "entrance": 115.1,
+   "kitchen": 68.3
+  },
+  "accessible": true,
+  "premium_view": true,
+  "combinable_with": [
+   "t11"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t13",
+  "label": "13",
+  "zone": "bar",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 350,
+  "y": 452,
+  "w": 42,
+  "h": 42,
+  "rotation": 0,
+  "world": {
+   "x": -0.5,
+   "y": 0.75,
+   "z": -9.4
+  },
+  "tags": [
+   "bar",
+   "high_top",
+   "lively"
+  ],
+  "scores": {
+   "quiet": 0.435,
+   "noise": 0.565,
+   "view": 0.528,
+   "privacy": 0.169,
+   "romantic": 0.436,
+   "lively": 0.707,
+   "business": 0.431,
+   "family": 0.0,
+   "window_proximity": 0.6,
+   "sea_view": 0.21,
+   "stage_view": 0.427
+  },
+  "distances": {
+   "window": 104.0,
+   "entrance": 604.8,
+   "bar": 106.5,
+   "kitchen": 316.8,
+   "stage": 355.3,
+   "fireplace": 351.6
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 145.7,
+   "stage": 42.5,
+   "entrance": 150.0,
+   "kitchen": 158.1
+  },
+  "accessible": false,
+  "premium_view": false,
+  "combinable_with": [
+   "t14"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t14",
+  "label": "14",
+  "zone": "bar",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 350,
+  "y": 528,
+  "w": 42,
+  "h": 42,
+  "rotation": 0,
+  "world": {
+   "x": -0.5,
+   "y": 0.75,
+   "z": -5.6
+  },
+  "tags": [
+   "bar",
+   "high_top",
+   "lively"
+  ],
+  "scores": {
+   "quiet": 0.0,
+   "noise": 1.0,
+   "view": 0.528,
+   "privacy": 0.06,
+   "romantic": 0.297,
+   "lively": 1.0,
+   "business": 0.239,
+   "family": 0.0,
+   "window_proximity": 0.6,
+   "sea_view": 0.21,
+   "stage_view": 0.331
+  },
+  "distances": {
+   "window": 104.0,
+   "entrance": 540.3,
+   "bar": 61.2,
+   "kitchen": 247.9,
+   "stage": 414.5,
+   "fireplace": 276.6
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 101.3,
+   "stage": 35.4,
+   "entrance": 146.0,
+   "kitchen": 151.6
+  },
+  "accessible": false,
+  "premium_view": false,
+  "combinable_with": [
+   "t13",
+   "t15"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t15",
+  "label": "15",
+  "zone": "bar",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 350,
+  "y": 604,
+  "w": 42,
+  "h": 42,
+  "rotation": 0,
+  "world": {
+   "x": -0.5,
+   "y": 0.75,
+   "z": -1.8
+  },
+  "tags": [
+   "bar",
+   "high_top",
+   "lively"
+  ],
+  "scores": {
+   "quiet": 0.243,
+   "noise": 0.757,
+   "view": 0.528,
+   "privacy": 0.121,
+   "romantic": 0.375,
+   "lively": 0.845,
+   "business": 0.346,
+   "family": 0.0,
+   "window_proximity": 0.6,
+   "sea_view": 0.21,
+   "stage_view": 0.228
+  },
+  "distances": {
+   "window": 104.0,
+   "entrance": 479.2,
+   "bar": 87.7,
+   "kitchen": 184.6,
+   "stage": 478.5,
+   "fireplace": 202.3
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 270.0,
+   "bar": 43.2,
+   "stage": 30.1,
+   "entrance": 140.9,
+   "kitchen": 140.3
+  },
+  "accessible": false,
+  "premium_view": false,
+  "combinable_with": [
+   "t14"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t16",
+  "label": "16",
+  "zone": "east",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 620,
+  "y": 372,
+  "w": 62,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": 13.0,
+   "y": 0.75,
+   "z": -13.4
+  },
+  "tags": [
+   "window",
+   "garden_view"
+  ],
+  "scores": {
+   "quiet": 0.651,
+   "noise": 0.349,
+   "view": 0.587,
+   "privacy": 0.443,
+   "romantic": 0.521,
+   "lively": 0.371,
+   "business": 0.596,
+   "family": 0.58,
+   "window_proximity": 0.723,
+   "sea_view": 0.253,
+   "stage_view": 0.702
+  },
+  "distances": {
+   "window": 72.0,
+   "entrance": 604.8,
+   "bar": 268.9,
+   "kitchen": 403.7,
+   "stage": 184.5,
+   "fireplace": 534.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 90.0,
+   "bar": 231.3,
+   "stage": 350.6,
+   "entrance": 177.0,
+   "kitchen": 202.1
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t17"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t17",
+  "label": "17",
+  "zone": "east",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 620,
+  "y": 466,
+  "w": 62,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": 13.0,
+   "y": 0.75,
+   "z": -8.7
+  },
+  "tags": [
+   "window",
+   "garden_view"
+  ],
+  "scores": {
+   "quiet": 0.654,
+   "noise": 0.346,
+   "view": 0.587,
+   "privacy": 0.444,
+   "romantic": 0.522,
+   "lively": 0.369,
+   "business": 0.597,
+   "family": 0.58,
+   "window_proximity": 0.723,
+   "sea_view": 0.253,
+   "stage_view": 0.552
+  },
+  "distances": {
+   "window": 72.0,
+   "entrance": 511.0,
+   "bar": 222.7,
+   "kitchen": 318.6,
+   "stage": 277.6,
+   "fireplace": 462.6
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 90.0,
+   "bar": 250.6,
+   "stage": 353.8,
+   "entrance": 176.4,
+   "kitchen": 208.5
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t16",
+   "t18"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t18",
+  "label": "18",
+  "zone": "east",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 620,
+  "y": 560,
+  "w": 62,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": 13.0,
+   "y": 0.75,
+   "z": -4.0
+  },
+  "tags": [
+   "window",
+   "garden_view"
+  ],
+  "scores": {
+   "quiet": 0.624,
+   "noise": 0.376,
+   "view": 0.587,
+   "privacy": 0.436,
+   "romantic": 0.512,
+   "lively": 0.391,
+   "business": 0.584,
+   "family": 0.58,
+   "window_proximity": 0.723,
+   "sea_view": 0.253,
+   "stage_view": 0.401
+  },
+  "distances": {
+   "window": 72.0,
+   "entrance": 417.2,
+   "bar": 211.0,
+   "kitchen": 240.2,
+   "stage": 371.2,
+   "fireplace": 400.0
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 90.0,
+   "bar": 275.4,
+   "stage": 355.4,
+   "entrance": 175.6,
+   "kitchen": 219.3
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t17",
+   "t19"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t19",
+  "label": "19",
+  "zone": "east",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 620,
+  "y": 654,
+  "w": 62,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": 13.0,
+   "y": 0.75,
+   "z": 0.7
+  },
+  "tags": [
+   "window",
+   "garden_view"
+  ],
+  "scores": {
+   "quiet": 0.588,
+   "noise": 0.412,
+   "view": 0.587,
+   "privacy": 0.427,
+   "romantic": 0.501,
+   "lively": 0.416,
+   "business": 0.569,
+   "family": 0.58,
+   "window_proximity": 0.723,
+   "sea_view": 0.253,
+   "stage_view": 0.25
+  },
+  "distances": {
+   "window": 72.0,
+   "entrance": 323.6,
+   "bar": 238.9,
+   "kitchen": 177.7,
+   "stage": 465.0,
+   "fireplace": 351.7
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 90.0,
+   "bar": 298.5,
+   "stage": 356.3,
+   "entrance": 174.3,
+   "kitchen": 238.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t18",
+   "t20"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t20",
+  "label": "20",
+  "zone": "east",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 620,
+  "y": 780,
+  "w": 56,
+  "h": 56,
+  "rotation": 0,
+  "world": {
+   "x": 13.0,
+   "y": 0.75,
+   "z": 7.0
+  },
+  "tags": [
+   "window",
+   "quiet",
+   "romantic"
+  ],
+  "scores": {
+   "quiet": 0.551,
+   "noise": 0.449,
+   "view": 0.587,
+   "privacy": 0.518,
+   "romantic": 0.749,
+   "lively": 0.444,
+   "business": 0.584,
+   "family": 0.28,
+   "window_proximity": 0.723,
+   "sea_view": 0.253,
+   "stage_view": 0.047
+  },
+  "distances": {
+   "window": 72.0,
+   "entrance": 198.6,
+   "bar": 318.9,
+   "kitchen": 155.8,
+   "stage": 590.8,
+   "fireplace": 320.6
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 90.0,
+   "bar": 318.8,
+   "stage": 357.1,
+   "entrance": 170.7,
+   "kitchen": 282.6
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t19"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t21",
+  "label": "21",
+  "zone": "private",
+  "shape": "rect",
+  "min_party": 6,
+  "max_party": 10,
+  "x": 378,
+  "y": 912,
+  "w": 130,
+  "h": 62,
+  "rotation": 0,
+  "world": {
+   "x": 0.9,
+   "y": 0.75,
+   "z": 13.6
+  },
+  "tags": [
+   "private",
+   "quiet"
+  ],
+  "scores": {
+   "quiet": 0.67,
+   "noise": 0.33,
+   "view": 0.449,
+   "privacy": 0.947,
+   "romantic": 0.491,
+   "lively": 0.358,
+   "business": 0.764,
+   "family": 0.58,
+   "window_proximity": 0.436,
+   "sea_view": 0.153,
+   "stage_view": 0.0
+  },
+  "distances": {
+   "window": 146.7,
+   "entrance": 281.4,
+   "bar": 373.4,
+   "kitchen": 188.8,
+   "stage": 752.5,
+   "fireplace": 136.5
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 295.9,
+   "bar": 4.9,
+   "stage": 16.4,
+   "entrance": 103.1,
+   "kitchen": 28.5
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t22",
+  "label": "22",
+  "zone": "terrace",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 340,
+  "y": 1082,
+  "w": 66,
+  "h": 66,
+  "rotation": 0,
+  "world": {
+   "x": -1.0,
+   "y": 0.75,
+   "z": 22.1
+  },
+  "tags": [
+   "outside",
+   "umbrella"
+  ],
+  "scores": {
+   "quiet": 0.811,
+   "noise": 0.189,
+   "view": 0.594,
+   "privacy": 0.483,
+   "romantic": 0.574,
+   "lively": 0.256,
+   "business": 0.666,
+   "family": 0.8,
+   "window_proximity": 0.03,
+   "sea_view": 1.0,
+   "stage_view": 0.0
+  },
+  "distances": {
+   "window": 252.2,
+   "entrance": 329.5,
+   "bar": 546.5,
+   "kitchen": 359.6,
+   "stage": 926.4,
+   "fireplace": 284.8
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 338.1,
+   "bar": 7.4,
+   "stage": 15.7,
+   "entrance": 71.2,
+   "kitchen": 20.9
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t23",
+   "t25"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t23",
+  "label": "23",
+  "zone": "terrace",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 452,
+  "y": 1128,
+  "w": 66,
+  "h": 66,
+  "rotation": 0,
+  "world": {
+   "x": 4.6,
+   "y": 0.75,
+   "z": 24.4
+  },
+  "tags": [
+   "outside",
+   "umbrella"
+  ],
+  "scores": {
+   "quiet": 0.793,
+   "noise": 0.207,
+   "view": 0.58,
+   "privacy": 0.478,
+   "romantic": 0.565,
+   "lively": 0.269,
+   "business": 0.659,
+   "family": 0.8,
+   "window_proximity": 0.0,
+   "sea_view": 1.0,
+   "stage_view": 0.0
+  },
+  "distances": {
+   "window": 347.6,
+   "entrance": 251.2,
+   "bar": 589.5,
+   "kitchen": 382.3,
+   "stage": 948.1,
+   "fireplace": 361.5
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 323.7,
+   "bar": 355.9,
+   "stage": 8.4,
+   "entrance": 52.8,
+   "kitchen": 2.4
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t22",
+   "t25"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t24",
+  "label": "24",
+  "zone": "terrace",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 606,
+  "y": 1108,
+  "w": 66,
+  "h": 66,
+  "rotation": 0,
+  "world": {
+   "x": 12.3,
+   "y": 0.75,
+   "z": 23.4
+  },
+  "tags": [
+   "outside",
+   "umbrella"
+  ],
+  "scores": {
+   "quiet": 0.687,
+   "noise": 0.313,
+   "view": 0.58,
+   "privacy": 0.452,
+   "romantic": 0.531,
+   "lively": 0.346,
+   "business": 0.612,
+   "family": 0.8,
+   "window_proximity": 0.0,
+   "sea_view": 1.0,
+   "stage_view": 0.0
+  },
+  "distances": {
+   "window": 273.9,
+   "entrance": 139.8,
+   "bar": 600.9,
+   "kitchen": 387.4,
+   "stage": 918.1,
+   "fireplace": 434.2
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 18.3,
+   "bar": 341.0,
+   "stage": 359.0,
+   "entrance": 19.2,
+   "kitchen": 339.1
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t25",
+  "label": "25",
+  "zone": "terrace",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 2,
+  "x": 330,
+  "y": 1186,
+  "w": 50,
+  "h": 50,
+  "rotation": 0,
+  "world": {
+   "x": -1.5,
+   "y": 0.75,
+   "z": 27.3
+  },
+  "tags": [
+   "outside",
+   "romantic"
+  ],
+  "scores": {
+   "quiet": 0.853,
+   "noise": 0.147,
+   "view": 0.58,
+   "privacy": 0.593,
+   "romantic": 0.844,
+   "lively": 0.226,
+   "business": 0.717,
+   "family": 0.5,
+   "window_proximity": 0.0,
+   "sea_view": 1.0,
+   "stage_view": 0.0
+  },
+  "distances": {
+   "window": 348.3,
+   "entrance": 384.4,
+   "bar": 650.9,
+   "kitchen": 461.1,
+   "stage": 1029.4,
+   "fireplace": 387.2
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 346.0,
+   "bar": 7.1,
+   "stage": 14.6,
+   "entrance": 56.9,
+   "kitchen": 17.4
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [
+   "t22",
+   "t23"
+  ],
+  "verification": "PLACEHOLDER"
+ },
+ {
+  "id": "t26",
+  "label": "26",
+  "zone": "terrace",
+  "shape": "square",
+  "min_party": 4,
+  "max_party": 4,
+  "x": 416,
+  "y": 1036,
+  "w": 60,
+  "h": 60,
+  "rotation": 0,
+  "world": {
+   "x": 2.8,
+   "y": 0.75,
+   "z": 19.8
+  },
+  "tags": [
+   "outside",
+   "umbrella"
+  ],
+  "scores": {
+   "quiet": 0.788,
+   "noise": 0.212,
+   "view": 0.68,
+   "privacy": 0.477,
+   "romantic": 0.589,
+   "lively": 0.272,
+   "business": 0.656,
+   "family": 0.8,
+   "window_proximity": 0.708,
+   "sea_view": 0.248,
+   "stage_view": 0.566
+  },
+  "distances": {
+   "window": 76.0,
+   "entrance": 872.8,
+   "bar": 382.3,
+   "kitchen": 596.2,
+   "stage": 268.9,
+   "fireplace": 632.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 166.7,
+   "stage": 94.7,
+   "entrance": 157.8,
+   "kitchen": 165.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER",
+  "attributes": {
+   "zone_name": "Umbrella Terrace",
+   "seats": "4",
+   "indoor": false,
+   "outdoor": true
+  }
+ },
+ {
+  "id": "t27",
+  "label": "27",
+  "zone": "main",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 396,
+  "y": 338,
+  "w": 58,
+  "h": 58,
+  "rotation": 0,
+  "world": {
+   "x": 1.8,
+   "y": 0.75,
+   "z": -15.1
+  },
+  "tags": [
+   "central"
+  ],
+  "scores": {
+   "quiet": 0.788,
+   "noise": 0.212,
+   "view": 0.68,
+   "privacy": 0.477,
+   "romantic": 0.589,
+   "lively": 0.272,
+   "business": 0.656,
+   "family": 0.8,
+   "window_proximity": 0.708,
+   "sea_view": 0.248,
+   "stage_view": 0.566
+  },
+  "distances": {
+   "window": 76.0,
+   "entrance": 872.8,
+   "bar": 382.3,
+   "kitchen": 596.2,
+   "stage": 268.9,
+   "fireplace": 632.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 166.7,
+   "stage": 94.7,
+   "entrance": 157.8,
+   "kitchen": 165.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER",
+  "attributes": {
+   "zone_name": "The Bar",
+   "seats": "2\u20134",
+   "indoor": true,
+   "outdoor": false
+  }
+ },
+ {
+  "id": "t28",
+  "label": "28",
+  "zone": "terrace",
+  "shape": "square",
+  "min_party": 4,
+  "max_party": 4,
+  "x": 506,
+  "y": 1036,
+  "w": 60,
+  "h": 60,
+  "rotation": 0,
+  "world": {
+   "x": 7.3,
+   "y": 0.75,
+   "z": 19.8
+  },
+  "tags": [
+   "outside",
+   "umbrella"
+  ],
+  "scores": {
+   "quiet": 0.788,
+   "noise": 0.212,
+   "view": 0.68,
+   "privacy": 0.477,
+   "romantic": 0.589,
+   "lively": 0.272,
+   "business": 0.656,
+   "family": 0.8,
+   "window_proximity": 0.708,
+   "sea_view": 0.248,
+   "stage_view": 0.566
+  },
+  "distances": {
+   "window": 76.0,
+   "entrance": 872.8,
+   "bar": 382.3,
+   "kitchen": 596.2,
+   "stage": 268.9,
+   "fireplace": 632.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 166.7,
+   "stage": 94.7,
+   "entrance": 157.8,
+   "kitchen": 165.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER",
+  "attributes": {
+   "zone_name": "Umbrella Terrace",
+   "seats": "4",
+   "indoor": false,
+   "outdoor": true
+  }
+ },
+ {
+  "id": "t29",
+  "label": "29",
+  "zone": "main",
+  "shape": "round",
+  "min_party": 2,
+  "max_party": 4,
+  "x": 486,
+  "y": 338,
+  "w": 58,
+  "h": 58,
+  "rotation": 0,
+  "world": {
+   "x": 6.3,
+   "y": 0.75,
+   "z": -15.1
+  },
+  "tags": [
+   "central"
+  ],
+  "scores": {
+   "quiet": 0.788,
+   "noise": 0.212,
+   "view": 0.68,
+   "privacy": 0.477,
+   "romantic": 0.589,
+   "lively": 0.272,
+   "business": 0.656,
+   "family": 0.8,
+   "window_proximity": 0.708,
+   "sea_view": 0.248,
+   "stage_view": 0.566
+  },
+  "distances": {
+   "window": 76.0,
+   "entrance": 872.8,
+   "bar": 382.3,
+   "kitchen": 596.2,
+   "stage": 268.9,
+   "fireplace": 632.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 166.7,
+   "stage": 94.7,
+   "entrance": 157.8,
+   "kitchen": 165.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER",
+  "attributes": {
+   "zone_name": "The Bar",
+   "seats": "2\u20134",
+   "indoor": true,
+   "outdoor": false
+  }
+ },
+ {
+  "id": "t30",
+  "label": "30",
+  "zone": "terrace",
+  "shape": "square",
+  "min_party": 4,
+  "max_party": 4,
+  "x": 536,
+  "y": 1166,
+  "w": 60,
+  "h": 60,
+  "rotation": 0,
+  "world": {
+   "x": 8.8,
+   "y": 0.75,
+   "z": 26.3
+  },
+  "tags": [
+   "outside",
+   "umbrella"
+  ],
+  "scores": {
+   "quiet": 0.788,
+   "noise": 0.212,
+   "view": 0.68,
+   "privacy": 0.477,
+   "romantic": 0.589,
+   "lively": 0.272,
+   "business": 0.656,
+   "family": 0.8,
+   "window_proximity": 0.708,
+   "sea_view": 0.248,
+   "stage_view": 0.566
+  },
+  "distances": {
+   "window": 76.0,
+   "entrance": 872.8,
+   "bar": 382.3,
+   "kitchen": 596.2,
+   "stage": 268.9,
+   "fireplace": 632.4
+  },
+  "bearings": {
+   "sea": 270.0,
+   "window": 0.0,
+   "bar": 166.7,
+   "stage": 94.7,
+   "entrance": 157.8,
+   "kitchen": 165.8
+  },
+  "accessible": true,
+  "premium_view": false,
+  "combinable_with": [],
+  "verification": "PLACEHOLDER",
+  "attributes": {
+   "zone_name": "Umbrella Terrace",
+   "seats": "4",
+   "indoor": false,
+   "outdoor": true
+  }
+ }
+]
