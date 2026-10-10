@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: sufra-os/deploy/requirements.lock
+      - name: Install pinned dependencies
+        run: pip install -r sufra-os/deploy/requirements.lock httpx
+
+      - name: Compile every Python file in both applications
+        run: python -m compileall -q sufra-os/app sufra-os/scripts sufra-os/tests sufra-360/app sufra-360/tools
+
+      - name: SUFRA OS unit tests
+        working-directory: sufra-os
+        run: python -m unittest discover -s tests
+
+      - name: Start both applications on a seeded demo database
+        run: |
+          (cd sufra-os && NOVA_SEED_DEMO=1 uvicorn app.main:app --port 8123 > ../os.log 2>&1 &)
+          for i in $(seq 1 60); do curl -sf localhost:8123/health/ready && break; sleep 1; done
+          (cd sufra-360 && uvicorn app.main:app --port 8013 > ../360.log 2>&1 &)
+          for i in $(seq 1 30); do curl -sf localhost:8013/health && break; sleep 1; done
+
+      - name: SUFRA 360 can reach SUFRA OS
+        run: curl -sf localhost:8013/health | grep '"reachable":true'
+
+      - name: Two guests cannot book the same table
+        working-directory: sufra-os
+        run: python tests/http_double_booking.py
